@@ -1,0 +1,127 @@
+site_name: airtestto
+site_description: Portal de documentação do backend airtestto e dos produtos que o consomem.
+site_url: https://wmreis-labs.github.io/airtestto-docs/
+repo_url: https://github.com/wmreis-labs/airtestto-docs
+repo_name: wmreis-labs/airtestto-docs
+docs_dir: docs
+copyright: Documentação pública da plataforma airtestto
+
+theme:
+  name: material
+  language: pt
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: Tema escuro
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: Tema claro
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.code.annotate
+    - toc.follow
+
+plugins:
+  - search:
+      lang:
+        - pt
+        - en
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+nav:
+  - Início: index.md
+  - Setup:
+      - Visão geral: setup/index.md
+      - Backend: setup/airtestto.md
+      - Interfaces: setup/frontends.md
+  - Arquitetura:
+      - Visão do sistema: arquitetura/index.md
+      - Requisitos não funcionais: arquitetura/requisitos-nao-funcionais.md
+      - Contratos de evento: arquitetura/cqrs-eventos.md
+      - Decisões:
+          - Índice: arquitetura/adr/index.md
+          - Stack por domínio: arquitetura/adr/stack-por-dominio.md
+          - Versionamento da API: arquitetura/adr/versionamento-api.md
+          - Logs e PII: arquitetura/adr/logs-e-pii.md
+          - CQRS e Athena: arquitetura/adr/cqrs-athena-orders.md
+          - Fundação de eventos: arquitetura/adr/cqrs-eventos-fase1.md
+  - Domínios:
+      - Mapa: dominios/index.md
+      - API: dominios/api.md
+      - Auth: dominios/auth.md
+      - Tenant: dominios/tenant.md
+      - Property: dominios/property.md
+      - Person: dominios/person.md
+      - Contract: dominios/contract.md
+      - Calendar: dominios/calendar.md
+      - Product: dominios/product.md
+      - Sales: dominios/sales.md
+      - PDV: dominios/pdv.md
+      - Delivery: dominios/delivery.md
+      - Storage: dominios/storage.md
+      - Message: dominios/message.md
+      - Audit: dominios/audit.md
+      - Flipping: dominios/flipping.md
+      - Budget: dominios/budget.md
+      - Bank: dominios/bank.md
+      - Inter: dominios/inter.md
+      - Orchestrator: dominios/orchestrator.md
+      - Assistant: dominios/assistant.md
+      - AI: dominios/ai.md
+      - Shared: dominios/shared.md
+  - APIs:
+      - Convenções: api/index.md
+      - Assistant: api/assistant.md
+  - Dados: dados/modelo-dados.md
+  - Negócio: negocio/visao.md
+  - Qualidade:
+      - Testes: qualidade/testes.md
+      - Segurança: qualidade/seguranca.md
+  - Flipping:
+      - Contrato: flipping/contrato.md
+      - Migração de legado: flipping/migracao-legado.md
+      - Changelog: flipping/changelog.md
+      - Aceite: flipping/aceite.md
+  - Produtos:
+      - Admin: produtos/admin.md
+      - Hostto: produtos/hostto.md
+      - Hostto App: produtos/hostto-app.md
+      - Zé Salgados: produtos/zesalgados.md
+      - PulseAI: produtos/pulseai.md
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/wmreis-labs/airtestto-docs

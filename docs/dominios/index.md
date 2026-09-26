@@ -27,4 +27,4 @@ Cada pasta em `packages/` é um domínio: stack CDK, Lambdas e regra de negócio
 | [AI](ai.md) | Biblioteca de modelos |
 | [Shared](shared.md) | Utilitários comuns |
 
-Isolamento de tenant usa a claim `custom:tenant` e a partição das tabelas. O critério de log está em [Logs e PII](../arquitetura/adr/logs-e-pii.md).
+Isolamento de tenant usa a claim `custom:tenant` e a partição das tabelas. O critério de log está em [Logs e PII](../mudancas/adr/logs-e-pii.md).

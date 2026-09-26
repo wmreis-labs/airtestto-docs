@@ -10,7 +10,7 @@ Gateway REST que compõe as rotas dos domínios e aplica o authorizer do Cognito
 
 ## Fluxo
 
-Cliente, API Gateway, authorizer, Lambda do domínio. Rotas seguem versionamento por path, descrito em [Versionamento da API](../arquitetura/adr/versionamento-api.md).
+Cliente, API Gateway, authorizer, Lambda do domínio. Rotas seguem versionamento por path, descrito em [Versionamento da API](../mudancas/adr/versionamento-api.md).
 
 ## Segurança
 

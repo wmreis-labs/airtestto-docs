@@ -1,6 +1,6 @@
 # Contratos de evento
 
-Estes contratos valem para `SalesOrder`, `Delivery` e `AuditEvents`. A decisão que os torna obrigatórios está na [fundação de eventos](adr/cqrs-eventos-fase1.md).
+Estes contratos valem para `SalesOrder`, `Delivery` e `AuditEvents`. A decisão que os torna obrigatórios está na [fundação de eventos](../mudancas/adr/cqrs-eventos-fase1.md).
 
 ## Envelope
 

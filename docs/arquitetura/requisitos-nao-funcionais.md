@@ -32,7 +32,7 @@ Funções quentes, como auth e leitura de property, podem ter concorrência rese
 
 ## Manutenção de contrato
 
-- Breaking change de API sobe de path: `/v1`, `/v2`. Ver [versionamento](adr/versionamento-api.md).
+- Breaking change de API sobe de path: `/v1`, `/v2`. Ver [versionamento](../mudancas/adr/versionamento-api.md).
 - Contrato quebra junto com a rota nova e com nota de release.
 - Stack leva tag `schemaVersion`. Mudança destrutiva precisa de plano e de caminho de volta.
 - Rota obsoleta anuncia `Deprecation` e `Sunset`. Durante a transição, leitura e escrita convivem. O formato antigo sai na data combinada.
@@ -49,4 +49,4 @@ Toda consulta analítica exige `tenant`, `startDate` e `endDate`. A janela máxi
 | p95 sem cache | até 3000 ms |
 | Disponibilidade mensal | 99,5% |
 
-Teto inicial do Athena: até 3 USD por mês em dev e até 15 USD por mês no início de produção. Alarmes em 50%, 80% e 100% do orçamento. O workgroup limita bytes por query. A decisão completa está em [CQRS e Athena](adr/cqrs-athena-orders.md).
+Teto inicial do Athena: até 3 USD por mês em dev e até 15 USD por mês no início de produção. Alarmes em 50%, 80% e 100% do orçamento. O workgroup limita bytes por query. A decisão completa está em [CQRS e Athena](../mudancas/adr/cqrs-athena-orders.md).

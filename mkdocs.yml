@@ -61,6 +61,22 @@ markdown_extensions:
 
 nav:
   - Início: index.md
+  - Mudanças:
+      - mudancas/index.md
+      - RFCs: mudancas/rfc/index.md
+      - ADRs:
+          - mudancas/adr/index.md
+          - Stack por domínio: mudancas/adr/stack-por-dominio.md
+          - Versionamento da API: mudancas/adr/versionamento-api.md
+          - Logs e PII: mudancas/adr/logs-e-pii.md
+          - Zé Salgados por pacotes: mudancas/adr/zesalgados-arquitetura-por-pacotes.md
+          - CQRS e Athena: mudancas/adr/cqrs-athena-orders.md
+          - Fundação de eventos: mudancas/adr/cqrs-eventos-fase1.md
+          - PDV e Sales: mudancas/adr/pdv-sales-v1.md
+          - Product e PDV: mudancas/adr/product-pdv-v1.md
+          - Person e PDV: mudancas/adr/person-pdv-v1.md
+      - Design docs: mudancas/design/index.md
+      - PRDs: mudancas/prd/index.md
   - Setup:
       - Visão geral: setup/index.md
       - Backend: setup/airtestto.md
@@ -69,13 +85,6 @@ nav:
       - Visão do sistema: arquitetura/index.md
       - Requisitos não funcionais: arquitetura/requisitos-nao-funcionais.md
       - Contratos de evento: arquitetura/cqrs-eventos.md
-      - Decisões:
-          - Índice: arquitetura/adr/index.md
-          - Stack por domínio: arquitetura/adr/stack-por-dominio.md
-          - Versionamento da API: arquitetura/adr/versionamento-api.md
-          - Logs e PII: arquitetura/adr/logs-e-pii.md
-          - CQRS e Athena: arquitetura/adr/cqrs-athena-orders.md
-          - Fundação de eventos: arquitetura/adr/cqrs-eventos-fase1.md
   - Domínios:
       - Mapa: dominios/index.md
       - API: dominios/api.md

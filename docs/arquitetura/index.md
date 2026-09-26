@@ -25,9 +25,9 @@ Os componentes de plataforma são API Gateway, Lambdas por domínio, Cognito, Dy
 
 ## Segurança e operação
 
-Autenticação é Cognito User Pool e Client. Autorização usa grupos e a claim `custom:tenant`. Dados em repouso seguem a criptografia padrão da AWS. Logs não carregam PII; o critério está na [decisão de logs](adr/logs-e-pii.md).
+Autenticação é Cognito User Pool e Client. Autorização usa grupos e a claim `custom:tenant`. Dados em repouso seguem a criptografia padrão da AWS. Logs não carregam PII; o critério está na [decisão de logs](../mudancas/adr/logs-e-pii.md).
 
-Ambientes previstos: local com LocalStack, stage e produção. O deploy é um stack CDK por domínio, conforme a [decisão de stack](adr/stack-por-dominio.md).
+Ambientes previstos: local com LocalStack, stage e produção. O deploy é um stack CDK por domínio, conforme a [decisão de stack](../mudancas/adr/stack-por-dominio.md). O registro de RFC, ADR, design doc e PRD fica em [Mudanças](../mudancas/index.md).
 
 ## Observabilidade
 

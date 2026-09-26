@@ -14,7 +14,7 @@ Credencial fica no Secrets Manager. Configuração que não gira fica em parâme
 
 ## Dados
 
-PII não entra em log. O critério está em [Logs e PII](../arquitetura/adr/logs-e-pii.md). Repouso criptografado em DynamoDB e S3. Trânsito em HTTPS.
+PII não entra em log. O critério está em [Logs e PII](../mudancas/adr/logs-e-pii.md). Repouso criptografado em DynamoDB e S3. Trânsito em HTTPS.
 
 ## Superfície
 

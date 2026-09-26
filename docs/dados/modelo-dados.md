@@ -18,6 +18,6 @@ Backfill corre em lote, com paginação, e manda falha para DLQ. Em quebra de fo
 
 ## Retenção
 
-Dado pessoal segue minimização e expurgo quando a finalidade acaba. O critério de log está em [Logs e PII](../arquitetura/adr/logs-e-pii.md).
+Dado pessoal segue minimização e expurgo quando a finalidade acaba. O critério de log está em [Logs e PII](../mudancas/adr/logs-e-pii.md).
 
 Tabela crítica liga Point-in-Time Recovery. Bucket relevante liga versionamento e lifecycle. RPO e RTO acompanham os [requisitos não funcionais](../arquitetura/requisitos-nao-funcionais.md).

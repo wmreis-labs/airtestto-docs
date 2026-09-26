@@ -8,6 +8,7 @@ Este portal reúne a documentação que antes estava espalhada nos READMEs e nas
 
 | Se você quer | Vá para |
 | --- | --- |
+| Registrar ou ler uma mudança | [Mudanças](mudancas/index.md) |
 | Subir o backend localmente | [Setup do backend](setup/airtestto.md) |
 | Entender o desenho | [Arquitetura](arquitetura/index.md) |
 | Achar um domínio | [Mapa de domínios](dominios/index.md) |

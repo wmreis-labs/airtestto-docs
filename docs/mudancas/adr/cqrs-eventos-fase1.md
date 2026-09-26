@@ -8,7 +8,7 @@ A trilha analítica de pedidos, entregas e auditoria precisa do mesmo formato de
 
 ## Decisão
 
-Todo evento desses domínios usa o envelope mínimo: `eventId`, `eventType`, `eventVersion`, `tenant`, `occurredAt`, `correlationId` e `payload`. O formato e os exemplos estão em [Contratos de evento](../cqrs-eventos.md).
+Todo evento desses domínios usa o envelope mínimo: `eventId`, `eventType`, `eventVersion`, `tenant`, `occurredAt`, `correlationId` e `payload`. O formato e os exemplos estão em [Contratos de evento](../../arquitetura/cqrs-eventos.md).
 
 O envelope não perde campo obrigatório em versão nova. Campo opcional no payload é mudança compatível. Mudança incompatível sobe `eventVersion`. O consumidor convive com as versões da transição.
 

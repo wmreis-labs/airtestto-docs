@@ -16,6 +16,6 @@ O apoio de modelo tem três modos: desligado, sombra e ligado. Desligado usa só
 
 O checkout cria o pedido e publica evento para entrega e mensageria. Pagamento entra, sai e é finalizado nos handlers do carrinho.
 
-Tabelas de pedido, contador e carrinho. Dado de pagamento não entra em log. A separação entre leitura operacional e agregação analítica está em [CQRS e Athena](../arquitetura/adr/cqrs-athena-orders.md).
+Tabelas de pedido, contador e carrinho. Dado de pagamento não entra em log. A separação entre leitura operacional e agregação analítica está em [CQRS e Athena](../mudancas/adr/cqrs-athena-orders.md).
 
 O pacote tem Jest. O deploy isolado usa `packages/sales/bin/sales.ts`.

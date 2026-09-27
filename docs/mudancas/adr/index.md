@@ -42,5 +42,8 @@ Decisão de um produto ou contrato: prefixo do contexto, como `zesalgados-` ou `
 | — | [PDV e Sales não se importam](pdv-sales-v1.md) | PDV, Sales | Aceita |
 | — | [Product publica catálogo para o PDV](product-pdv-v1.md) | Product, PDV | Aceita |
 | — | [Person publica pessoas para o PDV](person-pdv-v1.md) | Person, PDV | Aceita |
+| 2026-09-27 | [Domínio cashbook](2026-09-27-dominio-cashbook.md) | Caixa | Aceita |
+| 2026-09-27 | [Livros PF e PJ](2026-09-27-livros-pf-pj.md) | Caixa | Aceita |
+| 2026-09-27 | [Admin é a interface e o extrato entra por arquivo](2026-09-27-admin-e-ingestao.md) | Caixa, Admin | Aceita |
 
 Os três contratos de PDV estavam nos pacotes compartilhados, sem data no original.

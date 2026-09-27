@@ -19,4 +19,4 @@ Cada mudança usa um tipo só. Se a pergunta ainda está aberta, é uma RFC. Se 
 
 ## O que já existe
 
-Nove ADRs foram encontrados nos repositórios e estão na prateleira de ADR. Três textos de desenho já publicados (eventos CQRS, contrato de flipping e migração de feasibility) estão catalogados em Design docs. Não há RFC nem PRD com esse nome. A [visão de negócio](../negocio/visao.md) é o único texto de produto encontrado e fica apontada na prateleira de PRD até existir um PRD por funcionalidade.
+Doze ADRs estão na prateleira, incluindo os três do caixa pessoal e profissional. Os design docs catalogam eventos CQRS, flipping e o desenho do cashbook e do módulo no admin. Não há RFC: o caixa já chegou com as alternativas fechadas. O primeiro PRD é o [caixa pessoal e profissional](prd/2026-09-27-caixa-pessoal-profissional.md). A [visão de negócio](../negocio/visao.md) continua como contexto geral da plataforma.

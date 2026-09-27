@@ -75,8 +75,16 @@ nav:
           - PDV e Sales: mudancas/adr/pdv-sales-v1.md
           - Product e PDV: mudancas/adr/product-pdv-v1.md
           - Person e PDV: mudancas/adr/person-pdv-v1.md
-      - Design docs: mudancas/design/index.md
-      - PRDs: mudancas/prd/index.md
+          - Domínio cashbook: mudancas/adr/2026-09-27-dominio-cashbook.md
+          - Livros PF e PJ: mudancas/adr/2026-09-27-livros-pf-pj.md
+          - Admin e ingestão: mudancas/adr/2026-09-27-admin-e-ingestao.md
+      - Design docs:
+          - mudancas/design/index.md
+          - Cashbook: mudancas/design/2026-09-27-caixa-cashbook.md
+          - Admin: mudancas/design/2026-09-27-caixa-admin.md
+      - PRDs:
+          - mudancas/prd/index.md
+          - Caixa: mudancas/prd/2026-09-27-caixa-pessoal-profissional.md
   - Setup:
       - Visão geral: setup/index.md
       - Backend: setup/airtestto.md

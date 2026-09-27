@@ -2,7 +2,11 @@
 
 Problema de produto, quem sente, o que entra na entrega e o que fica de fora. O PRD não escolhe stack. Essa escolha vai para uma [RFC](../rfc/index.md) ou um [ADR](../adr/index.md). O funcionamento vai para um [design doc](../design/index.md).
 
-Nenhum arquivo chamado PRD foi encontrado. A [visão de negócio](../../negocio/visao.md) é o único texto de produto da plataforma e serve de contexto geral até existir um PRD por funcionalidade.
+A [visão de negócio](../../negocio/visao.md) segue como contexto geral da plataforma. O primeiro PRD por funcionalidade é o caixa pessoal e profissional.
+
+| Data | PRD | Status |
+| --- | --- | --- |
+| 2026-09-27 | [Caixa pessoal e profissional](2026-09-27-caixa-pessoal-profissional.md) | Aprovado |
 
 ## Status
 

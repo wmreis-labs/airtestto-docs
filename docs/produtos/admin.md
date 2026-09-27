@@ -1,5 +1,7 @@
 # Admin
 
+O manual vigente está em [admin-docs](https://wmreis-labs.github.io/admin-docs/).
+
 Console administrativa que consome as APIs do airtestto. O repositório da interface foi iniciado com Create React App.
 
 ## Desenvolvimento

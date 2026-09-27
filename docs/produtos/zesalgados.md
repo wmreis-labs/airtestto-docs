@@ -1,5 +1,7 @@
 # Zé Salgados
 
+O manual vigente está em [zesalgados-docs](https://wmreis-labs.github.io/zesalgados-docs/).
+
 Interface web de PDV e pedidos: produtos, estoque e venda. React e TypeScript, em desenvolvimento. O backend de catálogo, pedido e caixa está em [Product](../dominios/product.md), [Sales](../dominios/sales.md) e [PDV](../dominios/pdv.md).
 
 ## Organização

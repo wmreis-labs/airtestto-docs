@@ -36,14 +36,12 @@ Decisão de um produto ou contrato: prefixo do contexto, como `zesalgados-` ou `
 | 2026-03-25 | [Stack CDK por domínio](stack-por-dominio.md) | Plataforma | Aceita |
 | 2026-03-25 | [Versionamento da API por path](versionamento-api.md) | Plataforma | Aceita |
 | 2026-03-25 | [Logs estruturados sem PII](logs-e-pii.md) | Plataforma | Aceita |
-| 2026-04-01 | [Zé Salgados permanece por pacotes](zesalgados-arquitetura-por-pacotes.md) | Zé Salgados | Aceita |
 | 2026-04-05 | [CQRS incremental com Athena em pedidos](cqrs-athena-orders.md) | Sales | Aceita |
 | 2026-04-05 | [Envelope único de evento](cqrs-eventos-fase1.md) | Sales, Delivery, Audit | Aceita |
 | — | [PDV e Sales não se importam](pdv-sales-v1.md) | PDV, Sales | Aceita |
 | — | [Product publica catálogo para o PDV](product-pdv-v1.md) | Product, PDV | Aceita |
 | — | [Person publica pessoas para o PDV](person-pdv-v1.md) | Person, PDV | Aceita |
-| 2026-09-27 | [Domínio cashbook](2026-09-27-dominio-cashbook.md) | Caixa | Aceita |
-| 2026-09-27 | [Livros PF e PJ](2026-09-27-livros-pf-pj.md) | Caixa | Aceita |
-| 2026-09-27 | [Admin é a interface e o extrato entra por arquivo](2026-09-27-admin-e-ingestao.md) | Caixa, Admin | Aceita |
 
 Os três contratos de PDV estavam nos pacotes compartilhados, sem data no original.
+
+Decisão que também obriga um front fica no [wmreis-docs](https://wmreis-labs.github.io/wmreis-docs/mudancas/adr/). A decisão da interface do Zé Salgados fica no [zesalgados-docs](https://wmreis-labs.github.io/zesalgados-docs/mudancas/adr/2026-04-01-arquitetura-por-pacotes/).

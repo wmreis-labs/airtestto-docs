@@ -1,5 +1,7 @@
 # Hostto
 
+O manual vigente está em [hostto-docs](https://wmreis-labs.github.io/hostto-docs/).
+
 Painel para gestão de aluguel de curta e longa duração: reserva, contrato, recebimento e alerta.
 
 ## Stack

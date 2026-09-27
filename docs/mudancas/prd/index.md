@@ -2,11 +2,9 @@
 
 Problema de produto, quem sente, o que entra na entrega e o que fica de fora. O PRD não escolhe stack. Essa escolha vai para uma [RFC](../rfc/index.md) ou um [ADR](../adr/index.md). O funcionamento vai para um [design doc](../design/index.md).
 
-A [visão de negócio](../../negocio/visao.md) segue como contexto geral da plataforma. O primeiro PRD por funcionalidade é o caixa pessoal e profissional.
+A [visão de negócio](../../negocio/visao.md) segue como contexto geral da plataforma. PRD que atravessa o backend e um front fica no [wmreis-docs](https://wmreis-labs.github.io/wmreis-docs/mudancas/prd/). O caixa pessoal e profissional está em [Caixa pessoal e profissional](https://wmreis-labs.github.io/wmreis-docs/mudancas/prd/2026-09-27-caixa-pessoal-profissional/).
 
-| Data | PRD | Status |
-| --- | --- | --- |
-| 2026-09-27 | [Caixa pessoal e profissional](2026-09-27-caixa-pessoal-profissional.md) | Aprovado |
+Nenhum PRD exclusivo do backend está registrado.
 
 ## Status
 

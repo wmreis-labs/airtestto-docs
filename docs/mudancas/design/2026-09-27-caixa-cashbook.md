@@ -2,8 +2,8 @@
 
 **Status:** vigente
 **Data:** 2026-09-27
-**ADR:** [domínio cashbook](../adr/2026-09-27-dominio-cashbook.md), [livros e naturezas](../adr/2026-09-27-livros-pf-pj.md)
-**PRD:** [caixa pessoal e profissional](../prd/2026-09-27-caixa-pessoal-profissional.md)
+**ADR:** [domínio cashbook](https://wmreis-labs.github.io/wmreis-docs/mudancas/adr/2026-09-27-dominio-cashbook/), [livros e naturezas](https://wmreis-labs.github.io/wmreis-docs/mudancas/adr/2026-09-27-livros-pf-pj/)
+**PRD:** [caixa pessoal e profissional](https://wmreis-labs.github.io/wmreis-docs/mudancas/prd/2026-09-27-caixa-pessoal-profissional/)
 
 ## Objetivo
 
@@ -11,7 +11,7 @@ Receber extrato já normalizado, classificar cada movimento numa das quatro natu
 
 ## Fora deste desenho
 
-Telas, rota e estados do admin estão em [Admin](2026-09-27-caixa-admin.md). Open Finance, corretora e lançamento de imóvel não entram. `message` não lê caixa de e-mail.
+Telas, rota e estados do admin estão em [Admin](https://wmreis-labs.github.io/admin-docs/mudancas/design/2026-09-27-caixa-admin/). Open Finance, corretora e lançamento de imóvel não entram. `message` não lê caixa de e-mail.
 
 ## Fluxo
 

@@ -8,7 +8,8 @@ Este portal reúne a documentação que antes estava espalhada nos READMEs e nas
 
 | Se você quer | Vá para |
 | --- | --- |
-| Registrar ou ler uma mudança | [Mudanças](mudancas/index.md) |
+| Registrar ou ler uma mudança do backend | [Mudanças](mudancas/index.md) |
+| Demanda que atravessa backend e front | [wmreis-docs](https://wmreis-labs.github.io/wmreis-docs/mudancas/) |
 | Subir o backend localmente | [Setup do backend](setup/airtestto.md) |
 | Entender o desenho | [Arquitetura](arquitetura/index.md) |
 | Achar um domínio | [Mapa de domínios](dominios/index.md) |
@@ -33,4 +34,4 @@ flowchart LR
 
 ## O que este portal não publica
 
-Procedimentos operacionais de retry, DLQ e replay, prompts de agente e planejamento financeiro pessoal ficam fora deste site.
+Procedimentos operacionais de retry, DLQ e replay e prompts de agente ficam fora deste site. O manual de cada interface fica no site daquela interface.

@@ -43,6 +43,6 @@ Estes textos nasceram como desenho de contrato, antes desta prateleira existir. 
 | Contrato de viabilidade do flipping | Vigente | [Contrato](../../flipping/contrato.md) |
 | Leitura do feasibility legado | Vigente | [Migração](../../flipping/migracao-legado.md) |
 | Caixa no domínio cashbook | Vigente | [Cashbook](2026-09-27-caixa-cashbook.md) |
-| Módulo de caixa no admin | Vigente | [Admin](2026-09-27-caixa-admin.md) |
+| Módulo de caixa no admin | Vigente | [Admin](https://wmreis-labs.github.io/admin-docs/mudancas/design/2026-09-27-caixa-admin/) |
 
 O [changelog](../../flipping/changelog.md) e o [aceite](../../flipping/aceite.md) do flipping registram a entrega desse desenho, não uma decisão nova.

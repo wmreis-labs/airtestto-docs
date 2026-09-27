@@ -1,6 +1,6 @@
 # Mudanças
 
-Este é o lugar para decidir antes de implementar. Uma IA que for alterar o sistema lê o índice da prateleira correspondente e os registros aceitos daquele assunto. O código privado não é a fonte da decisão: o registro publicado aqui é.
+Este é o lugar das decisões que mudam só o backend. Demanda que também obriga um front fica no [wmreis-docs](https://wmreis-labs.github.io/wmreis-docs/mudancas/). Uma IA que for alterar o serviço lê o índice da prateleira correspondente e os registros aceitos daquele assunto. O código privado não é a fonte da decisão: o registro publicado é.
 
 Cada mudança usa um tipo só. Se a pergunta ainda está aberta, é uma RFC. Se a escolha já foi feita, é um ADR. Se o texto descreve como a solução funciona, é um design doc. Se descreve o problema de produto e o que entra na entrega, é um PRD.
 
@@ -19,4 +19,4 @@ Cada mudança usa um tipo só. Se a pergunta ainda está aberta, é uma RFC. Se 
 
 ## O que já existe
 
-Doze ADRs estão na prateleira, incluindo os três do caixa pessoal e profissional. Os design docs catalogam eventos CQRS, flipping e o desenho do cashbook e do módulo no admin. Não há RFC: o caixa já chegou com as alternativas fechadas. O primeiro PRD é o [caixa pessoal e profissional](prd/2026-09-27-caixa-pessoal-profissional.md). A [visão de negócio](../negocio/visao.md) continua como contexto geral da plataforma.
+Oito ADRs valem só para o backend: stack, versionamento, logs, CQRS e os contratos do PDV. O design doc do cashbook fica aqui porque descreve o serviço. A demanda do caixa, que também muda o admin, está no [PRD](https://wmreis-labs.github.io/wmreis-docs/mudancas/prd/2026-09-27-caixa-pessoal-profissional/) do wmreis-docs. O desenho da tela está no [admin-docs](https://wmreis-labs.github.io/admin-docs/mudancas/design/2026-09-27-caixa-admin/). A [visão de negócio](../negocio/visao.md) continua como contexto geral da plataforma.

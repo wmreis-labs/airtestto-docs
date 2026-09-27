@@ -1,5 +1,7 @@
 # Hostto App
 
+O manual vigente está em [hostto-app-docs](https://wmreis-labs.github.io/hostto-app-docs/).
+
 Aplicativo móvel em React Native, Expo e TypeScript. A arquitetura é modular: módulo de domínio, camada HTTP tipada, React Query e armazenamento seguro da autenticação.
 
 ## Camadas

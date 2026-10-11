@@ -29,8 +29,8 @@ Telefone que não vira E.164, ou documento com outro tamanho, responde erro de v
 
 ## Dados
 
-O User Pool ganha o atributo customizado `document`, mutável, de 11 a 14 caracteres. `name` e `phone_number` já são atributos padrão. `sub` continua gerado pelo Cognito.
+O User Pool já tem o atributo `document`, mutável, sem limite de tamanho. A checagem de 11 ou 14 dígitos fica no cadastro. `name` e `phone_number` já são atributos padrão. `sub` continua gerado pelo Cognito.
 
 ## Riscos
 
-Atributo customizado não sai do User Pool depois de criado. O limite de 11 a 14 caracteres fica fixo. O efeito só aparece depois do deploy do stack de auth.
+Atributo customizado não sai do User Pool depois de criado, e o tamanho dele não muda. O efeito só aparece depois do deploy do stack de auth.

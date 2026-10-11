@@ -84,6 +84,7 @@ nav:
       - Design docs:
           - mudancas/design/index.md
           - Cashbook: mudancas/design/2026-09-27-caixa-cashbook.md
+          - Atributos do cadastro: mudancas/design/2026-10-11-atributos-cadastro.md
       - PRDs: mudancas/prd/index.md
   - Setup:
       - Visão geral: setup/index.md

@@ -79,6 +79,10 @@ O lançamento manual grava conta, data, valor, descrição e um dos tipos. A dat
 2. Pasta do Drive por banco e label do Gmail. O `bank` lê o arquivo da pasta como lê o upload. Previsto de boleto e conciliação com o extrato.
 3. Meta de reserva, reserva atual, gap, aportes e sobra investível. A sobra é o resultado real depois de completar a reserva.
 
+## Acesso
+
+O movimento segue o [acesso ao DynamoDB](2026-10-12-acesso-dynamodb.md). A lista é `Query` com cursor, no desenho do razão de imóvel. A partição é livro e mês, não o tenant inteiro. Não usa `RepositoryBase` nem `Scan`. Não grava em `FinancialEntry`.
+
 ## Riscos
 
 CSV instável por banco. O mapa de colunas fica na tarefa de arquivo, não neste corte. Pareamento que a regra não cobre vai para a revisão. A WMREIS ainda não está no header do Inter. Nenhum desses riscos autoriza gravar o caixa em `FinancialEntry`.

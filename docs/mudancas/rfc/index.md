@@ -2,7 +2,11 @@
 
 Proposta em discussão. Uma RFC compara caminhos e termina aceita ou rejeitada. Aceita, ela gera um [ADR](../adr/index.md). Rejeitada, permanece aqui para a próxima proposta não repetir o mesmo caminho.
 
-Nenhuma RFC foi encontrada nos repositórios. A prateleira começa vazia de propósito.
+## Registro
+
+| Data | Proposta | Status |
+| --- | --- | --- |
+| 2026-10-13 | [Aplicar o acesso por chave no DynamoDB](2026-10-13-acesso-dynamodb.md) | Em revisão |
 
 ## Status
 

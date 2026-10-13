@@ -70,7 +70,9 @@ nav:
   - Início: index.md
   - Mudanças:
       - mudancas/index.md
-      - RFCs: mudancas/rfc/index.md
+      - RFCs:
+          - mudancas/rfc/index.md
+          - Acesso ao DynamoDB: mudancas/rfc/2026-10-13-acesso-dynamodb.md
       - ADRs:
           - mudancas/adr/index.md
           - Stack por domínio: mudancas/adr/stack-por-dominio.md
@@ -85,6 +87,7 @@ nav:
           - mudancas/design/index.md
           - Cashbook: mudancas/design/2026-09-27-caixa-cashbook.md
           - Atributos do cadastro: mudancas/design/2026-10-11-atributos-cadastro.md
+          - Acesso ao DynamoDB: mudancas/design/2026-10-12-acesso-dynamodb.md
       - PRDs: mudancas/prd/index.md
   - Setup:
       - Visão geral: setup/index.md

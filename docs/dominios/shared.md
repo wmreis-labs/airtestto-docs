@@ -5,3 +5,5 @@ Biblioteca comum: erro HTTP, validação, resposta JSON, paginação, publicaç�
 Quem chama recebe credencial pela role, sem segredo no código. As bibliotecas de log e de resposta seguem a decisão de não registrar PII e propagam `traceId` quando ele existe.
 
 O build da raiz compila as referências. Testes prioritários: validadores, publicador de auditoria e verificação de assinatura.
+
+Lista de tela consulta por chave, com o tenant na chave e a página por cursor. O desenho está em [Acesso ao DynamoDB](../mudancas/design/2026-10-12-acesso-dynamodb.md).

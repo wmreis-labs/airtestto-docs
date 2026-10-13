@@ -2,6 +2,7 @@
 
 **Status:** vigente
 **Data:** 2026-10-12
+**RFC:** [Aplicar o acesso por chave](../rfc/2026-10-13-acesso-dynamodb.md) (em revisão). O inventário e a ordem das tarefas estão lá. Esta página continua sendo a regra da lista.
 
 ## Objetivo
 

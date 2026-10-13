@@ -70,7 +70,9 @@ nav:
   - Início: index.md
   - Mudanças:
       - mudancas/index.md
-      - RFCs: mudancas/rfc/index.md
+      - RFCs:
+          - mudancas/rfc/index.md
+          - Acesso ao DynamoDB: mudancas/rfc/2026-10-13-acesso-dynamodb.md
       - ADRs:
           - mudancas/adr/index.md
           - Stack por domínio: mudancas/adr/stack-por-dominio.md

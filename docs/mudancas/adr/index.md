@@ -38,6 +38,7 @@ Decisão de um produto ou contrato: prefixo do contexto, como `zesalgados-` ou `
 | 2026-03-25 | [Logs estruturados sem PII](logs-e-pii.md) | Plataforma | Aceita |
 | 2026-04-05 | [CQRS incremental com Athena em pedidos](cqrs-athena-orders.md) | Sales | Aceita |
 | 2026-04-05 | [Envelope único de evento](cqrs-eventos-fase1.md) | Sales, Delivery, Audit | Aceita |
+| 2026-10-13 | [Acesso ao DynamoDB em fases](2026-10-13-acesso-dynamodb.md) | Plataforma | Aceita |
 | — | [PDV e Sales não se importam](pdv-sales-v1.md) | PDV, Sales | Aceita |
 | — | [Product publica catálogo para o PDV](product-pdv-v1.md) | Product, PDV | Aceita |
 | — | [Person publica pessoas para o PDV](person-pdv-v1.md) | Person, PDV | Aceita |

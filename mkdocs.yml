@@ -83,11 +83,13 @@ nav:
           - PDV e Sales: mudancas/adr/pdv-sales-v1.md
           - Product e PDV: mudancas/adr/product-pdv-v1.md
           - Person e PDV: mudancas/adr/person-pdv-v1.md
+          - Acesso ao DynamoDB: mudancas/adr/2026-10-13-acesso-dynamodb.md
       - Design docs:
           - mudancas/design/index.md
           - Cashbook: mudancas/design/2026-09-27-caixa-cashbook.md
           - Atributos do cadastro: mudancas/design/2026-10-11-atributos-cadastro.md
           - Acesso ao DynamoDB: mudancas/design/2026-10-12-acesso-dynamodb.md
+          - Fases do acesso: mudancas/design/2026-10-13-fases-acesso-dynamodb.md
       - PRDs: mudancas/prd/index.md
   - Setup:
       - Visão geral: setup/index.md

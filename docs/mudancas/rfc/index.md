@@ -6,7 +6,7 @@ Proposta em discussão. Uma RFC compara caminhos e termina aceita ou rejeitada. 
 
 | Data | Proposta | Status |
 | --- | --- | --- |
-| 2026-10-13 | [Aplicar o acesso por chave no DynamoDB](2026-10-13-acesso-dynamodb.md) | Em revisão |
+| 2026-10-13 | [Aplicar o acesso por chave no DynamoDB](2026-10-13-acesso-dynamodb.md) | Aceita |
 
 ## Status
 

@@ -1,13 +1,14 @@
 # RFC: aplicar o acesso por chave no DynamoDB
 
-**Status:** em revisão
+**Status:** aceita em 2026-10-13
 **Data:** 2026-10-13
 **Desenho:** [Acesso ao DynamoDB](../design/2026-10-12-acesso-dynamodb.md)
+**ADR:** [Acesso ao DynamoDB em fases](../adr/2026-10-13-acesso-dynamodb.md)
 **ADR relacionado:** [CQRS e Athena para pedidos](../adr/cqrs-athena-orders.md)
 
 ## Problema
 
-Há 46 tabelas, uma por entidade, todas em pay-per-request. A lista de várias telas ainda varre a tabela e filtra o tenant depois. O DynamoDB cobra o que foi lido, não o que voltou. O [desenho de 12/10](../design/2026-10-12-acesso-dynamodb.md) já exige `Query` por chave e página por cursor. O código não segue esse desenho, e não há ADR deste assunto: só o design doc.
+Há 46 tabelas, uma por entidade, todas em pay-per-request. A lista de várias telas ainda varre a tabela e filtra o tenant depois. O DynamoDB cobra o que foi lido, não o que voltou. O [desenho de 12/10](../design/2026-10-12-acesso-dynamodb.md) já exige `Query` por chave e página por cursor. O código não segue esse desenho. A decisão vigente está no [ADR de 13/10](../adr/2026-10-13-acesso-dynamodb.md).
 
 O inventário abaixo é o que a leitura faz hoje. Ele serve para a próxima tarefa não redescobrir o mesmo mapa.
 
@@ -78,4 +79,4 @@ Interfaces: nenhuma fase desta RFC troca `page` por cursor na resposta HTTP. Sum
 
 ## Decisão pedida
 
-Aceitar a ordem da tabela de fases. A fase 0 não altera produção. Cada fase seguinte é um pull request, com teste, e pode ir sozinha. A implementação espera o ADR. A listagem global de imóveis continua job até existir tenant no item.
+Aceitar a ordem da tabela de fases. A fase 0 não altera produção. Cada fase seguinte é um pull request, com teste, e pode ir sozinha. Essa decisão está no [ADR de 13/10](../adr/2026-10-13-acesso-dynamodb.md). A listagem global de imóveis continua job até existir tenant no item.

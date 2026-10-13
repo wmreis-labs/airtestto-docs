@@ -45,6 +45,7 @@ Estes textos nasceram como desenho de contrato, antes desta prateleira existir. 
 | Caixa no domínio cashbook | Vigente | [Cashbook](2026-09-27-caixa-cashbook.md) |
 | Atributos do cadastro | Vigente | [Atributos do cadastro](2026-10-11-atributos-cadastro.md) |
 | Acesso ao DynamoDB | Vigente | [Acesso ao DynamoDB](2026-10-12-acesso-dynamodb.md) |
+| Fases do acesso ao DynamoDB | Vigente | [Fases do acesso](2026-10-13-fases-acesso-dynamodb.md) |
 | Módulo de caixa no admin | Vigente | [Admin](https://wmreis-labs.github.io/admin-docs/mudancas/design/2026-09-27-caixa-admin/) |
 
 O [changelog](../../flipping/changelog.md) e o [aceite](../../flipping/aceite.md) do flipping registram a entrega desse desenho, não uma decisão nova.

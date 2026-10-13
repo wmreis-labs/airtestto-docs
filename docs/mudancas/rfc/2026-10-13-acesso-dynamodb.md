@@ -29,39 +29,53 @@ Financial, flipping, contract webhook, storage e audit também criam cliente pr�
 
 ## Proposta
 
-Aplicar o desenho vigente, uma lista por tarefa. As escolhas abaixo ficam de pé se esta RFC for aceita.
+A casa vem antes da lista. A casa é um cliente só e as mesmas operações. A lista de cada tela muda numa fase seguinte, com teste, e o fluxo que já está em produção continua no caminho antigo até essa fase apontar a leitura nova.
 
-1. A tabela continua uma por entidade. As 46 tabelas não se fundem.
-2. Lista de tela faz `Query` no índice da pergunta e devolve cursor. Número de página não entra na troca. `Scan` fica em job de manutenção: backfill, reconcile e carga.
-3. Não nasce repositório genérico de CRUD. Não há troca de cliente num único esforço. `RepositoryBase` continua fora do caminho de lista.
-4. Índice que já existe não muda de sort key nem de projeção no lugar. A tarefa cria o índice novo, passa a gravar a chave e carrega o que já está na tabela. Essa carga não entra no mesmo pull request do caixa.
+1. Um `DynamoDBDocumentClient` em `shared`, com `removeUndefinedValues`. As operações são `get`, `queryPage` (cursor), `put`, `update`, `delete` e `batch`, com retry de `Unprocessed*`. `ReturnValues` fica `NONE`, salvo quando o chamador usa o item devolvido, como o contador de pedidos. O repositório do domínio continua montando a chave. Não nasce classe de CRUD. `RepositoryBase` deixa de ser caminho de lista.
+2. A fase do kit não troca nenhum repositório que produção chama. O teste do kit cobre página, cursor, batch e update. O primeiro pacote que já consulta por chave passa a usar o kit, e o teste confere a mesma chave e o mesmo item. Bank e audit largam o client próprio só na fase daquele pacote.
+3. Trocar `Scan` por `Query` é a fase daquela lista, depois do kit. A resposta HTTP permanece: `page` e `total` continuam até uma fase própria de cursor. O front não muda no mesmo pull request do acesso.
+4. Índice que já existe não muda de sort key nem de projeção no lugar. Índice novo segue esta ordem, cada passo no seu pull request: criar o índice, gravar a chave nos itens novos, carregar os antigos, e só então apontar a leitura. Antes da carga, a leitura antiga permanece. A carga não entra no mesmo pull request do caixa.
 5. `GET /orders/summary` e `GET /orders/aggregate` continuam no Athena. Não ganham GSI.
-6. A ordem das tarefas é esta:
-    - Product alinha escrita e leitura a `tenant` + `id` (estoque: `productId`). Preço, variante, BOM e movimento por produto usam `tenant-productId-index`. O código deixa de citar `productId-index` e `ProductStatusIndex`. A lista por status só entra quando a tarefa dessa tela criar o índice.
-    - Sales operacional consulta a PK `tenant`. Igualdade de status usa o GSI cuja sort key é `status` ou `orderStatus`. Intervalo de data usa o GSI cuja sort key é `createdAt`. Pedido por cliente ganha índice novo `tenant` + `customerId` e o atributo `customerId` na raiz do item. Até a carga terminar, essa lista não varre a tabela.
+6. As fases, depois do kit, são estas. Cada uma tem teste de repositório e pode ir a produção sozinha.
+    - Product alinha escrita e leitura a `tenant` + `id` (estoque: `productId`). Preço, variante, BOM e movimento por produto usam `tenant-productId-index`. O código deixa de citar `productId-index` e `ProductStatusIndex`. O teste busca o mesmo id e o encontra. A lista por status só entra quando a tarefa dessa tela criar o índice.
+    - Sales operacional consulta a PK `tenant`, ou o GSI cuja sort key já é `status`, `orderStatus` ou `createdAt`. O handler devolve a mesma forma de hoje. Pedido por cliente ganha índice novo `tenant` + `customerId` e o atributo `customerId` na raiz. A leitura por cliente só muda depois da carga. Até lá, essa lista não varre a tabela inteira: consulta a partição do tenant.
     - Delivery, payment e shipment consultam a PK `tenant` e o GSI `tenant-orderId` que já existe.
-    - Financial, budget e flipping mantêm as chaves compostas. A lista que hoje para em 1 MB passa a seguir o cursor. O índice não é redesenhado.
-    - Person e contract ganham índice novo. Person: partição `tenant`. Contract: partição `entity`, e `tenant` quando a lista da tela for por tenant. A carga é idempotente e o item ganha `schemaVersion`. Property não ganha GSI de tenant: o item não tem esse atributo, e a listagem global permanece job até uma decisão que coloque tenant no imóvel. Bank accounts ganha índice novo em `organizationId` e `provider`, que são os recortes da lista.
+    - Financial, budget e flipping passam a usar o kit e mantêm as chaves compostas (`unitLookupKey`, `propertyLookupKey`, `tenantProjectKey`). A lista que hoje para em 1 MB segue o cursor por dentro. Quem chama a função recebe a mesma coleção.
+    - Person e contract ganham índice novo. Person: partição `tenant`. Contract: partição `entity`, e `tenant` quando a lista da tela for por tenant. A leitura antiga permanece até o índice estar ativo e a carga idempotente gravar `schemaVersion`. Property não ganha GSI de tenant: o item não tem esse atributo, e a listagem global permanece job. Bank accounts ganha índice em `organizationId` e `provider`.
 7. Projeção curta em GSI de item grande (`SalesOrder`, `FinancialEntry`) espera medida de `ConsumedCapacity`. Não faz parte desta RFC.
+
+| Fase | O que entra | O que produção continua fazendo |
+| --- | --- | --- |
+| 0 | Kit e o teste dele | Toda leitura e escrita atual |
+| 1 | Um repositório que já faz `Query` passa a usar o kit | A mesma chave e o mesmo item |
+| 2 | Product na chave da tabela e nos GSIs que já existem | O mesmo id continua encontrável |
+| 3 | Sales consulta a partição do tenant. O HTTP não muda | Pedido por cliente no caminho antigo até a carga do índice novo |
+| 4 | Delivery, payment e shipment na PK e no GSI `tenant-orderId` | A resposta da lista igual |
+| 5 | Financial, budget e flipping no kit, com cursor interno | A função devolve a mesma coleção |
+| 6 | Índices novos: `customerId`, tenant de person, `entity` de contract, `organizationId` e `provider` de bank | A leitura antiga até o índice estar ativo e a carga terminar |
 
 ## Alternativas
 
-Um kit único de Document Client, com `get`, `query`, `put`, `update` e batch, e a migração de financial, budget, flipping, calendar, bank e audit no mesmo esforço. O [desenho de 12/10](../design/2026-10-12-acesso-dynamodb.md) deixa isso de fora: não cria repositório genérico e não troca o cliente de uma vez.
+Migrar todos os repositórios para o cliente novo no mesmo esforço, junto com o fim do `Scan`. Um pull request desse tamanho não tem como provar que produção segue igual.
+
+Começar pelas listas e deixar cada pacote copiar `marshall`, cursor e client. A casa continua espalhada e a fase seguinte repete o mesmo código.
+
+Uma classe de CRUD que esconde a chave e lista com `Scan`. O [desenho de 12/10](../design/2026-10-12-acesso-dynamodb.md) recusa esse caminho. O kit desta RFC é operação, não lista genérica.
 
 Fundir as tabelas num single-table. O modelo de dados e as tabelas já publicadas são uma por entidade.
 
-Renomear o GSI de pedido para a sort key passar a ser `customerId`. Índice existente não muda no lugar. A consulta por cliente usa índice novo. A consulta por data ou status usa a sort key que o índice já tem.
+Renomear o GSI de pedido para a sort key passar a ser `customerId`. Índice existente não muda no lugar. A consulta por cliente usa índice novo, e a leitura só aponta para ele depois da carga.
 
 Capacidade provisionada no lugar de pay-per-request. Fora desta RFC. O prejuízo atual é ler item de outro tenant, não o teto de escrita de uma partição.
 
 ## Impacto
 
-Domínios: product, sales, delivery, financial, budget, flipping, person, contract e bank. Calendar entra só se uma lista de tela ainda usar `Scan`; evento por calendário e por pessoa já consulta GSI.
+Domínios: shared na fase 0; depois product, sales, delivery, financial, budget, flipping, person, contract e bank. Calendar entra só se uma lista de tela ainda usar `Scan`. Evento por calendário e por pessoa já consulta GSI.
 
-Dados: índice novo só na lista que não tem chave. A PK das tabelas atuais permanece. Item de pedido ganha `customerId` na raiz. Itens migrados ganham `schemaVersion`.
+Dados: a PK das tabelas atuais permanece. Índice novo só na lista que não tem chave, e a leitura só muda depois da carga. Item de pedido ganha `customerId` na raiz. Itens migrados ganham `schemaVersion`.
 
-Interfaces: a lista trocada responde cursor, não `page`. Se a tela paginar por número, o registro dessa interface fica no docs da interface. Summary e aggregate de pedidos não mudam de origem.
+Interfaces: nenhuma fase desta RFC troca `page` por cursor na resposta HTTP. Summary e aggregate de pedidos não mudam de origem. Uma fase futura de cursor, se a tela precisar, fica no docs da interface.
 
 ## Decisão pedida
 
-Aceitar os sete pontos da proposta para virar ADR. A implementação espera esse ADR. Cada linha da sequência é uma tarefa, com o desenho de 12/10 como regra da lista. A listagem global de imóveis continua job até existir tenant no item.
+Aceitar a ordem da tabela de fases. A fase 0 não altera produção. Cada fase seguinte é um pull request, com teste, e pode ir sozinha. A implementação espera o ADR. A listagem global de imóveis continua job até existir tenant no item.

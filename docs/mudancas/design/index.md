@@ -44,6 +44,7 @@ Estes textos nasceram como desenho de contrato, antes desta prateleira existir. 
 | Leitura do feasibility legado | Vigente | [Migração](../../flipping/migracao-legado.md) |
 | Caixa no domínio cashbook | Vigente | [Cashbook](2026-09-27-caixa-cashbook.md) |
 | Lembrete no cashbook | Vigente | [Lembrete](2026-10-17-lembrete-cashbook.md) |
+| Conta do bank no cashbook | Vigente | [Conta do bank](2026-10-18-conta-bank-cashbook.md) |
 | Atributos do cadastro | Vigente | [Atributos do cadastro](2026-10-11-atributos-cadastro.md) |
 | Acesso ao DynamoDB | Vigente | [Acesso ao DynamoDB](2026-10-12-acesso-dynamodb.md) |
 | Fases do acesso ao DynamoDB | Vigente | [Fases do acesso](2026-10-13-fases-acesso-dynamodb.md) |

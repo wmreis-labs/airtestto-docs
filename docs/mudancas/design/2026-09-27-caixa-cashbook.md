@@ -40,7 +40,7 @@ flowchart LR
 
 ## Livros e contas
 
-Três livros: Milton, TESTTO e WMREIS. Cada conta tem banco e produto, `conta` ou `cartão`.
+Três livros: Milton, TESTTO e WMREIS. Cada conta tem banco e produto, `conta` ou `cartão`. A identidade (provedor, agência e número) fica no `bank`. O vínculo com o livro está em [Conta do bank](2026-10-18-conta-bank-cashbook.md).
 
 O movimento nasce no livro da conta. Conta sem livro vai para a revisão e não entra no resultado.
 

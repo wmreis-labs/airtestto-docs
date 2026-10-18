@@ -88,6 +88,7 @@ nav:
           - mudancas/design/index.md
           - Cashbook: mudancas/design/2026-09-27-caixa-cashbook.md
           - Lembrete: mudancas/design/2026-10-17-lembrete-cashbook.md
+          - Conta do bank: mudancas/design/2026-10-18-conta-bank-cashbook.md
           - Atributos do cadastro: mudancas/design/2026-10-11-atributos-cadastro.md
           - Acesso ao DynamoDB: mudancas/design/2026-10-12-acesso-dynamodb.md
           - Fases do acesso: mudancas/design/2026-10-13-fases-acesso-dynamodb.md

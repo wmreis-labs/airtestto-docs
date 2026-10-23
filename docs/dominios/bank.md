@@ -22,3 +22,5 @@ A fila `bank-events-queue` recebe mensagem neste formato:
 ## Peças
 
 Consumidor da fila, contrato do evento, entidade normalizada, mapper por provedor, repositório, serviço de ingestão, tipos e stack com a fila e a Lambda. O conector do Inter está em [Inter](inter.md).
+
+O saldo do dia é sobrescrito a cada `BALANCE_CAPTURED`. O desenho [Saldo após o extrato](../mudancas/design/2026-10-23-saldo-apos-extrato.md) descreve o gatilho no Inter depois do extrato.

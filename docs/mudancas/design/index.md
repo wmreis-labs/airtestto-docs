@@ -46,6 +46,7 @@ Estes textos nasceram como desenho de contrato, antes desta prateleira existir. 
 | Lembrete no cashbook | Vigente | [Lembrete](2026-10-17-lembrete-cashbook.md) |
 | Conta do bank no cashbook | Vigente | [Conta do bank](2026-10-18-conta-bank-cashbook.md) |
 | Saldo após o extrato | Vigente | [Saldo após o extrato](2026-10-23-saldo-apos-extrato.md) |
+| Pagamentos (Testto Pay) | Rascunho | [Pagamentos](2026-11-21-pagamentos-testto-pay.md) |
 | Atributos do cadastro | Vigente | [Atributos do cadastro](2026-10-11-atributos-cadastro.md) |
 | Acesso ao DynamoDB | Vigente | [Acesso ao DynamoDB](2026-10-12-acesso-dynamodb.md) |
 | Fases do acesso ao DynamoDB | Vigente | [Fases do acesso](2026-10-13-fases-acesso-dynamodb.md) |

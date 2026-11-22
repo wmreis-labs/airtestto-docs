@@ -63,9 +63,46 @@ A mesma função atende a API pública do corte 3, que só acrescenta a chave de
 | --- | --- | --- |
 | `POST /calendars/{calendarId}/events/{eventId}/charge` | Hostto | Sessão; empresa da sessão (`tenantSource: 'session'`); papéis Admin, Financeiro e Operacional |
 | `POST /payments/webhooks/pagbank` | PagBank | Pública; autenticidade conferida e pedido consultado no provedor |
-| `GET /payments/charges/{chargeId}` | Hostto e, depois, console | Sessão; empresa da sessão |
+| `GET /payments/charges/{chargeId}` | Hostto | Sessão; empresa da sessão |
+| `GET /payments/console/charges` | Console do Testto Pay | Sessão do pool do Testto Pay; empresa da sessão; papéis Administrador, Financeiro e Leitor |
+| `GET /payments/console/charges/{chargeId}` | Console do Testto Pay | Igual à lista |
 
 A resposta da rota da reserva e da consulta traz identificador, estado, valor, link, validade, parcelas escolhidas e data do pagamento. Não traz dado de cartão; o provedor nunca nos envia o número.
+
+### Rotas do console
+
+As rotas do console (airtestto #342) têm um authorizer próprio, que só aceita o pool do Testto Pay (airtestto #341). Os nomes Financeiro e Leitor também existem no pool do Hostto, então o que separa as pessoas é o pool, não o grupo. A empresa sempre vem da sessão. Nesta versão as rotas são só de leitura. O [design das telas](https://wmreis-labs.github.io/testto-pay-docs/mudancas/design/2026-11-21-console-cobrancas/) mostra como o console usa cada campo.
+
+**Lista:** `GET /payments/console/charges?month=AAAA-MM&status=&cursor=`
+
+| Parâmetro | Regra |
+| --- | --- |
+| `month` | Obrigatório. Mês de criação da cobrança, em UTC |
+| `status` | Opcional: `aberta`, `paga`, `expirada`, `cancelada`, `estornada` ou `falhou`. Compara com o estado de leitura: uma cobrança aberta que já passou da validade entra como `expirada` |
+| `cursor` | O valor que a página anterior devolveu. Cursor de outro mês ou malformado recebe 400 (`INVALID_CURSOR`) |
+
+Qualquer outro parâmetro recebe 400 (`VALIDATION_ERROR`), inclusive `tenant`.
+
+A resposta traz `month`, `status` (quando foi pedido), `items` e `cursor`. Os `items` vêm em páginas de até 50, da mais nova para a mais antiga, no formato da consulta (`ChargeView`), sem os dados do pagador. O `cursor` vem enquanto pode haver mais cobranças; uma página cheia pode trazer cursor e a próxima vir vazia.
+
+Só a primeira página traz `summary`. Os números valem para o mês inteiro, não dependem do filtro, e os valores estão em centavos:
+
+- `received`: soma do valor pago das cobranças pagas;
+- `awaiting`: soma do valor das cobranças abertas que ainda estão no prazo;
+- `count`: número de cobranças criadas no mês.
+
+Quando o filtro descarta muitas cobranças, a lista para depois de ler 10 páginas do índice e devolve o que encontrou, com o cursor do ponto onde parou.
+
+**Detalhe:** `GET /payments/console/charges/{chargeId}`
+
+A resposta traz a `ChargeView` e mais estes campos:
+
+- `paymentMethod`;
+- `updatedAt`;
+- `history`, com as transições (`from`, `to`, `at` e `reason`);
+- `provider`, com o nome, `checkoutId`, `orderId` e `chargeId`. Só os papéis Administrador e Financeiro recebem esse bloco; o Leitor não.
+
+Uma cobrança de outra empresa responde 404, igual a uma que não existe.
 
 ### Estados
 

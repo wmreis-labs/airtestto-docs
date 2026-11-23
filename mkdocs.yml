@@ -91,6 +91,7 @@ nav:
           - Conta do bank: mudancas/design/2026-10-18-conta-bank-cashbook.md
           - Saldo após o extrato: mudancas/design/2026-10-23-saldo-apos-extrato.md
           - Emissor fiscal (Emitto): mudancas/design/2026-11-22-emissor-fiscal-emitto.md
+          - Acerto da parada e fechamento da rota: mudancas/design/2026-11-23-caderno-acerto-rota.md
           - Pagamentos (Testto Pay): mudancas/design/2026-11-21-pagamentos-testto-pay.md
           - Impostos dos imóveis: mudancas/design/2026-11-21-apuracao-impostos-tax.md
           - Atributos do cadastro: mudancas/design/2026-10-11-atributos-cadastro.md

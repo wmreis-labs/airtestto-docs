@@ -47,6 +47,7 @@ Estes textos nasceram como desenho de contrato, antes desta prateleira existir. 
 | Conta do bank no cashbook | Vigente | [Conta do bank](2026-10-18-conta-bank-cashbook.md) |
 | Saldo após o extrato | Vigente | [Saldo após o extrato](2026-10-23-saldo-apos-extrato.md) |
 | Emissor fiscal (Emitto) e NF-e do Zé | Rascunho | [Emissor fiscal](2026-11-22-emissor-fiscal-emitto.md) |
+| Acerto da parada e fechamento da rota | Aceita | [Caderno](2026-11-23-caderno-acerto-rota.md) |
 | Pagamentos (Testto Pay) | Rascunho | [Pagamentos](2026-11-21-pagamentos-testto-pay.md) |
 | Apuração de impostos (`tax`) e receita do extrato | Em revisão | [Impostos dos imóveis](2026-11-21-apuracao-impostos-tax.md) |
 | Atributos do cadastro | Vigente | [Atributos do cadastro](2026-10-11-atributos-cadastro.md) |

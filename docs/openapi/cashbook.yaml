@@ -1,0 +1,355 @@
+# Gerado por packages/api/cdk/generate-openapi.ts. Não edite este arquivo.
+openapi: 3.0.3
+info:
+  title: "Caixa"
+  version: 0.0.0
+  description: >-
+    Rotas HTTP de packages/api/cdk/cashbook-api-stack.ts.
+    O caminho, o método e a sessão saem do addMethod.
+    O JSON do corpo não é gerado: a stack não declara esse contrato.
+servers:
+  - url: /
+paths:
+  "/cashbook/backfill-testto":
+    post:
+      operationId: "backfillTestto"
+      summary: "backfillTestto"
+      description: "Exige sessão. Função backfillTestto."
+      tags:
+        - "Caixa"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função backfillTestto"
+        '401':
+          description: Sem sessão
+  "/cashbook/contas":
+    get:
+      operationId: "listContas"
+      summary: "listContas"
+      description: "Exige sessão. Função listContas."
+      tags:
+        - "Caixa"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função listContas"
+        '401':
+          description: Sem sessão
+    post:
+      operationId: "createConta"
+      summary: "createConta"
+      description: "Exige sessão. Função createConta."
+      tags:
+        - "Caixa"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função createConta"
+        '401':
+          description: Sem sessão
+  "/cashbook/historico":
+    post:
+      operationId: "cargaHistorico"
+      summary: "cargaHistorico"
+      description: "Exige sessão. Função cargaHistorico."
+      tags:
+        - "Caixa"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função cargaHistorico"
+        '401':
+          description: Sem sessão
+  "/cashbook/lembretes":
+    get:
+      operationId: "listLembretes"
+      summary: "listLembretes"
+      description: "Exige sessão. Função listLembretes."
+      tags:
+        - "Caixa"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função listLembretes"
+        '401':
+          description: Sem sessão
+  "/cashbook/lembretes/ajustar":
+    post:
+      operationId: "ajustarLembrete"
+      summary: "ajustarLembrete"
+      description: "Exige sessão. Função ajustarLembrete."
+      tags:
+        - "Caixa"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função ajustarLembrete"
+        '401':
+          description: Sem sessão
+  "/cashbook/lembretes/baixa":
+    post:
+      operationId: "baixaLembrete"
+      summary: "baixaLembrete"
+      description: "Exige sessão. Função baixaLembrete."
+      tags:
+        - "Caixa"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função baixaLembrete"
+        '401':
+          description: Sem sessão
+  "/cashbook/lembretes/confirmar":
+    post:
+      operationId: "confirmarLembrete"
+      summary: "confirmarLembrete"
+      description: "Exige sessão. Função confirmarLembrete."
+      tags:
+        - "Caixa"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função confirmarLembrete"
+        '401':
+          description: Sem sessão
+  "/cashbook/lembretes/encerrar":
+    post:
+      operationId: "encerrarLembrete"
+      summary: "encerrarLembrete"
+      description: "Exige sessão. Função encerrarLembrete."
+      tags:
+        - "Caixa"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função encerrarLembrete"
+        '401':
+          description: Sem sessão
+  "/cashbook/lembretes/sino":
+    get:
+      operationId: "sinoLembretes"
+      summary: "sinoLembretes"
+      description: "Exige sessão. Função sinoLembretes."
+      tags:
+        - "Caixa"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função sinoLembretes"
+        '401':
+          description: Sem sessão
+  "/cashbook/movimentos":
+    get:
+      operationId: "listMovimentos"
+      summary: "listMovimentos"
+      description: "Exige sessão. Função listMovimentos."
+      tags:
+        - "Caixa"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função listMovimentos"
+        '401':
+          description: Sem sessão
+    post:
+      operationId: "createMovimento"
+      summary: "createMovimento"
+      description: "Exige sessão. Função createMovimento."
+      tags:
+        - "Caixa"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função createMovimento"
+        '401':
+          description: Sem sessão
+  "/cashbook/painel":
+    get:
+      operationId: "painel"
+      summary: "painel"
+      description: "Exige sessão. Função painel."
+      tags:
+        - "Caixa"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função painel"
+        '401':
+          description: Sem sessão
+  "/cashbook/revisao":
+    get:
+      operationId: "listRevisao"
+      summary: "listRevisao"
+      description: "Exige sessão. Função listRevisao."
+      tags:
+        - "Caixa"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função listRevisao"
+        '401':
+          description: Sem sessão
+  "/cashbook/revisao/confirmar":
+    post:
+      operationId: "confirmarRevisao"
+      summary: "confirmarRevisao"
+      description: "Exige sessão. Função confirmarRevisao."
+      tags:
+        - "Caixa"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função confirmarRevisao"
+        '401':
+          description: Sem sessão

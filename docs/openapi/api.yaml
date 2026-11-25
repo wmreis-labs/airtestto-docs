@@ -1,0 +1,1825 @@
+# Gerado por packages/api/cdk/generate-openapi.ts. Não edite este arquivo.
+openapi: 3.0.3
+info:
+  title: "API principal"
+  version: 0.0.0
+  description: >-
+    Rotas HTTP de packages/api/cdk/api-stack.ts.
+    O caminho, o método e a sessão saem do addMethod.
+    O JSON do corpo não é gerado: a stack não declara esse contrato.
+servers:
+  - url: /
+paths:
+  "/admin/groups":
+    get:
+      operationId: "getGroupsWithUsers"
+      summary: "getGroupsWithUsers"
+      description: "Exige sessão. Função getGroupsWithUsers."
+      tags:
+        - "API principal"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função getGroupsWithUsers"
+        '401':
+          description: Sem sessão
+  "/admin/users":
+    get:
+      operationId: "getAdminUsers"
+      summary: "getAdminUsers"
+      description: "Exige sessão. Função getAdminUsers."
+      tags:
+        - "API principal"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função getAdminUsers"
+        '401':
+          description: Sem sessão
+  "/admin/users/{username}/groups":
+    get:
+      operationId: "getUserGroups"
+      summary: "getUserGroups"
+      description: "Exige sessão. Função getUserGroups."
+      tags:
+        - "API principal"
+      parameters:
+        - in: path
+          name: "username"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função getUserGroups"
+        '401':
+          description: Sem sessão
+    patch:
+      operationId: "patchUserGroups"
+      summary: "patchUserGroups"
+      description: "Exige sessão. Função patchUserGroups."
+      tags:
+        - "API principal"
+      parameters:
+        - in: path
+          name: "username"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função patchUserGroups"
+        '401':
+          description: Sem sessão
+  "/ato/webhook":
+    get:
+      operationId: "atoChannelWebhookHandler"
+      summary: "atoChannelWebhookHandler"
+      description: "Rota pública. Função atoChannelWebhookHandler."
+      tags:
+        - "API principal"
+      responses:
+        '200':
+          description: "Resposta da função atoChannelWebhookHandler"
+    post:
+      operationId: "atoChannelWebhookHandler_post"
+      summary: "atoChannelWebhookHandler"
+      description: "Rota pública. Função atoChannelWebhookHandler."
+      tags:
+        - "API principal"
+      responses:
+        '200':
+          description: "Resposta da função atoChannelWebhookHandler"
+  "/audit/events":
+    get:
+      operationId: "getAuditEvents"
+      summary: "getAuditEvents"
+      description: "Exige sessão. Função getAuditEvents."
+      tags:
+        - "API principal"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função getAuditEvents"
+        '401':
+          description: Sem sessão
+  "/contract":
+    get:
+      operationId: "getAllContract"
+      summary: "getAllContract"
+      description: "Exige sessão. Função getAllContract."
+      tags:
+        - "API principal"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função getAllContract"
+        '401':
+          description: Sem sessão
+    post:
+      operationId: "createContract"
+      summary: "createContract"
+      description: "Exige sessão. Função createContract."
+      tags:
+        - "API principal"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função createContract"
+        '401':
+          description: Sem sessão
+  "/contract-template":
+    get:
+      operationId: "getAllContractTemplate"
+      summary: "getAllContractTemplate"
+      description: "Exige sessão. Função getAllContractTemplate."
+      tags:
+        - "API principal"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função getAllContractTemplate"
+        '401':
+          description: Sem sessão
+    post:
+      operationId: "createContractTemplate"
+      summary: "createContractTemplate"
+      description: "Exige sessão. Função createContractTemplate."
+      tags:
+        - "API principal"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função createContractTemplate"
+        '401':
+          description: Sem sessão
+  "/contract-template/{id}":
+    get:
+      operationId: "getByIdContractTemplate"
+      summary: "getByIdContractTemplate"
+      description: "Exige sessão. Função getByIdContractTemplate."
+      tags:
+        - "API principal"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função getByIdContractTemplate"
+        '401':
+          description: Sem sessão
+    put:
+      operationId: "updateContractTemplate"
+      summary: "updateContractTemplate"
+      description: "Exige sessão. Função updateContractTemplate."
+      tags:
+        - "API principal"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função updateContractTemplate"
+        '401':
+          description: Sem sessão
+  "/contract/webhook-events/{documentId}":
+    get:
+      operationId: "getWebhookEventsByDocumentId"
+      summary: "getWebhookEventsByDocumentId"
+      description: "Exige sessão. Função getWebhookEventsByDocumentId."
+      tags:
+        - "API principal"
+      parameters:
+        - in: path
+          name: "documentId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função getWebhookEventsByDocumentId"
+        '401':
+          description: Sem sessão
+  "/contract/with-pdf":
+    post:
+      operationId: "createContractWithPdf"
+      summary: "createContractWithPdf"
+      description: "Exige sessão. Função createContractWithPdf."
+      tags:
+        - "API principal"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função createContractWithPdf"
+        '401':
+          description: Sem sessão
+  "/contract/{id}":
+    get:
+      operationId: "getByIdContract_get"
+      summary: "getByIdContract"
+      description: "Exige sessão. Função getByIdContract."
+      tags:
+        - "API principal"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função getByIdContract"
+        '401':
+          description: Sem sessão
+    put:
+      operationId: "updateContract_put"
+      summary: "updateContract"
+      description: "Exige sessão. Função updateContract."
+      tags:
+        - "API principal"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função updateContract"
+        '401':
+          description: Sem sessão
+  "/contract/{id}/cancel":
+    post:
+      operationId: "cancelContractToSignature"
+      summary: "cancelContractToSignature"
+      description: "Exige sessão. Função cancelContractToSignature."
+      tags:
+        - "API principal"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função cancelContractToSignature"
+        '401':
+          description: Sem sessão
+  "/contract/{id}/confirm-public-access":
+    post:
+      operationId: "confirmPublicAccess"
+      summary: "confirmPublicAccess"
+      description: "Rota pública. Função confirmPublicAccess."
+      tags:
+        - "API principal"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função confirmPublicAccess"
+  "/contract/{id}/preview-token":
+    post:
+      operationId: "createPreviewToken"
+      summary: "createPreviewToken"
+      description: "Exige sessão. Função createPreviewToken."
+      tags:
+        - "API principal"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função createPreviewToken"
+        '401':
+          description: Sem sessão
+  "/contract/{id}/send-to-signature":
+    put:
+      operationId: "sendContractToSignature"
+      summary: "sendContractToSignature"
+      description: "Exige sessão. Função sendContractToSignature."
+      tags:
+        - "API principal"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função sendContractToSignature"
+        '401':
+          description: Sem sessão
+  "/contract/{id}/send-whatsapp":
+    post:
+      operationId: "sendContractWhatsapp"
+      summary: "sendContractWhatsapp"
+      description: "Exige sessão. Função sendContractWhatsapp."
+      tags:
+        - "API principal"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função sendContractWhatsapp"
+        '401':
+          description: Sem sessão
+  "/contracts/preview":
+    get:
+      operationId: "getPreviewByToken"
+      summary: "getPreviewByToken"
+      description: "Rota pública. Função getPreviewByToken."
+      tags:
+        - "API principal"
+      responses:
+        '200':
+          description: "Resposta da função getPreviewByToken"
+  "/contracts/preview/{token}":
+    get:
+      operationId: "getPreviewHtml"
+      summary: "getPreviewHtml"
+      description: "Rota pública. Função getPreviewHtml."
+      tags:
+        - "API principal"
+      parameters:
+        - in: path
+          name: "token"
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função getPreviewHtml"
+  "/events/today":
+    get:
+      operationId: "getTodayEvents"
+      summary: "getTodayEvents"
+      description: "Exige sessão. Função getTodayEvents."
+      tags:
+        - "API principal"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função getTodayEvents"
+        '401':
+          description: Sem sessão
+  "/events/upcoming":
+    get:
+      operationId: "getUpcomingEvents"
+      summary: "getUpcomingEvents"
+      description: "Exige sessão. Função getUpcomingEvents."
+      tags:
+        - "API principal"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função getUpcomingEvents"
+        '401':
+          description: Sem sessão
+  "/events/{eventId}":
+    get:
+      operationId: "getEventById"
+      summary: "getEventById"
+      description: "Exige sessão. Função getEventById."
+      tags:
+        - "API principal"
+      parameters:
+        - in: path
+          name: "eventId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função getEventById"
+        '401':
+          description: Sem sessão
+  "/inter/balance":
+    get:
+      operationId: "getInterBalance"
+      summary: "getInterBalance"
+      description: "Exige sessão. Função getInterBalance."
+      tags:
+        - "API principal"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função getInterBalance"
+        '401':
+          description: Sem sessão
+  "/inter/statement":
+    get:
+      operationId: "getInterStatement"
+      summary: "getInterStatement"
+      description: "Exige sessão. Função getInterStatement."
+      tags:
+        - "API principal"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função getInterStatement"
+        '401':
+          description: Sem sessão
+  "/inter/statement/detailed":
+    get:
+      operationId: "getInterDetailedStatement"
+      summary: "getInterDetailedStatement"
+      description: "Exige sessão. Função getInterDetailedStatement."
+      tags:
+        - "API principal"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função getInterDetailedStatement"
+        '401':
+          description: Sem sessão
+  "/planning":
+    post:
+      operationId: "createPlanning"
+      summary: "createPlanning"
+      description: "Exige sessão. Função createPlanning."
+      tags:
+        - "API principal"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função createPlanning"
+        '401':
+          description: Sem sessão
+  "/properties":
+    get:
+      operationId: "getAllProperties"
+      summary: "getAllProperties"
+      description: "Exige sessão. Função getAllProperties."
+      tags:
+        - "API principal"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função getAllProperties"
+        '401':
+          description: Sem sessão
+    post:
+      operationId: "createProperty"
+      summary: "createProperty"
+      description: "Exige sessão. Função createProperty."
+      tags:
+        - "API principal"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função createProperty"
+        '401':
+          description: Sem sessão
+  "/properties/count":
+    get:
+      operationId: "getPropertyCount"
+      summary: "getPropertyCount"
+      description: "Exige sessão. Função getPropertyCount."
+      tags:
+        - "API principal"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função getPropertyCount"
+        '401':
+          description: Sem sessão
+  "/properties/files/signed-read":
+    get:
+      operationId: "getPresignedUpload"
+      summary: "getPresignedUpload"
+      description: "Rota pública. Função getPresignedUpload."
+      tags:
+        - "API principal"
+      responses:
+        '200':
+          description: "Resposta da função getPresignedUpload"
+  "/properties/{id}":
+    get:
+      operationId: "getByIdProperty"
+      summary: "getByIdProperty"
+      description: "Exige sessão. Função getByIdProperty."
+      tags:
+        - "API principal"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função getByIdProperty"
+        '401':
+          description: Sem sessão
+    put:
+      operationId: "updateProperty"
+      summary: "updateProperty"
+      description: "Exige sessão. Função updateProperty."
+      tags:
+        - "API principal"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função updateProperty"
+        '401':
+          description: Sem sessão
+    delete:
+      operationId: "deleteProperty"
+      summary: "deleteProperty"
+      description: "Exige sessão. Função deleteProperty."
+      tags:
+        - "API principal"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função deleteProperty"
+        '401':
+          description: Sem sessão
+  "/properties/{id}/areas":
+    get:
+      operationId: "listPropertyAreas"
+      summary: "listPropertyAreas"
+      description: "Exige sessão. Função listPropertyAreas."
+      tags:
+        - "API principal"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função listPropertyAreas"
+        '401':
+          description: Sem sessão
+    post:
+      operationId: "createPropertyArea"
+      summary: "createPropertyArea"
+      description: "Exige sessão. Função createPropertyArea."
+      tags:
+        - "API principal"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função createPropertyArea"
+        '401':
+          description: Sem sessão
+  "/properties/{id}/areas/{areaId}":
+    patch:
+      operationId: "patchPropertyArea"
+      summary: "patchPropertyArea"
+      description: "Exige sessão. Função patchPropertyArea."
+      tags:
+        - "API principal"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: "areaId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função patchPropertyArea"
+        '401':
+          description: Sem sessão
+  "/properties/{id}/budget-groups":
+    get:
+      operationId: "listPropertyBudgetGroups"
+      summary: "listPropertyBudgetGroups"
+      description: "Exige sessão. Função listPropertyBudgetGroups."
+      tags:
+        - "API principal"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função listPropertyBudgetGroups"
+        '401':
+          description: Sem sessão
+    post:
+      operationId: "createPropertyBudgetGroup"
+      summary: "createPropertyBudgetGroup"
+      description: "Exige sessão. Função createPropertyBudgetGroup."
+      tags:
+        - "API principal"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função createPropertyBudgetGroup"
+        '401':
+          description: Sem sessão
+  "/properties/{id}/budget-groups/{groupId}":
+    patch:
+      operationId: "patchPropertyBudgetGroup"
+      summary: "patchPropertyBudgetGroup"
+      description: "Exige sessão. Função patchPropertyBudgetGroup."
+      tags:
+        - "API principal"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: "groupId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função patchPropertyBudgetGroup"
+        '401':
+          description: Sem sessão
+  "/properties/{id}/calendars":
+    get:
+      operationId: "getCalendarsByPropertyId"
+      summary: "getCalendarsByPropertyId"
+      description: "Exige sessão. Função getCalendarsByPropertyId."
+      tags:
+        - "API principal"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função getCalendarsByPropertyId"
+        '401':
+          description: Sem sessão
+    post:
+      operationId: "createCalendar"
+      summary: "createCalendar"
+      description: "Exige sessão. Função createCalendar."
+      tags:
+        - "API principal"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função createCalendar"
+        '401':
+          description: Sem sessão
+  "/properties/{id}/calendars/{calendarId}":
+    put:
+      operationId: "updateCalendar"
+      summary: "updateCalendar"
+      description: "Exige sessão. Função updateCalendar."
+      tags:
+        - "API principal"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: "calendarId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função updateCalendar"
+        '401':
+          description: Sem sessão
+    delete:
+      operationId: "deleteCalendar"
+      summary: "deleteCalendar"
+      description: "Exige sessão. Função deleteCalendar."
+      tags:
+        - "API principal"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: "calendarId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função deleteCalendar"
+        '401':
+          description: Sem sessão
+  "/properties/{id}/calendars/{calendarId}/events":
+    get:
+      operationId: "getEventsByCalendarId"
+      summary: "getEventsByCalendarId"
+      description: "Exige sessão. Função getEventsByCalendarId."
+      tags:
+        - "API principal"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: "calendarId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função getEventsByCalendarId"
+        '401':
+          description: Sem sessão
+    post:
+      operationId: "createEvent"
+      summary: "createEvent"
+      description: "Exige sessão. Função createEvent."
+      tags:
+        - "API principal"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: "calendarId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função createEvent"
+        '401':
+          description: Sem sessão
+  "/properties/{id}/calendars/{calendarId}/events/{eventId}":
+    put:
+      operationId: "updateEvent"
+      summary: "updateEvent"
+      description: "Exige sessão. Função updateEvent."
+      tags:
+        - "API principal"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: "calendarId"
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: "eventId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função updateEvent"
+        '401':
+          description: Sem sessão
+    delete:
+      operationId: "deleteEvent"
+      summary: "deleteEvent"
+      description: "Exige sessão. Função deleteEvent."
+      tags:
+        - "API principal"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: "calendarId"
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: "eventId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função deleteEvent"
+        '401':
+          description: Sem sessão
+  "/properties/{id}/calendars/{calendarId}/events/{eventId}/charge":
+    post:
+      operationId: "requestEventCharge"
+      summary: "requestEventCharge"
+      description: "Exige sessão. Função requestEventCharge."
+      tags:
+        - "API principal"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: "calendarId"
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: "eventId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função requestEventCharge"
+        '401':
+          description: Sem sessão
+  "/properties/{id}/calendars/{calendarId}/sync":
+    post:
+      operationId: "syncCalendar"
+      summary: "syncCalendar"
+      description: "Exige sessão. Função syncCalendar."
+      tags:
+        - "API principal"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: "calendarId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função syncCalendar"
+        '401':
+          description: Sem sessão
+  "/properties/{id}/files/presigned-upload":
+    get:
+      operationId: "presignedUpload"
+      summary: "presignedUpload"
+      description: "Exige sessão. Função presignedUpload."
+      tags:
+        - "API principal"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função presignedUpload"
+        '401':
+          description: Sem sessão
+  "/properties/{id}/files/remove":
+    delete:
+      operationId: "removePropertyFile"
+      summary: "removePropertyFile"
+      description: "Rota pública. Função removePropertyFile."
+      tags:
+        - "API principal"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função removePropertyFile"
+  "/properties/{id}/files/upload":
+    put:
+      operationId: "uploadPropertyFile"
+      summary: "uploadPropertyFile"
+      description: "Exige sessão. Função uploadPropertyFile."
+      tags:
+        - "API principal"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função uploadPropertyFile"
+        '401':
+          description: Sem sessão
+  "/properties/{id}/parent":
+    get:
+      operationId: "getPropertiesByParentIdHandler"
+      summary: "getPropertiesByParentIdHandler"
+      description: "Exige sessão. Função getPropertiesByParentIdHandler."
+      tags:
+        - "API principal"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função getPropertiesByParentIdHandler"
+        '401':
+          description: Sem sessão
+  "/public/contract/{id}":
+    get:
+      operationId: "getByIdContract"
+      summary: "getByIdContract"
+      description: "Exige sessão. Função getByIdContract."
+      tags:
+        - "API principal"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função getByIdContract"
+        '401':
+          description: Sem sessão
+    put:
+      operationId: "updateContract"
+      summary: "updateContract"
+      description: "Exige sessão. Função updateContract."
+      tags:
+        - "API principal"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função updateContract"
+        '401':
+          description: Sem sessão
+  "/signature/webhook":
+    post:
+      operationId: "contractWebhookHandler"
+      summary: "contractWebhookHandler"
+      description: "Rota pública. Função contractWebhookHandler."
+      tags:
+        - "API principal"
+      responses:
+        '200':
+          description: "Resposta da função contractWebhookHandler"
+  "/storage/by-reference/{entity}/{referenceId}":
+    get:
+      operationId: "getFilesByEntityAndReference"
+      summary: "getFilesByEntityAndReference"
+      description: "Exige sessão. Função getFilesByEntityAndReference."
+      tags:
+        - "API principal"
+      parameters:
+        - in: path
+          name: "entity"
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: "referenceId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função getFilesByEntityAndReference"
+        '401':
+          description: Sem sessão
+  "/storage/confirm-upload":
+    post:
+      operationId: "confirmUpload"
+      summary: "confirmUpload"
+      description: "Exige sessão. Função confirmUpload."
+      tags:
+        - "API principal"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função confirmUpload"
+        '401':
+          description: Sem sessão
+  "/storage/presigned-upload":
+    get:
+      operationId: "generatePresigned"
+      summary: "generatePresigned"
+      description: "Exige sessão. Função generatePresigned."
+      tags:
+        - "API principal"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função generatePresigned"
+        '401':
+          description: Sem sessão
+  "/storage/signed-read-url":
+    get:
+      operationId: "getSignedReadUrl"
+      summary: "getSignedReadUrl"
+      description: "Exige sessão. Função getSignedReadUrl."
+      tags:
+        - "API principal"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função getSignedReadUrl"
+        '401':
+          description: Sem sessão
+  "/storage/{id}":
+    get:
+      operationId: "getFileById"
+      summary: "getFileById"
+      description: "Exige sessão. Função getFileById."
+      tags:
+        - "API principal"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função getFileById"
+        '401':
+          description: Sem sessão
+  "/tenant":
+    get:
+      operationId: "getValidateTenant"
+      summary: "getValidateTenant"
+      description: "Autorização não declarada no addMethod. Função getValidateTenant."
+      tags:
+        - "API principal"
+      responses:
+        '200':
+          description: "Resposta da função getValidateTenant"
+  "/tenants":
+    get:
+      operationId: "listTenants"
+      summary: "listTenants"
+      description: "Exige sessão. Função listTenants."
+      tags:
+        - "API principal"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função listTenants"
+        '401':
+          description: Sem sessão
+    post:
+      operationId: "createTenant"
+      summary: "createTenant"
+      description: "Exige sessão. Função createTenant."
+      tags:
+        - "API principal"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função createTenant"
+        '401':
+          description: Sem sessão
+  "/tenants/{id}":
+    get:
+      operationId: "getTenant"
+      summary: "getTenant"
+      description: "Exige sessão. Função getTenant."
+      tags:
+        - "API principal"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função getTenant"
+        '401':
+          description: Sem sessão
+    put:
+      operationId: "updateTenant"
+      summary: "updateTenant"
+      description: "Exige sessão. Função updateTenant."
+      tags:
+        - "API principal"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função updateTenant"
+        '401':
+          description: Sem sessão
+    delete:
+      operationId: "deleteTenant"
+      summary: "deleteTenant"
+      description: "Exige sessão. Função deleteTenant."
+      tags:
+        - "API principal"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função deleteTenant"
+        '401':
+          description: Sem sessão

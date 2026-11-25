@@ -4,10 +4,6 @@ function scalarEstaEscuro() {
   return document.body.getAttribute("data-md-color-scheme") === "slate";
 }
 
-function urlDoContrato(nome) {
-  return new URL("../../openapi/" + nome + ".yaml", document.baseURI).href;
-}
-
 function montarReferencia() {
   var el = document.getElementById("scalar-referencia");
   if (!el || el.dataset.mounted === "1") {
@@ -15,33 +11,33 @@ function montarReferencia() {
   }
   el.dataset.mounted = "1";
 
-  import(
-    "https://cdn.jsdelivr.net/npm/@scalar/api-reference@" +
-      scalarVersion +
-      "/esm.js"
-  )
-    .then(function (mod) {
+  var indexUrl = new URL("../../openapi/index.json", document.baseURI).href;
+  Promise.all([
+    fetch(indexUrl).then(function (response) {
+      if (!response.ok) {
+        throw new Error(String(response.status));
+      }
+      return response.json();
+    }),
+    import(
+      "https://cdn.jsdelivr.net/npm/@scalar/api-reference@" +
+        scalarVersion +
+        "/esm.js"
+    ),
+  ])
+    .then(function (result) {
+      var index = result[0];
+      var mod = result[1];
       return mod.createApiReference("#scalar-referencia", {
         theme: "default",
         darkMode: scalarEstaEscuro(),
-        sources: [
-          { title: "Vendas", slug: "sales", url: urlDoContrato("sales") },
-          {
-            title: "Financeiro",
-            slug: "financial",
-            url: urlDoContrato("financial"),
-          },
-          {
-            title: "Flipping",
-            slug: "flipping",
-            url: urlDoContrato("flipping"),
-          },
-          {
-            title: "Assistant",
-            slug: "assistant",
-            url: urlDoContrato("assistant"),
-          },
-        ],
+        sources: index.map(function (item) {
+          return {
+            title: item.title,
+            slug: item.slug,
+            url: new URL("../../openapi/" + item.file, document.baseURI).href,
+          };
+        }),
       });
     })
     .then(function (app) {

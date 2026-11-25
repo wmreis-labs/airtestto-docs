@@ -1,0 +1,174 @@
+# Gerado por packages/api/cdk/generate-openapi.ts. Não edite este arquivo.
+openapi: 3.0.3
+info:
+  title: "Budget"
+  version: 0.0.0
+  description: >-
+    Rotas HTTP de packages/api/cdk/budget-api-stack.ts.
+    O caminho, o método e a sessão saem do addMethod.
+    O JSON do corpo não é gerado: a stack não declara esse contrato.
+servers:
+  - url: /
+paths:
+  "/budget":
+    post:
+      operationId: "createBudget"
+      summary: "createBudget"
+      description: "Exige sessão. Função createBudget."
+      tags:
+        - "Budget"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função createBudget"
+        '401':
+          description: Sem sessão
+  "/budget/property/{propertyId}":
+    get:
+      operationId: "listBudgetsByProperty"
+      summary: "listBudgetsByProperty"
+      description: "Exige sessão. Função listBudgetsByProperty."
+      tags:
+        - "Budget"
+      parameters:
+        - in: path
+          name: "propertyId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função listBudgetsByProperty"
+        '401':
+          description: Sem sessão
+  "/budget/{budgetId}":
+    get:
+      operationId: "getBudgetById"
+      summary: "getBudgetById"
+      description: "Exige sessão. Função getBudgetById."
+      tags:
+        - "Budget"
+      parameters:
+        - in: path
+          name: "budgetId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função getBudgetById"
+        '401':
+          description: Sem sessão
+    put:
+      operationId: "updateBudget"
+      summary: "updateBudget"
+      description: "Exige sessão. Função updateBudget."
+      tags:
+        - "Budget"
+      parameters:
+        - in: path
+          name: "budgetId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função updateBudget"
+        '401':
+          description: Sem sessão
+  "/budget/{budgetId}/lock":
+    post:
+      operationId: "lockBudget"
+      summary: "lockBudget"
+      description: "Exige sessão. Função lockBudget."
+      tags:
+        - "Budget"
+      parameters:
+        - in: path
+          name: "budgetId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função lockBudget"
+        '401':
+          description: Sem sessão
+  "/budget/{budgetId}/unlock":
+    post:
+      operationId: "unlockBudget"
+      summary: "unlockBudget"
+      description: "Exige sessão. Função unlockBudget."
+      tags:
+        - "Budget"
+      parameters:
+        - in: path
+          name: "budgetId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função unlockBudget"
+        '401':
+          description: Sem sessão

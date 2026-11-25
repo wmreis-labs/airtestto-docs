@@ -1,0 +1,252 @@
+# Gerado por packages/api/cdk/generate-openapi.ts. Não edite este arquivo.
+openapi: 3.0.3
+info:
+  title: "Entregas"
+  version: 0.0.0
+  description: >-
+    Rotas HTTP de packages/api/cdk/delivery-api-stack.ts.
+    O caminho, o método e a sessão saem do addMethod.
+    O JSON do corpo não é gerado: a stack não declara esse contrato.
+servers:
+  - url: /
+paths:
+  "/delivery/closing/{id}":
+    patch:
+      operationId: "closeDelivery"
+      summary: "closeDelivery"
+      description: "Exige sessão. Função closeDelivery."
+      tags:
+        - "Entregas"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função closeDelivery"
+        '401':
+          description: Sem sessão
+  "/delivery/planning":
+    get:
+      operationId: "listDelivery"
+      summary: "listDelivery"
+      description: "Exige sessão. Função listDelivery."
+      tags:
+        - "Entregas"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função listDelivery"
+        '401':
+          description: Sem sessão
+    post:
+      operationId: "createDelivery"
+      summary: "createDelivery"
+      description: "Exige sessão. Função createDelivery."
+      tags:
+        - "Entregas"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função createDelivery"
+        '401':
+          description: Sem sessão
+  "/delivery/planning/{id}":
+    get:
+      operationId: "getDelivery"
+      summary: "getDelivery"
+      description: "Exige sessão. Função getDelivery."
+      tags:
+        - "Entregas"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função getDelivery"
+        '401':
+          description: Sem sessão
+    patch:
+      operationId: "patchDelivery"
+      summary: "patchDelivery"
+      description: "Exige sessão. Função patchDelivery."
+      tags:
+        - "Entregas"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função patchDelivery"
+        '401':
+          description: Sem sessão
+  "/delivery/planning/{id}/assign":
+    post:
+      operationId: "assignDelivery"
+      summary: "assignDelivery"
+      description: "Exige sessão. Função assignDelivery."
+      tags:
+        - "Entregas"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função assignDelivery"
+        '401':
+          description: Sem sessão
+  "/delivery/planning/{id}/confirm-delivery":
+    post:
+      operationId: "confirmDelivery"
+      summary: "confirmDelivery"
+      description: "Exige sessão. Função confirmDelivery."
+      tags:
+        - "Entregas"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função confirmDelivery"
+        '401':
+          description: Sem sessão
+  "/delivery/planning/{id}/start":
+    post:
+      operationId: "startDelivery"
+      summary: "startDelivery"
+      description: "Exige sessão. Função startDelivery."
+      tags:
+        - "Entregas"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função startDelivery"
+        '401':
+          description: Sem sessão
+  "/delivery/settlement/{id}":
+    post:
+      operationId: "settleDelivery"
+      summary: "settleDelivery"
+      description: "Exige sessão. Função settleDelivery."
+      tags:
+        - "Entregas"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função settleDelivery"
+        '401':
+          description: Sem sessão

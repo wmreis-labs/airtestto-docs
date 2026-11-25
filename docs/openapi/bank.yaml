@@ -1,0 +1,239 @@
+# Gerado por packages/api/cdk/generate-openapi.ts. Não edite este arquivo.
+openapi: 3.0.3
+info:
+  title: "Bank"
+  version: 0.0.0
+  description: >-
+    Rotas HTTP de packages/api/cdk/bank-api-stack.ts.
+    O caminho, o método e a sessão saem do addMethod.
+    O JSON do corpo não é gerado: a stack não declara esse contrato.
+servers:
+  - url: /
+paths:
+  "/bank/accounts":
+    get:
+      operationId: "listBankAccounts"
+      summary: "listBankAccounts"
+      description: "Exige sessão. Função listBankAccounts."
+      tags:
+        - "Bank"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função listBankAccounts"
+        '401':
+          description: Sem sessão
+    post:
+      operationId: "createBankAccount"
+      summary: "createBankAccount"
+      description: "Exige sessão. Função createBankAccount."
+      tags:
+        - "Bank"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função createBankAccount"
+        '401':
+          description: Sem sessão
+  "/bank/accounts/{accountId}":
+    get:
+      operationId: "getBankAccount"
+      summary: "getBankAccount"
+      description: "Exige sessão. Função getBankAccount."
+      tags:
+        - "Bank"
+      parameters:
+        - in: path
+          name: "accountId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função getBankAccount"
+        '401':
+          description: Sem sessão
+    patch:
+      operationId: "updateBankAccount"
+      summary: "updateBankAccount"
+      description: "Exige sessão. Função updateBankAccount."
+      tags:
+        - "Bank"
+      parameters:
+        - in: path
+          name: "accountId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função updateBankAccount"
+        '401':
+          description: Sem sessão
+    delete:
+      operationId: "deleteBankAccount"
+      summary: "deleteBankAccount"
+      description: "Exige sessão. Função deleteBankAccount."
+      tags:
+        - "Bank"
+      parameters:
+        - in: path
+          name: "accountId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função deleteBankAccount"
+        '401':
+          description: Sem sessão
+  "/bank/accounts/{accountId}/balances":
+    get:
+      operationId: "listBankBalances"
+      summary: "listBankBalances"
+      description: "Exige sessão. Função listBankBalances."
+      tags:
+        - "Bank"
+      parameters:
+        - in: path
+          name: "accountId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função listBankBalances"
+        '401':
+          description: Sem sessão
+  "/bank/accounts/{accountId}/statements":
+    post:
+      operationId: "uploadBankStatement"
+      summary: "uploadBankStatement"
+      description: "Autorização não declarada no addMethod. Função uploadBankStatement."
+      tags:
+        - "Bank"
+      parameters:
+        - in: path
+          name: "accountId"
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função uploadBankStatement"
+  "/bank/accounts/{accountId}/summary":
+    get:
+      operationId: "getFinancialSummary"
+      summary: "getFinancialSummary"
+      description: "Exige sessão. Função getFinancialSummary."
+      tags:
+        - "Bank"
+      parameters:
+        - in: path
+          name: "accountId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função getFinancialSummary"
+        '401':
+          description: Sem sessão
+  "/bank/accounts/{accountId}/transactions":
+    get:
+      operationId: "listBankTransactions"
+      summary: "listBankTransactions"
+      description: "Exige sessão. Função listBankTransactions."
+      tags:
+        - "Bank"
+      parameters:
+        - in: path
+          name: "accountId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função listBankTransactions"
+        '401':
+          description: Sem sessão

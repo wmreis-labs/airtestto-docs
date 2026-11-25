@@ -1,214 +1,58 @@
+# Gerado por packages/api/cdk/generate-openapi.ts. Não edite este arquivo.
 openapi: 3.0.3
 info:
-  title: Assistant API
-  version: 0.1.0
-  description: |
-    Contrato inicial do Assistant (chat multi-turn).
-    Observação: respostas seguem o envelope padrão `{ success, data }`.
+  title: "Assistant"
+  version: 0.0.0
+  description: >-
+    Rotas HTTP de packages/api/cdk/assistant-api-stack.ts.
+    O caminho, o método e a sessão saem do addMethod.
+    O JSON do corpo não é gerado: a stack não declara esse contrato.
 servers:
-  - url: https://{domain}
-    variables:
-      domain:
-        default: dev-api.testto.com.br
+  - url: /
 paths:
-  /assistant/message:
+  "/assistant/confirm":
     post:
-      summary: Envia uma mensagem para o Assistant e recebe a próxima resposta (multi-turn)
+      operationId: "assistantConfirm"
+      summary: "assistantConfirm"
+      description: "Exige sessão. Função assistantConfirm."
+      tags:
+        - "Assistant"
       parameters:
         - in: header
           name: Authorization
           required: true
-          schema: { type: string }
+          schema:
+            type: string
         - in: header
           name: x-tenant
           required: true
-          schema: { type: string }
-        - in: header
-          name: X-Operation-Id
-          required: false
-          schema: { type: string }
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              required: [message]
-              properties:
-                session_id:
-                  type: string
-                  nullable: true
-                  description: Session id para manter contexto (opcional no primeiro turno).
-                message:
-                  type: string
+          schema:
+            type: string
       responses:
-        "200":
-          description: Resposta do assistant
-          headers:
-            x-session-id:
-              schema: { type: string }
-            x-correlation-id:
-              schema: { type: string }
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/EnvelopeSuccessAssistantResponse"
-        "400":
-          description: Erro de validação
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/EnvelopeError"
-  /assistant/confirm:
+        '200':
+          description: "Resposta da função assistantConfirm"
+        '401':
+          description: Sem sessão
+  "/assistant/message":
     post:
-      summary: "Confirma uma action pendente (MVP: create_schedule)"
+      operationId: "assistantMessage"
+      summary: "assistantMessage"
+      description: "Exige sessão. Função assistantMessage."
+      tags:
+        - "Assistant"
       parameters:
         - in: header
           name: Authorization
           required: true
-          schema: { type: string }
+          schema:
+            type: string
         - in: header
           name: x-tenant
           required: true
-          schema: { type: string }
-        - in: header
-          name: X-Operation-Id
-          required: false
-          schema: { type: string }
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              required: [session_id, action_id, confirmation]
-              properties:
-                session_id: { type: string }
-                action_id: { type: string }
-                confirmation:
-                  type: string
-                  enum: [sim, nao, "não"]
+          schema:
+            type: string
       responses:
-        "200":
-          description: Resultado da confirmação (idempotente)
-          headers:
-            x-session-id:
-              schema: { type: string }
-            x-correlation-id:
-              schema: { type: string }
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/EnvelopeSuccessAssistantResponse"
-        "400":
-          description: Erro de validação
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/EnvelopeError"
-components:
-  schemas:
-    EnvelopeSuccessAssistantResponse:
-      type: object
-      required: [success, data]
-      properties:
-        success:
-          type: boolean
-          enum: [true]
-        data:
-          $ref: "#/components/schemas/AssistantResponse"
-    EnvelopeError:
-      type: object
-      required: [success, error]
-      properties:
-        success:
-          type: boolean
-          enum: [false]
-        error:
-          type: object
-          required: [code, message]
-          properties:
-            code: { type: string }
-            message: { type: string }
-            details: {}
-            correlationId: { type: string }
-    AssistantResponse:
-      type: object
-      required:
-        - intent
-        - confidence
-        - needs_confirmation
-        - missing_fields
-        - entities
-        - message
-        - backend_action
-      properties:
-        intent:
-          type: string
-          enum: [availability_check, average_rent_check, create_schedule, person_cpf_lookup, unknown]
-        confidence:
-          type: number
-          minimum: 0
-          maximum: 1
-        needs_confirmation:
-          type: boolean
-        missing_fields:
-          type: array
-          items: { type: string }
-        entities:
-          type: object
-          required: [property_name, start_date, end_date, reference_date, cpf, title, event_type]
-          properties:
-            property_name: { type: [string, "null"] }
-            start_date: { type: [string, "null"] }
-            end_date: { type: [string, "null"] }
-            reference_date: { type: [string, "null"] }
-            cpf: { type: [string, "null"] }
-            title: { type: [string, "null"] }
-            event_type: { type: [string, "null"] }
-        message:
-          type: string
-        backend_action:
-          type: object
-          required: [tool, payload]
-          properties:
-            tool:
-              type: [string, "null"]
-              enum:
-                - check_property_availability
-                - get_average_rent
-                - create_calendar_event
-                - find_person_by_cpf
-                - null
-            payload:
-              type: object
-              additionalProperties: true
-      example:
-        intent: availability_check
-        confidence: 0.95
-        needs_confirmation: false
-        missing_fields: []
-        entities:
-          property_name: Miralis
-          start_date: null
-          end_date: null
-          reference_date: "2026-05"
-          cpf: null
-          title: null
-          event_type: null
-        message: "No período 2026-05, o imóvel Miralis tem 21 dias livres de 31."
-        backend_action:
-          tool: check_property_availability
-          payload:
-            property_name: Miralis
-            reference_date: "2026-05"
-            result:
-              found: true
-              propertyId: "prop-1"
-              propertyName: "Miralis"
-              referenceDate: "2026-05"
-              totalDays: 31
-              occupiedDays: 10
-              freeDays: 21
-              freeDates: ["2026-05-01", "2026-05-02"]
-              occupiedDates: ["2026-05-03", "2026-05-10"]
+        '200':
+          description: "Resposta da função assistantMessage"
+        '401':
+          description: Sem sessão

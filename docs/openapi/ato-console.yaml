@@ -1,0 +1,827 @@
+# Gerado por packages/api/cdk/generate-openapi.ts. Não edite este arquivo.
+openapi: 3.0.3
+info:
+  title: "Console do ATO"
+  version: 0.0.0
+  description: >-
+    Rotas HTTP de packages/api/cdk/ato-console-http-stack.ts.
+    O caminho, o método e a sessão saem do addMethod.
+    O JSON do corpo não é gerado: a stack não declara esse contrato.
+servers:
+  - url: /
+paths:
+  "/ato-console/agents":
+    get:
+      operationId: "listAgents"
+      summary: "listAgents"
+      description: "Exige sessão. Função listAgents."
+      tags:
+        - "Console do ATO"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função listAgents"
+        '401':
+          description: Sem sessão
+    post:
+      operationId: "createAgent"
+      summary: "createAgent"
+      description: "Exige sessão. Função createAgent."
+      tags:
+        - "Console do ATO"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função createAgent"
+        '401':
+          description: Sem sessão
+  "/ato-console/agents/{agentId}":
+    get:
+      operationId: "getAgent"
+      summary: "getAgent"
+      description: "Exige sessão. Função getAgent."
+      tags:
+        - "Console do ATO"
+      parameters:
+        - in: path
+          name: "agentId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função getAgent"
+        '401':
+          description: Sem sessão
+    patch:
+      operationId: "patchAgent"
+      summary: "patchAgent"
+      description: "Exige sessão. Função patchAgent."
+      tags:
+        - "Console do ATO"
+      parameters:
+        - in: path
+          name: "agentId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função patchAgent"
+        '401':
+          description: Sem sessão
+  "/ato-console/agents/{agentId}/publish":
+    post:
+      operationId: "publishAgent"
+      summary: "publishAgent"
+      description: "Exige sessão. Função publishAgent."
+      tags:
+        - "Console do ATO"
+      parameters:
+        - in: path
+          name: "agentId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função publishAgent"
+        '401':
+          description: Sem sessão
+  "/ato-console/audit/events":
+    get:
+      operationId: "listAuditEvents"
+      summary: "listAuditEvents"
+      description: "Exige sessão. Função listAuditEvents."
+      tags:
+        - "Console do ATO"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função listAuditEvents"
+        '401':
+          description: Sem sessão
+  "/ato-console/channels/whatsapp":
+    get:
+      operationId: "getWhatsappChannel"
+      summary: "getWhatsappChannel"
+      description: "Exige sessão. Função getWhatsappChannel."
+      tags:
+        - "Console do ATO"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função getWhatsappChannel"
+        '401':
+          description: Sem sessão
+    put:
+      operationId: "putWhatsappChannel"
+      summary: "putWhatsappChannel"
+      description: "Exige sessão. Função putWhatsappChannel."
+      tags:
+        - "Console do ATO"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função putWhatsappChannel"
+        '401':
+          description: Sem sessão
+  "/ato-console/conversations":
+    get:
+      operationId: "listConversations"
+      summary: "listConversations"
+      description: "Exige sessão. Função listConversations."
+      tags:
+        - "Console do ATO"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função listConversations"
+        '401':
+          description: Sem sessão
+  "/ato-console/conversations/{conversationId}":
+    get:
+      operationId: "getConversation"
+      summary: "getConversation"
+      description: "Exige sessão. Função getConversation."
+      tags:
+        - "Console do ATO"
+      parameters:
+        - in: path
+          name: "conversationId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função getConversation"
+        '401':
+          description: Sem sessão
+  "/ato-console/conversations/{conversationId}/close":
+    post:
+      operationId: "closeConversation"
+      summary: "closeConversation"
+      description: "Exige sessão. Função closeConversation."
+      tags:
+        - "Console do ATO"
+      parameters:
+        - in: path
+          name: "conversationId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função closeConversation"
+        '401':
+          description: Sem sessão
+  "/ato-console/conversations/{conversationId}/handoff":
+    post:
+      operationId: "handoff"
+      summary: "handoff"
+      description: "Exige sessão. Função handoff."
+      tags:
+        - "Console do ATO"
+      parameters:
+        - in: path
+          name: "conversationId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função handoff"
+        '401':
+          description: Sem sessão
+  "/ato-console/conversations/{conversationId}/messages":
+    get:
+      operationId: "listMessages"
+      summary: "listMessages"
+      description: "Exige sessão. Função listMessages."
+      tags:
+        - "Console do ATO"
+      parameters:
+        - in: path
+          name: "conversationId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função listMessages"
+        '401':
+          description: Sem sessão
+    post:
+      operationId: "sendMessage"
+      summary: "sendMessage"
+      description: "Exige sessão. Função sendMessage."
+      tags:
+        - "Console do ATO"
+      parameters:
+        - in: path
+          name: "conversationId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função sendMessage"
+        '401':
+          description: Sem sessão
+  "/ato-console/integrations":
+    get:
+      operationId: "listIntegrations"
+      summary: "listIntegrations"
+      description: "Exige sessão. Função listIntegrations."
+      tags:
+        - "Console do ATO"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função listIntegrations"
+        '401':
+          description: Sem sessão
+  "/ato-console/integrations/{connectorId}":
+    put:
+      operationId: "putIntegration"
+      summary: "putIntegration"
+      description: "Exige sessão. Função putIntegration."
+      tags:
+        - "Console do ATO"
+      parameters:
+        - in: path
+          name: "connectorId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função putIntegration"
+        '401':
+          description: Sem sessão
+  "/ato-console/people":
+    get:
+      operationId: "listPeople"
+      summary: "listPeople"
+      description: "Exige sessão. Função listPeople."
+      tags:
+        - "Console do ATO"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função listPeople"
+        '401':
+          description: Sem sessão
+  "/ato-console/people/approve":
+    post:
+      operationId: "approveUser"
+      summary: "approveUser"
+      description: "Exige sessão. Função approveUser."
+      tags:
+        - "Console do ATO"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função approveUser"
+        '401':
+          description: Sem sessão
+  "/ato-console/people/disable":
+    post:
+      operationId: "disablePeople"
+      summary: "disablePeople"
+      description: "Exige sessão. Função disablePeople."
+      tags:
+        - "Console do ATO"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função disablePeople"
+        '401':
+          description: Sem sessão
+  "/ato-console/people/enable":
+    post:
+      operationId: "enablePeople"
+      summary: "enablePeople"
+      description: "Exige sessão. Função enablePeople."
+      tags:
+        - "Console do ATO"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função enablePeople"
+        '401':
+          description: Sem sessão
+  "/ato-console/people/invite":
+    post:
+      operationId: "inviteUser"
+      summary: "inviteUser"
+      description: "Exige sessão. Função inviteUser."
+      tags:
+        - "Console do ATO"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função inviteUser"
+        '401':
+          description: Sem sessão
+  "/ato-console/people/pending":
+    get:
+      operationId: "listPendingUsers"
+      summary: "listPendingUsers"
+      description: "Exige sessão. Função listPendingUsers."
+      tags:
+        - "Console do ATO"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função listPendingUsers"
+        '401':
+          description: Sem sessão
+  "/ato-console/people/reset-password":
+    post:
+      operationId: "resetPeoplePassword"
+      summary: "resetPeoplePassword"
+      description: "Exige sessão. Função resetPeoplePassword."
+      tags:
+        - "Console do ATO"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função resetPeoplePassword"
+        '401':
+          description: Sem sessão
+  "/ato-console/people/role":
+    post:
+      operationId: "setPeopleRole"
+      summary: "setPeopleRole"
+      description: "Exige sessão. Função setPeopleRole."
+      tags:
+        - "Console do ATO"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função setPeopleRole"
+        '401':
+          description: Sem sessão
+  "/ato-console/people/tenant":
+    post:
+      operationId: "setPeopleTenant"
+      summary: "setPeopleTenant"
+      description: "Exige sessão. Função setPeopleTenant."
+      tags:
+        - "Console do ATO"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função setPeopleTenant"
+        '401':
+          description: Sem sessão
+  "/ato-console/plans":
+    get:
+      operationId: "listPlans"
+      summary: "listPlans"
+      description: "Exige sessão. Função listPlans."
+      tags:
+        - "Console do ATO"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função listPlans"
+        '401':
+          description: Sem sessão
+  "/ato-console/plans/{planId}":
+    get:
+      operationId: "getPlan"
+      summary: "getPlan"
+      description: "Exige sessão. Função getPlan."
+      tags:
+        - "Console do ATO"
+      parameters:
+        - in: path
+          name: "planId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função getPlan"
+        '401':
+          description: Sem sessão
+  "/ato-console/policies":
+    get:
+      operationId: "listPolicies"
+      summary: "listPolicies"
+      description: "Exige sessão. Função listPolicies."
+      tags:
+        - "Console do ATO"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função listPolicies"
+        '401':
+          description: Sem sessão
+  "/ato-console/policies/{agentId}":
+    put:
+      operationId: "putPolicy"
+      summary: "putPolicy"
+      description: "Exige sessão. Função putPolicy."
+      tags:
+        - "Console do ATO"
+      parameters:
+        - in: path
+          name: "agentId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função putPolicy"
+        '401':
+          description: Sem sessão
+  "/ato-console/realtime":
+    get:
+      operationId: "getRealtime"
+      summary: "getRealtime"
+      description: "Exige sessão. Função getRealtime."
+      tags:
+        - "Console do ATO"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função getRealtime"
+        '401':
+          description: Sem sessão
+  "/ato-console/tenants":
+    get:
+      operationId: "listTenants"
+      summary: "listTenants"
+      description: "Exige sessão. Função listTenants."
+      tags:
+        - "Console do ATO"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função listTenants"
+        '401':
+          description: Sem sessão
+  "/ato-console/tenants/{tenantId}":
+    get:
+      operationId: "getTenant"
+      summary: "getTenant"
+      description: "Exige sessão. Função getTenant."
+      tags:
+        - "Console do ATO"
+      parameters:
+        - in: path
+          name: "tenantId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função getTenant"
+        '401':
+          description: Sem sessão
+  "/ato-console/usage":
+    get:
+      operationId: "getUsage"
+      summary: "getUsage"
+      description: "Exige sessão. Função getUsage."
+      tags:
+        - "Console do ATO"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função getUsage"
+        '401':
+          description: Sem sessão

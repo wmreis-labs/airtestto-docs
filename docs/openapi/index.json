@@ -1,0 +1,98 @@
+[
+  {
+    "slug": "api",
+    "title": "API principal",
+    "file": "api.yaml",
+    "routes": 72
+  },
+  {
+    "slug": "assistant",
+    "title": "Assistant",
+    "file": "assistant.yaml",
+    "routes": 2
+  },
+  {
+    "slug": "ato-console",
+    "title": "Console do ATO",
+    "file": "ato-console.yaml",
+    "routes": 33
+  },
+  {
+    "slug": "bank",
+    "title": "Bank",
+    "file": "bank.yaml",
+    "routes": 9
+  },
+  {
+    "slug": "budget",
+    "title": "Budget",
+    "file": "budget.yaml",
+    "routes": 6
+  },
+  {
+    "slug": "cashbook",
+    "title": "Caixa",
+    "file": "cashbook.yaml",
+    "routes": 15
+  },
+  {
+    "slug": "delivery",
+    "title": "Entregas",
+    "file": "delivery.yaml",
+    "routes": 9
+  },
+  {
+    "slug": "financial",
+    "title": "Financeiro",
+    "file": "financial.yaml",
+    "routes": 27
+  },
+  {
+    "slug": "flipping",
+    "title": "Flipping",
+    "file": "flipping.yaml",
+    "routes": 17
+  },
+  {
+    "slug": "payments",
+    "title": "Pagamentos",
+    "file": "payments.yaml",
+    "routes": 4
+  },
+  {
+    "slug": "pdv",
+    "title": "PDV",
+    "file": "pdv.yaml",
+    "routes": 7
+  },
+  {
+    "slug": "person",
+    "title": "Pessoas",
+    "file": "person.yaml",
+    "routes": 8
+  },
+  {
+    "slug": "platform-admin",
+    "title": "Admin da plataforma",
+    "file": "platform-admin.yaml",
+    "routes": 17
+  },
+  {
+    "slug": "product",
+    "title": "Produtos",
+    "file": "product.yaml",
+    "routes": 33
+  },
+  {
+    "slug": "sales",
+    "title": "Vendas",
+    "file": "sales.yaml",
+    "routes": 41
+  },
+  {
+    "slug": "tax",
+    "title": "Impostos",
+    "file": "tax.yaml",
+    "routes": 17
+  }
+]

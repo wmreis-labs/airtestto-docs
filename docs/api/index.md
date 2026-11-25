@@ -1,15 +1,29 @@
 # APIs e contratos
 
-A [referência da API](referencia.md) mostra endpoint, request e response. Ela lê o OpenAPI publicado neste site. A fonte do contrato continua em `contracts/<domínio>/openapi.yaml` no repositório airtestto.
+A [referência da API](referencia.md) lista cada API e cada rota declarada nas stacks. O OpenAPI é gerado do `addMethod` em `packages/api/cdk`. Uma rota nova entra no contrato quando o código muda e o gerador roda de novo. O teste do pacote `api` falha se o arquivo gerado ficar para trás.
 
-| Domínio | Contrato publicado |
+O gerador grava caminho, método, parâmetro de path e se a rota exige sessão. O JSON do corpo não sai da stack, porque a stack não declara esse contrato. A contagem de rotas está em [index.json](../openapi/index.json).
+
+| API | Contrato |
 | --- | --- |
-| Vendas | [sales.yaml](../openapi/sales.yaml) |
+| API principal | [api.yaml](../openapi/api.yaml) |
+| Assistant | [assistant.yaml](../openapi/assistant.yaml) |
+| Console do ATO | [ato-console.yaml](../openapi/ato-console.yaml) |
+| Bank | [bank.yaml](../openapi/bank.yaml) |
+| Budget | [budget.yaml](../openapi/budget.yaml) |
+| Caixa | [cashbook.yaml](../openapi/cashbook.yaml) |
+| Entregas | [delivery.yaml](../openapi/delivery.yaml) |
 | Financeiro | [financial.yaml](../openapi/financial.yaml) |
 | Flipping | [flipping.yaml](../openapi/flipping.yaml) |
-| Assistant | [assistant.yaml](../openapi/assistant.yaml) |
+| Pagamentos | [payments.yaml](../openapi/payments.yaml) |
+| PDV | [pdv.yaml](../openapi/pdv.yaml) |
+| Pessoas | [person.yaml](../openapi/person.yaml) |
+| Admin da plataforma | [platform-admin.yaml](../openapi/platform-admin.yaml) |
+| Produtos | [product.yaml](../openapi/product.yaml) |
+| Vendas | [sales.yaml](../openapi/sales.yaml) |
+| Impostos | [tax.yaml](../openapi/tax.yaml) |
 
-O guia do assistente está em [Assistant](assistant.md). Domínio sem arquivo nesta tabela ainda não entra na referência.
+O guia do assistente está em [Assistant](assistant.md).
 
 ## Convenções
 
@@ -32,8 +46,6 @@ Códigos HTTP usados: 400, 401, 403, 404, 409, 422, 429, 500 e 503.
 
 ## Rota nova
 
-1. Atualizar o OpenAPI no airtestto.
-2. Publicar a cópia em `docs/openapi/` e a linha da tabela acima.
-3. Declarar validação de entrada e saída.
-4. Incluir exemplo de request e response.
-5. Atualizar teste e a página do domínio neste portal.
+1. Declarar a rota com `addMethod` na stack em `packages/api/cdk`.
+2. Rodar `npm run openapi -w api`. O teste falha se esse passo ficar de fora.
+3. Publicar a pasta `contracts/generated` em `docs/openapi/` deste site.

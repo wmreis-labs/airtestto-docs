@@ -1,0 +1,428 @@
+# Gerado por packages/api/cdk/generate-openapi.ts. Não edite este arquivo.
+openapi: 3.0.3
+info:
+  title: "Impostos"
+  version: 0.0.0
+  description: >-
+    Rotas HTTP de packages/api/cdk/tax-api-stack.ts.
+    O caminho, o método e a sessão saem do addMethod.
+    O JSON do corpo não é gerado: a stack não declara esse contrato.
+servers:
+  - url: /
+paths:
+  "/tax/base":
+    get:
+      operationId: "apuracao_get"
+      summary: "apuracao"
+      description: "Exige sessão. Função apuracao."
+      tags:
+        - "Impostos"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função apuracao"
+        '401':
+          description: Sem sessão
+  "/tax/guides":
+    get:
+      operationId: "guias"
+      summary: "guias"
+      description: "Exige sessão. Função guias."
+      tags:
+        - "Impostos"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função guias"
+        '401':
+          description: Sem sessão
+    post:
+      operationId: "guias_post"
+      summary: "guias"
+      description: "Exige sessão. Função guias."
+      tags:
+        - "Impostos"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função guias"
+        '401':
+          description: Sem sessão
+  "/tax/guides/{id}":
+    patch:
+      operationId: "guias_patch"
+      summary: "guias"
+      description: "Exige sessão. Função guias."
+      tags:
+        - "Impostos"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função guias"
+        '401':
+          description: Sem sessão
+  "/tax/guides/{id}/candidates":
+    get:
+      operationId: "guias_get"
+      summary: "guias"
+      description: "Exige sessão. Função guias."
+      tags:
+        - "Impostos"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função guias"
+        '401':
+          description: Sem sessão
+  "/tax/guides/{id}/payment":
+    post:
+      operationId: "guias_post_3"
+      summary: "guias"
+      description: "Exige sessão. Função guias."
+      tags:
+        - "Impostos"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função guias"
+        '401':
+          description: Sem sessão
+    delete:
+      operationId: "guias_delete"
+      summary: "guias"
+      description: "Exige sessão. Função guias."
+      tags:
+        - "Impostos"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função guias"
+        '401':
+          description: Sem sessão
+  "/tax/parameters":
+    get:
+      operationId: "parameters"
+      summary: "parameters"
+      description: "Exige sessão. Função parameters."
+      tags:
+        - "Impostos"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função parameters"
+        '401':
+          description: Sem sessão
+    post:
+      operationId: "parameters_post"
+      summary: "parameters"
+      description: "Exige sessão. Função parameters."
+      tags:
+        - "Impostos"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função parameters"
+        '401':
+          description: Sem sessão
+  "/tax/partners":
+    get:
+      operationId: "apuracao_get_5"
+      summary: "apuracao"
+      description: "Exige sessão. Função apuracao."
+      tags:
+        - "Impostos"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função apuracao"
+        '401':
+          description: Sem sessão
+  "/tax/periods":
+    get:
+      operationId: "apuracao_get_3"
+      summary: "apuracao"
+      description: "Exige sessão. Função apuracao."
+      tags:
+        - "Impostos"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função apuracao"
+        '401':
+          description: Sem sessão
+  "/tax/periods/{period}":
+    get:
+      operationId: "apuracao_get_4"
+      summary: "apuracao"
+      description: "Exige sessão. Função apuracao."
+      tags:
+        - "Impostos"
+      parameters:
+        - in: path
+          name: "period"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função apuracao"
+        '401':
+          description: Sem sessão
+  "/tax/periods/{period}/close":
+    post:
+      operationId: "apuracao_post"
+      summary: "apuracao"
+      description: "Exige sessão. Função apuracao."
+      tags:
+        - "Impostos"
+      parameters:
+        - in: path
+          name: "period"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função apuracao"
+        '401':
+          description: Sem sessão
+  "/tax/properties":
+    get:
+      operationId: "apuracao"
+      summary: "apuracao"
+      description: "Exige sessão. Função apuracao."
+      tags:
+        - "Impostos"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função apuracao"
+        '401':
+          description: Sem sessão
+    put:
+      operationId: "apuracao_put"
+      summary: "apuracao"
+      description: "Exige sessão. Função apuracao."
+      tags:
+        - "Impostos"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função apuracao"
+        '401':
+          description: Sem sessão
+  "/tax/regime":
+    get:
+      operationId: "regime"
+      summary: "regime"
+      description: "Exige sessão. Função regime."
+      tags:
+        - "Impostos"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função regime"
+        '401':
+          description: Sem sessão
+    put:
+      operationId: "regime_put"
+      summary: "regime"
+      description: "Exige sessão. Função regime."
+      tags:
+        - "Impostos"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função regime"
+        '401':
+          description: Sem sessão

@@ -66,6 +66,12 @@ markdown_extensions:
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
 
+extra_css:
+  - stylesheets/scalar-referencia.css
+
+extra_javascript:
+  - javascripts/scalar-referencia.js
+
 nav:
   - Início: index.md
   - Mudanças:
@@ -132,6 +138,7 @@ nav:
       - AI: dominios/ai.md
       - Shared: dominios/shared.md
   - APIs:
+      - Referência: api/referencia.md
       - Convenções: api/index.md
       - Assistant: api/assistant.md
   - Dados: dados/modelo-dados.md

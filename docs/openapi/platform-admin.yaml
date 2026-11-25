@@ -1,0 +1,502 @@
+# Gerado por packages/api/cdk/generate-openapi.ts. Não edite este arquivo.
+openapi: 3.0.3
+info:
+  title: "Admin da plataforma"
+  version: 0.0.0
+  description: >-
+    Rotas HTTP de packages/api/cdk/platform-admin-http-stack.ts.
+    O caminho, o método e a sessão saem do addMethod.
+    O JSON do corpo não é gerado: a stack não declara esse contrato.
+servers:
+  - url: /
+paths:
+  "/platform-admin/admin/service-keys":
+    get:
+      operationId: "serviceKeys"
+      summary: "serviceKeys"
+      description: "Exige sessão. Função serviceKeys."
+      tags:
+        - "Admin da plataforma"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função serviceKeys"
+        '401':
+          description: Sem sessão
+    post:
+      operationId: "serviceKeys_post"
+      summary: "serviceKeys"
+      description: "Exige sessão. Função serviceKeys."
+      tags:
+        - "Admin da plataforma"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função serviceKeys"
+        '401':
+          description: Sem sessão
+  "/platform-admin/admin/service-keys/catalog":
+    get:
+      operationId: "serviceKeys_get"
+      summary: "serviceKeys"
+      description: "Exige sessão. Função serviceKeys."
+      tags:
+        - "Admin da plataforma"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função serviceKeys"
+        '401':
+          description: Sem sessão
+  "/platform-admin/admin/service-keys/{id}":
+    patch:
+      operationId: "serviceKeys_patch"
+      summary: "serviceKeys"
+      description: "Exige sessão. Função serviceKeys."
+      tags:
+        - "Admin da plataforma"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função serviceKeys"
+        '401':
+          description: Sem sessão
+  "/platform-admin/admin/service-keys/{id}/revoke":
+    post:
+      operationId: "serviceKeys_post_3"
+      summary: "serviceKeys"
+      description: "Exige sessão. Função serviceKeys."
+      tags:
+        - "Admin da plataforma"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função serviceKeys"
+        '401':
+          description: Sem sessão
+  "/platform-admin/admin/systems":
+    get:
+      operationId: "directory"
+      summary: "directory"
+      description: "Exige sessão. Função directory."
+      tags:
+        - "Admin da plataforma"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função directory"
+        '401':
+          description: Sem sessão
+  "/platform-admin/admin/systems/{appId}/groups":
+    get:
+      operationId: "directory_get"
+      summary: "directory"
+      description: "Exige sessão. Função directory."
+      tags:
+        - "Admin da plataforma"
+      parameters:
+        - in: path
+          name: "appId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função directory"
+        '401':
+          description: Sem sessão
+  "/platform-admin/admin/systems/{appId}/invites":
+    post:
+      operationId: "directory_post"
+      summary: "directory"
+      description: "Exige sessão. Função directory."
+      tags:
+        - "Admin da plataforma"
+      parameters:
+        - in: path
+          name: "appId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função directory"
+        '401':
+          description: Sem sessão
+  "/platform-admin/admin/systems/{appId}/users":
+    get:
+      operationId: "directory_get_3"
+      summary: "directory"
+      description: "Exige sessão. Função directory."
+      tags:
+        - "Admin da plataforma"
+      parameters:
+        - in: path
+          name: "appId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função directory"
+        '401':
+          description: Sem sessão
+  "/platform-admin/admin/systems/{appId}/users/pending":
+    get:
+      operationId: "directory_get_4"
+      summary: "directory"
+      description: "Exige sessão. Função directory."
+      tags:
+        - "Admin da plataforma"
+      parameters:
+        - in: path
+          name: "appId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função directory"
+        '401':
+          description: Sem sessão
+  "/platform-admin/admin/systems/{appId}/users/{username}/approve":
+    post:
+      operationId: "directory_post_3"
+      summary: "directory"
+      description: "Exige sessão. Função directory."
+      tags:
+        - "Admin da plataforma"
+      parameters:
+        - in: path
+          name: "appId"
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: "username"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função directory"
+        '401':
+          description: Sem sessão
+  "/platform-admin/admin/systems/{appId}/users/{username}/disable":
+    post:
+      operationId: "directory_post_6"
+      summary: "directory"
+      description: "Exige sessão. Função directory."
+      tags:
+        - "Admin da plataforma"
+      parameters:
+        - in: path
+          name: "appId"
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: "username"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função directory"
+        '401':
+          description: Sem sessão
+  "/platform-admin/admin/systems/{appId}/users/{username}/enable":
+    post:
+      operationId: "directory_post_7"
+      summary: "directory"
+      description: "Exige sessão. Função directory."
+      tags:
+        - "Admin da plataforma"
+      parameters:
+        - in: path
+          name: "appId"
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: "username"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função directory"
+        '401':
+          description: Sem sessão
+  "/platform-admin/admin/systems/{appId}/users/{username}/groups":
+    post:
+      operationId: "directory_post_9"
+      summary: "directory"
+      description: "Exige sessão. Função directory."
+      tags:
+        - "Admin da plataforma"
+      parameters:
+        - in: path
+          name: "appId"
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: "username"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função directory"
+        '401':
+          description: Sem sessão
+  "/platform-admin/admin/systems/{appId}/users/{username}/reset-password":
+    post:
+      operationId: "directory_post_8"
+      summary: "directory"
+      description: "Exige sessão. Função directory."
+      tags:
+        - "Admin da plataforma"
+      parameters:
+        - in: path
+          name: "appId"
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: "username"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função directory"
+        '401':
+          description: Sem sessão
+  "/platform-admin/admin/systems/{appId}/users/{username}/role":
+    post:
+      operationId: "directory_post_4"
+      summary: "directory"
+      description: "Exige sessão. Função directory."
+      tags:
+        - "Admin da plataforma"
+      parameters:
+        - in: path
+          name: "appId"
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: "username"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função directory"
+        '401':
+          description: Sem sessão
+  "/platform-admin/admin/systems/{appId}/users/{username}/tenant":
+    post:
+      operationId: "directory_post_5"
+      summary: "directory"
+      description: "Exige sessão. Função directory."
+      tags:
+        - "Admin da plataforma"
+      parameters:
+        - in: path
+          name: "appId"
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: "username"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função directory"
+        '401':
+          description: Sem sessão

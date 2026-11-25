@@ -1,0 +1,726 @@
+# Gerado por packages/api/cdk/generate-openapi.ts. Não edite este arquivo.
+openapi: 3.0.3
+info:
+  title: "Financeiro"
+  version: 0.0.0
+  description: >-
+    Rotas HTTP de packages/api/cdk/financial-api-stack.ts.
+    O caminho, o método e a sessão saem do addMethod.
+    O JSON do corpo não é gerado: a stack não declara esse contrato.
+servers:
+  - url: /
+paths:
+  "/financial":
+    get:
+      operationId: "listEntries"
+      summary: "listEntries"
+      description: "Exige sessão. Função listEntries."
+      tags:
+        - "Financeiro"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função listEntries"
+        '401':
+          description: Sem sessão
+    post:
+      operationId: "createEntry"
+      summary: "createEntry"
+      description: "Exige sessão. Função createEntry."
+      tags:
+        - "Financeiro"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função createEntry"
+        '401':
+          description: Sem sessão
+  "/financial/bank-receipts":
+    get:
+      operationId: "listBankReceipts"
+      summary: "listBankReceipts"
+      description: "Exige sessão. Função listBankReceipts."
+      tags:
+        - "Financeiro"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função listBankReceipts"
+        '401':
+          description: Sem sessão
+  "/financial/bank-receipts/{id}/classify":
+    post:
+      operationId: "classifyBankReceipt"
+      summary: "classifyBankReceipt"
+      description: "Exige sessão. Função classifyBankReceipt."
+      tags:
+        - "Financeiro"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função classifyBankReceipt"
+        '401':
+          description: Sem sessão
+  "/financial/bank-receipts/{id}/ignore":
+    post:
+      operationId: "ignoreBankReceipt"
+      summary: "ignoreBankReceipt"
+      description: "Exige sessão. Função ignoreBankReceipt."
+      tags:
+        - "Financeiro"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função ignoreBankReceipt"
+        '401':
+          description: Sem sessão
+  "/financial/bank-receipts/{id}/reopen":
+    post:
+      operationId: "reopenBankReceipt"
+      summary: "reopenBankReceipt"
+      description: "Exige sessão. Função reopenBankReceipt."
+      tags:
+        - "Financeiro"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função reopenBankReceipt"
+        '401':
+          description: Sem sessão
+  "/financial/captures":
+    get:
+      operationId: "listCaptures"
+      summary: "listCaptures"
+      description: "Exige sessão. Função listCaptures."
+      tags:
+        - "Financeiro"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função listCaptures"
+        '401':
+          description: Sem sessão
+    post:
+      operationId: "createCapture"
+      summary: "createCapture"
+      description: "Exige sessão. Função createCapture."
+      tags:
+        - "Financeiro"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função createCapture"
+        '401':
+          description: Sem sessão
+  "/financial/captures/{captureId}":
+    get:
+      operationId: "getCaptureById"
+      summary: "getCaptureById"
+      description: "Exige sessão. Função getCaptureById."
+      tags:
+        - "Financeiro"
+      parameters:
+        - in: path
+          name: "captureId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função getCaptureById"
+        '401':
+          description: Sem sessão
+  "/financial/captures/{captureId}/cancel":
+    post:
+      operationId: "cancelCapture"
+      summary: "cancelCapture"
+      description: "Exige sessão. Função cancelCapture."
+      tags:
+        - "Financeiro"
+      parameters:
+        - in: path
+          name: "captureId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função cancelCapture"
+        '401':
+          description: Sem sessão
+  "/financial/captures/{captureId}/confirm":
+    post:
+      operationId: "confirmCapture"
+      summary: "confirmCapture"
+      description: "Exige sessão. Função confirmCapture."
+      tags:
+        - "Financeiro"
+      parameters:
+        - in: path
+          name: "captureId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função confirmCapture"
+        '401':
+          description: Sem sessão
+  "/financial/captures/{captureId}/retry-ocr":
+    post:
+      operationId: "retryOcr"
+      summary: "retryOcr"
+      description: "Exige sessão. Função retryOcr."
+      tags:
+        - "Financeiro"
+      parameters:
+        - in: path
+          name: "captureId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função retryOcr"
+        '401':
+          description: Sem sessão
+  "/financial/captures/{captureId}/review":
+    patch:
+      operationId: "reviewCapture"
+      summary: "reviewCapture"
+      description: "Exige sessão. Função reviewCapture."
+      tags:
+        - "Financeiro"
+      parameters:
+        - in: path
+          name: "captureId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função reviewCapture"
+        '401':
+          description: Sem sessão
+  "/financial/captures/{captureId}/uploaded":
+    post:
+      operationId: "markUploaded"
+      summary: "markUploaded"
+      description: "Exige sessão. Função markUploaded."
+      tags:
+        - "Financeiro"
+      parameters:
+        - in: path
+          name: "captureId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função markUploaded"
+        '401':
+          description: Sem sessão
+  "/financial/receipt-rules":
+    get:
+      operationId: "receiptRules"
+      summary: "receiptRules"
+      description: "Exige sessão. Função receiptRules."
+      tags:
+        - "Financeiro"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função receiptRules"
+        '401':
+          description: Sem sessão
+    post:
+      operationId: "receiptRules_post"
+      summary: "receiptRules"
+      description: "Exige sessão. Função receiptRules."
+      tags:
+        - "Financeiro"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função receiptRules"
+        '401':
+          description: Sem sessão
+  "/financial/receipt-rules/{id}":
+    patch:
+      operationId: "receiptRules_patch"
+      summary: "receiptRules"
+      description: "Exige sessão. Função receiptRules."
+      tags:
+        - "Financeiro"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função receiptRules"
+        '401':
+          description: Sem sessão
+    delete:
+      operationId: "receiptRules_delete"
+      summary: "receiptRules"
+      description: "Exige sessão. Função receiptRules."
+      tags:
+        - "Financeiro"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função receiptRules"
+        '401':
+          description: Sem sessão
+  "/financial/revenue-accounts":
+    get:
+      operationId: "revenueAccounts"
+      summary: "revenueAccounts"
+      description: "Exige sessão. Função revenueAccounts."
+      tags:
+        - "Financeiro"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função revenueAccounts"
+        '401':
+          description: Sem sessão
+    put:
+      operationId: "revenueAccounts_put"
+      summary: "revenueAccounts"
+      description: "Exige sessão. Função revenueAccounts."
+      tags:
+        - "Financeiro"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função revenueAccounts"
+        '401':
+          description: Sem sessão
+  "/financial/summary":
+    get:
+      operationId: "getFinancialSummary"
+      summary: "getFinancialSummary"
+      description: "Exige sessão. Função getFinancialSummary."
+      tags:
+        - "Financeiro"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função getFinancialSummary"
+        '401':
+          description: Sem sessão
+  "/financial/{id}":
+    get:
+      operationId: "getEntryById"
+      summary: "getEntryById"
+      description: "Exige sessão. Função getEntryById."
+      tags:
+        - "Financeiro"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função getEntryById"
+        '401':
+          description: Sem sessão
+    patch:
+      operationId: "updateEntry"
+      summary: "updateEntry"
+      description: "Exige sessão. Função updateEntry."
+      tags:
+        - "Financeiro"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função updateEntry"
+        '401':
+          description: Sem sessão
+    delete:
+      operationId: "deleteEntry"
+      summary: "deleteEntry"
+      description: "Exige sessão. Função deleteEntry."
+      tags:
+        - "Financeiro"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função deleteEntry"
+        '401':
+          description: Sem sessão
+  "/financial/{id}/documents/{fileId}":
+    post:
+      operationId: "triggerDocumentOcr"
+      summary: "triggerDocumentOcr"
+      description: "Exige sessão. Função triggerDocumentOcr."
+      tags:
+        - "Financeiro"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: "fileId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função triggerDocumentOcr"
+        '401':
+          description: Sem sessão
+  "/financial/{id}/documents/{fileId}/dismiss":
+    post:
+      operationId: "dismissDocumentOcr"
+      summary: "dismissDocumentOcr"
+      description: "Exige sessão. Função dismissDocumentOcr."
+      tags:
+        - "Financeiro"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: "fileId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função dismissDocumentOcr"
+        '401':
+          description: Sem sessão
+  "/financial/{id}/documents/{fileId}/reprocess":
+    post:
+      operationId: "reprocessDocumentOcr"
+      summary: "reprocessDocumentOcr"
+      description: "Exige sessão. Função reprocessDocumentOcr."
+      tags:
+        - "Financeiro"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: "fileId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função reprocessDocumentOcr"
+        '401':
+          description: Sem sessão

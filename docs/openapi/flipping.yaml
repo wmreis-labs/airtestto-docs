@@ -1,0 +1,455 @@
+# Gerado por packages/api/cdk/generate-openapi.ts. Não edite este arquivo.
+openapi: 3.0.3
+info:
+  title: "Flipping"
+  version: 0.0.0
+  description: >-
+    Rotas HTTP de packages/api/cdk/flipping-api-stack.ts.
+    O caminho, o método e a sessão saem do addMethod.
+    O JSON do corpo não é gerado: a stack não declara esse contrato.
+servers:
+  - url: /
+paths:
+  "/flipping/deals":
+    get:
+      operationId: "listDeals"
+      summary: "listDeals"
+      description: "Exige sessão. Função listDeals."
+      tags:
+        - "Flipping"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função listDeals"
+        '401':
+          description: Sem sessão
+    post:
+      operationId: "createDeal"
+      summary: "createDeal"
+      description: "Exige sessão. Função createDeal."
+      tags:
+        - "Flipping"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função createDeal"
+        '401':
+          description: Sem sessão
+  "/flipping/deals/{dealId}":
+    get:
+      operationId: "getDeal"
+      summary: "getDeal"
+      description: "Exige sessão. Função getDeal."
+      tags:
+        - "Flipping"
+      parameters:
+        - in: path
+          name: "dealId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função getDeal"
+        '401':
+          description: Sem sessão
+    patch:
+      operationId: "updateDeal"
+      summary: "updateDeal"
+      description: "Exige sessão. Função updateDeal."
+      tags:
+        - "Flipping"
+      parameters:
+        - in: path
+          name: "dealId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função updateDeal"
+        '401':
+          description: Sem sessão
+    delete:
+      operationId: "deleteDeal"
+      summary: "deleteDeal"
+      description: "Exige sessão. Função deleteDeal."
+      tags:
+        - "Flipping"
+      parameters:
+        - in: path
+          name: "dealId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função deleteDeal"
+        '401':
+          description: Sem sessão
+  "/flipping/deals/{dealId}/documents":
+    get:
+      operationId: "listDealDocuments"
+      summary: "listDealDocuments"
+      description: "Exige sessão. Função listDealDocuments."
+      tags:
+        - "Flipping"
+      parameters:
+        - in: path
+          name: "dealId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função listDealDocuments"
+        '401':
+          description: Sem sessão
+    post:
+      operationId: "addDealDocument"
+      summary: "addDealDocument"
+      description: "Exige sessão. Função addDealDocument."
+      tags:
+        - "Flipping"
+      parameters:
+        - in: path
+          name: "dealId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função addDealDocument"
+        '401':
+          description: Sem sessão
+  "/flipping/deals/{dealId}/documents/{documentId}":
+    delete:
+      operationId: "deleteDealDocument"
+      summary: "deleteDealDocument"
+      description: "Exige sessão. Função deleteDealDocument."
+      tags:
+        - "Flipping"
+      parameters:
+        - in: path
+          name: "dealId"
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: "documentId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função deleteDealDocument"
+        '401':
+          description: Sem sessão
+  "/flipping/deals/{dealId}/status":
+    post:
+      operationId: "transitionDealStatus"
+      summary: "transitionDealStatus"
+      description: "Exige sessão. Função transitionDealStatus."
+      tags:
+        - "Flipping"
+      parameters:
+        - in: path
+          name: "dealId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função transitionDealStatus"
+        '401':
+          description: Sem sessão
+  "/flipping/financing/simulations":
+    post:
+      operationId: "simulateFinancing"
+      summary: "simulateFinancing"
+      description: "Exige sessão. Função simulateFinancing."
+      tags:
+        - "Flipping"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função simulateFinancing"
+        '401':
+          description: Sem sessão
+  "/flipping/flipping-project":
+    get:
+      operationId: "listFlipping"
+      summary: "listFlipping"
+      description: "Exige sessão. Função listFlipping."
+      tags:
+        - "Flipping"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função listFlipping"
+        '401':
+          description: Sem sessão
+    post:
+      operationId: "createFlipping"
+      summary: "createFlipping"
+      description: "Exige sessão. Função createFlipping."
+      tags:
+        - "Flipping"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função createFlipping"
+        '401':
+          description: Sem sessão
+  "/flipping/flipping-project/{id}":
+    get:
+      operationId: "getFlipping"
+      summary: "getFlipping"
+      description: "Exige sessão. Função getFlipping."
+      tags:
+        - "Flipping"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função getFlipping"
+        '401':
+          description: Sem sessão
+    put:
+      operationId: "updateFlipping"
+      summary: "updateFlipping"
+      description: "Exige sessão. Função updateFlipping."
+      tags:
+        - "Flipping"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função updateFlipping"
+        '401':
+          description: Sem sessão
+    patch:
+      operationId: "updateFlipping_patch"
+      summary: "updateFlipping"
+      description: "Exige sessão. Função updateFlipping."
+      tags:
+        - "Flipping"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função updateFlipping"
+        '401':
+          description: Sem sessão
+    delete:
+      operationId: "deleteFlipping"
+      summary: "deleteFlipping"
+      description: "Exige sessão. Função deleteFlipping."
+      tags:
+        - "Flipping"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função deleteFlipping"
+        '401':
+          description: Sem sessão
+  "/flipping/opportunities/parse":
+    post:
+      operationId: "parseFlipOpportunity"
+      summary: "parseFlipOpportunity"
+      description: "Exige sessão. Função parseFlipOpportunity."
+      tags:
+        - "Flipping"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função parseFlipOpportunity"
+        '401':
+          description: Sem sessão

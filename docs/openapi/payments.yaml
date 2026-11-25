@@ -1,0 +1,101 @@
+# Gerado por packages/api/cdk/generate-openapi.ts. Não edite este arquivo.
+openapi: 3.0.3
+info:
+  title: "Pagamentos"
+  version: 0.0.0
+  description: >-
+    Rotas HTTP de packages/api/cdk/payments-api-stack.ts.
+    O caminho, o método e a sessão saem do addMethod.
+    O JSON do corpo não é gerado: a stack não declara esse contrato.
+servers:
+  - url: /
+paths:
+  "/payments/charges/{chargeId}":
+    get:
+      operationId: "getCharge"
+      summary: "getCharge"
+      description: "Exige sessão. Função getCharge."
+      tags:
+        - "Pagamentos"
+      parameters:
+        - in: path
+          name: "chargeId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função getCharge"
+        '401':
+          description: Sem sessão
+  "/payments/console/charges":
+    get:
+      operationId: "consoleCharges"
+      summary: "consoleCharges"
+      description: "Exige sessão. Função consoleCharges."
+      tags:
+        - "Pagamentos"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função consoleCharges"
+        '401':
+          description: Sem sessão
+  "/payments/console/charges/{chargeId}":
+    get:
+      operationId: "consoleCharges_get"
+      summary: "consoleCharges"
+      description: "Exige sessão. Função consoleCharges."
+      tags:
+        - "Pagamentos"
+      parameters:
+        - in: path
+          name: "chargeId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função consoleCharges"
+        '401':
+          description: Sem sessão
+  "/payments/webhooks/pagbank":
+    post:
+      operationId: "pagbankWebhook"
+      summary: "pagbankWebhook"
+      description: "Autorização não declarada no addMethod. Função pagbankWebhook."
+      tags:
+        - "Pagamentos"
+      responses:
+        '200':
+          description: "Resposta da função pagbankWebhook"

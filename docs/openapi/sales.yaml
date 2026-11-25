@@ -1,0 +1,1100 @@
+# Gerado por packages/api/cdk/generate-openapi.ts. Não edite este arquivo.
+openapi: 3.0.3
+info:
+  title: "Vendas"
+  version: 0.0.0
+  description: >-
+    Rotas HTTP de packages/api/cdk/sales-api-stack.ts.
+    O caminho, o método e a sessão saem do addMethod.
+    O JSON do corpo não é gerado: a stack não declara esse contrato.
+servers:
+  - url: /
+paths:
+  "/sales/cart":
+    post:
+      operationId: "createCart"
+      summary: "createCart"
+      description: "Exige sessão. Função createCart."
+      tags:
+        - "Vendas"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função createCart"
+        '401':
+          description: Sem sessão
+  "/sales/cart/interpret":
+    post:
+      operationId: "interpretCart"
+      summary: "interpretCart"
+      description: "Exige sessão. Função interpretCart."
+      tags:
+        - "Vendas"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função interpretCart"
+        '401':
+          description: Sem sessão
+  "/sales/cart/interpret/confirm":
+    post:
+      operationId: "interpretConfirm"
+      summary: "interpretConfirm"
+      description: "Exige sessão. Função interpretConfirm."
+      tags:
+        - "Vendas"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função interpretConfirm"
+        '401':
+          description: Sem sessão
+  "/sales/cart/{customerId}":
+    get:
+      operationId: "getCart"
+      summary: "getCart"
+      description: "Exige sessão. Função getCart."
+      tags:
+        - "Vendas"
+      parameters:
+        - in: path
+          name: "customerId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função getCart"
+        '401':
+          description: Sem sessão
+    delete:
+      operationId: "clearCart"
+      summary: "clearCart"
+      description: "Exige sessão. Função clearCart."
+      tags:
+        - "Vendas"
+      parameters:
+        - in: path
+          name: "customerId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função clearCart"
+        '401':
+          description: Sem sessão
+  "/sales/cart/{customerId}/delivery":
+    patch:
+      operationId: "patchDelivery"
+      summary: "patchDelivery"
+      description: "Exige sessão. Função patchDelivery."
+      tags:
+        - "Vendas"
+      parameters:
+        - in: path
+          name: "customerId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função patchDelivery"
+        '401':
+          description: Sem sessão
+  "/sales/cart/{customerId}/discounts":
+    post:
+      operationId: "addDiscount"
+      summary: "addDiscount"
+      description: "Exige sessão. Função addDiscount."
+      tags:
+        - "Vendas"
+      parameters:
+        - in: path
+          name: "customerId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função addDiscount"
+        '401':
+          description: Sem sessão
+  "/sales/cart/{customerId}/discounts/{discountId}":
+    patch:
+      operationId: "patchDiscount"
+      summary: "patchDiscount"
+      description: "Exige sessão. Função patchDiscount."
+      tags:
+        - "Vendas"
+      parameters:
+        - in: path
+          name: "customerId"
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: "discountId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função patchDiscount"
+        '401':
+          description: Sem sessão
+    delete:
+      operationId: "removeDiscount"
+      summary: "removeDiscount"
+      description: "Exige sessão. Função removeDiscount."
+      tags:
+        - "Vendas"
+      parameters:
+        - in: path
+          name: "customerId"
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: "discountId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função removeDiscount"
+        '401':
+          description: Sem sessão
+  "/sales/cart/{customerId}/items":
+    post:
+      operationId: "addItemToCart"
+      summary: "addItemToCart"
+      description: "Exige sessão. Função addItemToCart."
+      tags:
+        - "Vendas"
+      parameters:
+        - in: path
+          name: "customerId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função addItemToCart"
+        '401':
+          description: Sem sessão
+  "/sales/cart/{customerId}/items/{itemId}":
+    delete:
+      operationId: "removeItemFromCart"
+      summary: "removeItemFromCart"
+      description: "Exige sessão. Função removeItemFromCart."
+      tags:
+        - "Vendas"
+      parameters:
+        - in: path
+          name: "customerId"
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: "itemId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função removeItemFromCart"
+        '401':
+          description: Sem sessão
+  "/sales/cart/{customerId}/items/{itemId}/price":
+    patch:
+      operationId: "updateItemPrice"
+      summary: "updateItemPrice"
+      description: "Exige sessão. Função updateItemPrice."
+      tags:
+        - "Vendas"
+      parameters:
+        - in: path
+          name: "customerId"
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: "itemId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função updateItemPrice"
+        '401':
+          description: Sem sessão
+  "/sales/cart/{customerId}/items/{itemId}/quantity":
+    patch:
+      operationId: "updateItemQuantity"
+      summary: "updateItemQuantity"
+      description: "Exige sessão. Função updateItemQuantity."
+      tags:
+        - "Vendas"
+      parameters:
+        - in: path
+          name: "customerId"
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: "itemId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função updateItemQuantity"
+        '401':
+          description: Sem sessão
+  "/sales/cart/{customerId}/payments":
+    post:
+      operationId: "addPayment"
+      summary: "addPayment"
+      description: "Exige sessão. Função addPayment."
+      tags:
+        - "Vendas"
+      parameters:
+        - in: path
+          name: "customerId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função addPayment"
+        '401':
+          description: Sem sessão
+  "/sales/cart/{customerId}/payments/finalize":
+    post:
+      operationId: "finalizePayments"
+      summary: "finalizePayments"
+      description: "Exige sessão. Função finalizePayments."
+      tags:
+        - "Vendas"
+      parameters:
+        - in: path
+          name: "customerId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função finalizePayments"
+        '401':
+          description: Sem sessão
+  "/sales/cart/{customerId}/payments/{paymentId}":
+    patch:
+      operationId: "patchPayment"
+      summary: "patchPayment"
+      description: "Exige sessão. Função patchPayment."
+      tags:
+        - "Vendas"
+      parameters:
+        - in: path
+          name: "customerId"
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: "paymentId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função patchPayment"
+        '401':
+          description: Sem sessão
+    delete:
+      operationId: "removePayment"
+      summary: "removePayment"
+      description: "Exige sessão. Função removePayment."
+      tags:
+        - "Vendas"
+      parameters:
+        - in: path
+          name: "customerId"
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: "paymentId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função removePayment"
+        '401':
+          description: Sem sessão
+  "/sales/checkout":
+    post:
+      operationId: "createCheckout"
+      summary: "createCheckout"
+      description: "Exige sessão. Função createCheckout."
+      tags:
+        - "Vendas"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função createCheckout"
+        '401':
+          description: Sem sessão
+  "/sales/conversation-links/{personId}":
+    get:
+      operationId: "getOrCreateConversationLink"
+      summary: "getOrCreateConversationLink"
+      description: "Exige sessão. Função getOrCreateConversationLink."
+      tags:
+        - "Vendas"
+      parameters:
+        - in: path
+          name: "personId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função getOrCreateConversationLink"
+        '401':
+          description: Sem sessão
+  "/sales/conversation-links/{personId}/regenerate":
+    post:
+      operationId: "regenerateConversationLink"
+      summary: "regenerateConversationLink"
+      description: "Exige sessão. Função regenerateConversationLink."
+      tags:
+        - "Vendas"
+      parameters:
+        - in: path
+          name: "personId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função regenerateConversationLink"
+        '401':
+          description: Sem sessão
+  "/sales/conversation-sessions":
+    post:
+      operationId: "openConversationSession"
+      summary: "openConversationSession"
+      description: "Exige sessão. Função openConversationSession."
+      tags:
+        - "Vendas"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função openConversationSession"
+        '401':
+          description: Sem sessão
+  "/sales/conversation-sessions/public":
+    post:
+      operationId: "openConversationSessionByToken"
+      summary: "openConversationSessionByToken"
+      description: "Rota pública. Função openConversationSessionByToken."
+      tags:
+        - "Vendas"
+      responses:
+        '200':
+          description: "Resposta da função openConversationSessionByToken"
+  "/sales/conversation-sessions/{sessionId}":
+    get:
+      operationId: "getConversationSession"
+      summary: "getConversationSession"
+      description: "Rota pública. Função getConversationSession."
+      tags:
+        - "Vendas"
+      parameters:
+        - in: path
+          name: "sessionId"
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função getConversationSession"
+  "/sales/conversation-sessions/{sessionId}/turns":
+    post:
+      operationId: "addConversationTurn"
+      summary: "addConversationTurn"
+      description: "Rota pública. Função addConversationTurn."
+      tags:
+        - "Vendas"
+      parameters:
+        - in: path
+          name: "sessionId"
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função addConversationTurn"
+  "/sales/customers/{id}/orders":
+    get:
+      operationId: "listOrdersByCustomer"
+      summary: "listOrdersByCustomer"
+      description: "Exige sessão. Função listOrdersByCustomer."
+      tags:
+        - "Vendas"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função listOrdersByCustomer"
+        '401':
+          description: Sem sessão
+  "/sales/kitchen/orders":
+    get:
+      operationId: "kitchenListOrders"
+      summary: "kitchenListOrders"
+      description: "Exige sessão. Função kitchenListOrders."
+      tags:
+        - "Vendas"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função kitchenListOrders"
+        '401':
+          description: Sem sessão
+  "/sales/orders":
+    get:
+      operationId: "listOrders"
+      summary: "listOrders"
+      description: "Exige sessão. Função listOrders."
+      tags:
+        - "Vendas"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função listOrders"
+        '401':
+          description: Sem sessão
+  "/sales/orders/aggregate":
+    get:
+      operationId: "aggregateOrders"
+      summary: "aggregateOrders"
+      description: "Exige sessão. Função aggregateOrders."
+      tags:
+        - "Vendas"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função aggregateOrders"
+        '401':
+          description: Sem sessão
+  "/sales/orders/all":
+    get:
+      operationId: "listAllOrders"
+      summary: "listAllOrders"
+      description: "Exige sessão. Função listAllOrders."
+      tags:
+        - "Vendas"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função listAllOrders"
+        '401':
+          description: Sem sessão
+  "/sales/orders/items/stages/bulk":
+    post:
+      operationId: "bulkAdvanceItemStages"
+      summary: "bulkAdvanceItemStages"
+      description: "Exige sessão. Função bulkAdvanceItemStages."
+      tags:
+        - "Vendas"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função bulkAdvanceItemStages"
+        '401':
+          description: Sem sessão
+  "/sales/orders/items/{itemId}/stages":
+    post:
+      operationId: "advanceItemStage"
+      summary: "advanceItemStage"
+      description: "Exige sessão. Função advanceItemStage."
+      tags:
+        - "Vendas"
+      parameters:
+        - in: path
+          name: "itemId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função advanceItemStage"
+        '401':
+          description: Sem sessão
+  "/sales/orders/summary":
+    get:
+      operationId: "ordersSummary"
+      summary: "ordersSummary"
+      description: "Exige sessão. Função ordersSummary."
+      tags:
+        - "Vendas"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função ordersSummary"
+        '401':
+          description: Sem sessão
+  "/sales/orders/{id}":
+    get:
+      operationId: "getOrder"
+      summary: "getOrder"
+      description: "Exige sessão. Função getOrder."
+      tags:
+        - "Vendas"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função getOrder"
+        '401':
+          description: Sem sessão
+  "/sales/orders/{id}/customer":
+    patch:
+      operationId: "patchOrderCustomer"
+      summary: "patchOrderCustomer"
+      description: "Exige sessão. Função patchOrderCustomer."
+      tags:
+        - "Vendas"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função patchOrderCustomer"
+        '401':
+          description: Sem sessão
+  "/sales/orders/{id}/delivery":
+    patch:
+      operationId: "patchOrderDelivery"
+      summary: "patchOrderDelivery"
+      description: "Exige sessão. Função patchOrderDelivery."
+      tags:
+        - "Vendas"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função patchOrderDelivery"
+        '401':
+          description: Sem sessão
+  "/sales/orders/{id}/discounts":
+    patch:
+      operationId: "patchOrderDiscounts"
+      summary: "patchOrderDiscounts"
+      description: "Exige sessão. Função patchOrderDiscounts."
+      tags:
+        - "Vendas"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função patchOrderDiscounts"
+        '401':
+          description: Sem sessão
+  "/sales/orders/{id}/items":
+    patch:
+      operationId: "patchOrderItems"
+      summary: "patchOrderItems"
+      description: "Exige sessão. Função patchOrderItems."
+      tags:
+        - "Vendas"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função patchOrderItems"
+        '401':
+          description: Sem sessão
+  "/sales/orders/{id}/items/{itemId}/progress":
+    patch:
+      operationId: "patchOrderItemProgress"
+      summary: "patchOrderItemProgress"
+      description: "Exige sessão. Função patchOrderItemProgress."
+      tags:
+        - "Vendas"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: "itemId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função patchOrderItemProgress"
+        '401':
+          description: Sem sessão
+  "/sales/orders/{id}/payments":
+    patch:
+      operationId: "patchOrderPayments"
+      summary: "patchOrderPayments"
+      description: "Exige sessão. Função patchOrderPayments."
+      tags:
+        - "Vendas"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função patchOrderPayments"
+        '401':
+          description: Sem sessão
+  "/sales/orders/{id}/status":
+    patch:
+      operationId: "patchOrderStatus_patch"
+      summary: "patchOrderStatus"
+      description: "Exige sessão. Função patchOrderStatus."
+      tags:
+        - "Vendas"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função patchOrderStatus"
+        '401':
+          description: Sem sessão
+  "/sales/orders/{id}/statuses":
+    patch:
+      operationId: "patchOrderStatus"
+      summary: "patchOrderStatus"
+      description: "Exige sessão. Função patchOrderStatus."
+      tags:
+        - "Vendas"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função patchOrderStatus"
+        '401':
+          description: Sem sessão

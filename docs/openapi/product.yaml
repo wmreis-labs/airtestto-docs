@@ -1,0 +1,795 @@
+# Gerado por packages/api/cdk/generate-openapi.ts. Não edite este arquivo.
+openapi: 3.0.3
+info:
+  title: "Produtos"
+  version: 0.0.0
+  description: >-
+    Rotas HTTP de packages/api/cdk/product-api-stack.ts.
+    O caminho, o método e a sessão saem do addMethod.
+    O JSON do corpo não é gerado: a stack não declara esse contrato.
+servers:
+  - url: /
+paths:
+  "/product":
+    get:
+      operationId: "getAllProducts"
+      summary: "getAllProducts"
+      description: "Exige sessão. Função getAllProducts."
+      tags:
+        - "Produtos"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função getAllProducts"
+        '401':
+          description: Sem sessão
+    post:
+      operationId: "createProduct"
+      summary: "createProduct"
+      description: "Exige sessão. Função createProduct."
+      tags:
+        - "Produtos"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função createProduct"
+        '401':
+          description: Sem sessão
+  "/product/backfill/pdv":
+    post:
+      operationId: "productBackfillPdv"
+      summary: "productBackfillPdv"
+      description: "Exige sessão. Função productBackfillPdv."
+      tags:
+        - "Produtos"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função productBackfillPdv"
+        '401':
+          description: Sem sessão
+  "/product/bom":
+    get:
+      operationId: "getAllBOM"
+      summary: "getAllBOM"
+      description: "Exige sessão. Função getAllBOM."
+      tags:
+        - "Produtos"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função getAllBOM"
+        '401':
+          description: Sem sessão
+    post:
+      operationId: "createBOM"
+      summary: "createBOM"
+      description: "Exige sessão. Função createBOM."
+      tags:
+        - "Produtos"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função createBOM"
+        '401':
+          description: Sem sessão
+  "/product/by-category/{categoryId}":
+    get:
+      operationId: "getProductsByCategory"
+      summary: "getProductsByCategory"
+      description: "Exige sessão. Função getProductsByCategory."
+      tags:
+        - "Produtos"
+      parameters:
+        - in: path
+          name: "categoryId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função getProductsByCategory"
+        '401':
+          description: Sem sessão
+  "/product/category":
+    get:
+      operationId: "getAllCategory"
+      summary: "getAllCategory"
+      description: "Exige sessão. Função getAllCategory."
+      tags:
+        - "Produtos"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função getAllCategory"
+        '401':
+          description: Sem sessão
+    post:
+      operationId: "createCategory"
+      summary: "createCategory"
+      description: "Exige sessão. Função createCategory."
+      tags:
+        - "Produtos"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função createCategory"
+        '401':
+          description: Sem sessão
+  "/product/category/{id}":
+    get:
+      operationId: "getCategoryById"
+      summary: "getCategoryById"
+      description: "Exige sessão. Função getCategoryById."
+      tags:
+        - "Produtos"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função getCategoryById"
+        '401':
+          description: Sem sessão
+    put:
+      operationId: "updateCategory"
+      summary: "updateCategory"
+      description: "Exige sessão. Função updateCategory."
+      tags:
+        - "Produtos"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função updateCategory"
+        '401':
+          description: Sem sessão
+  "/product/filling":
+    get:
+      operationId: "getAllFillings"
+      summary: "getAllFillings"
+      description: "Exige sessão. Função getAllFillings."
+      tags:
+        - "Produtos"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função getAllFillings"
+        '401':
+          description: Sem sessão
+    post:
+      operationId: "createFilling"
+      summary: "createFilling"
+      description: "Exige sessão. Função createFilling."
+      tags:
+        - "Produtos"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função createFilling"
+        '401':
+          description: Sem sessão
+  "/product/internal/prices/resolve":
+    post:
+      operationId: "resolvePricesInternal"
+      summary: "resolvePricesInternal"
+      description: "Autorização não declarada no addMethod. Função resolvePricesInternal."
+      tags:
+        - "Produtos"
+      responses:
+        '200':
+          description: "Resposta da função resolvePricesInternal"
+  "/product/price":
+    get:
+      operationId: "getAllPrice"
+      summary: "getAllPrice"
+      description: "Exige sessão. Função getAllPrice."
+      tags:
+        - "Produtos"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função getAllPrice"
+        '401':
+          description: Sem sessão
+    post:
+      operationId: "createPrice"
+      summary: "createPrice"
+      description: "Exige sessão. Função createPrice."
+      tags:
+        - "Produtos"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função createPrice"
+        '401':
+          description: Sem sessão
+  "/product/price/{id}/product":
+    get:
+      operationId: "getPriceByProduct"
+      summary: "getPriceByProduct"
+      description: "Exige sessão. Função getPriceByProduct."
+      tags:
+        - "Produtos"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função getPriceByProduct"
+        '401':
+          description: Sem sessão
+    put:
+      operationId: "updatePriceByProduct"
+      summary: "updatePriceByProduct"
+      description: "Exige sessão. Função updatePriceByProduct."
+      tags:
+        - "Produtos"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função updatePriceByProduct"
+        '401':
+          description: Sem sessão
+  "/product/prices/resolve":
+    post:
+      operationId: "resolvePrices"
+      summary: "resolvePrices"
+      description: "Exige sessão. Função resolvePrices."
+      tags:
+        - "Produtos"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função resolvePrices"
+        '401':
+          description: Sem sessão
+  "/product/size":
+    get:
+      operationId: "getAllSizes"
+      summary: "getAllSizes"
+      description: "Exige sessão. Função getAllSizes."
+      tags:
+        - "Produtos"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função getAllSizes"
+        '401':
+          description: Sem sessão
+    post:
+      operationId: "createSize"
+      summary: "createSize"
+      description: "Exige sessão. Função createSize."
+      tags:
+        - "Produtos"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função createSize"
+        '401':
+          description: Sem sessão
+  "/product/stock":
+    get:
+      operationId: "getAllStock"
+      summary: "getAllStock"
+      description: "Exige sessão. Função getAllStock."
+      tags:
+        - "Produtos"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função getAllStock"
+        '401':
+          description: Sem sessão
+    post:
+      operationId: "createStock"
+      summary: "createStock"
+      description: "Exige sessão. Função createStock."
+      tags:
+        - "Produtos"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função createStock"
+        '401':
+          description: Sem sessão
+  "/product/stock-movement":
+    get:
+      operationId: "getAllStockMovement"
+      summary: "getAllStockMovement"
+      description: "Exige sessão. Função getAllStockMovement."
+      tags:
+        - "Produtos"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função getAllStockMovement"
+        '401':
+          description: Sem sessão
+    post:
+      operationId: "createStockMovement"
+      summary: "createStockMovement"
+      description: "Exige sessão. Função createStockMovement."
+      tags:
+        - "Produtos"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função createStockMovement"
+        '401':
+          description: Sem sessão
+  "/product/variant":
+    get:
+      operationId: "getAllVariants"
+      summary: "getAllVariants"
+      description: "Exige sessão. Função getAllVariants."
+      tags:
+        - "Produtos"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função getAllVariants"
+        '401':
+          description: Sem sessão
+    post:
+      operationId: "createVariant"
+      summary: "createVariant"
+      description: "Exige sessão. Função createVariant."
+      tags:
+        - "Produtos"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função createVariant"
+        '401':
+          description: Sem sessão
+  "/product/variant/batch":
+    post:
+      operationId: "getVariantsBatch"
+      summary: "getVariantsBatch"
+      description: "Exige sessão. Função getVariantsBatch."
+      tags:
+        - "Produtos"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função getVariantsBatch"
+        '401':
+          description: Sem sessão
+  "/product/variant/product/{productId}":
+    get:
+      operationId: "getVariantsByProduct"
+      summary: "getVariantsByProduct"
+      description: "Exige sessão. Função getVariantsByProduct."
+      tags:
+        - "Produtos"
+      parameters:
+        - in: path
+          name: "productId"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função getVariantsByProduct"
+        '401':
+          description: Sem sessão
+  "/product/variant/summary":
+    get:
+      operationId: "getVariantSummary"
+      summary: "getVariantSummary"
+      description: "Exige sessão. Função getVariantSummary."
+      tags:
+        - "Produtos"
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função getVariantSummary"
+        '401':
+          description: Sem sessão
+  "/product/variant/{id}":
+    get:
+      operationId: "getVariantById"
+      summary: "getVariantById"
+      description: "Exige sessão. Função getVariantById."
+      tags:
+        - "Produtos"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função getVariantById"
+        '401':
+          description: Sem sessão
+    put:
+      operationId: "updateVariant"
+      summary: "updateVariant"
+      description: "Exige sessão. Função updateVariant."
+      tags:
+        - "Produtos"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função updateVariant"
+        '401':
+          description: Sem sessão
+  "/product/{id}":
+    get:
+      operationId: "getProductById"
+      summary: "getProductById"
+      description: "Exige sessão. Função getProductById."
+      tags:
+        - "Produtos"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função getProductById"
+        '401':
+          description: Sem sessão
+    put:
+      operationId: "updateProduct"
+      summary: "updateProduct"
+      description: "Exige sessão. Função updateProduct."
+      tags:
+        - "Produtos"
+      parameters:
+        - in: path
+          name: "id"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Resposta da função updateProduct"
+        '401':
+          description: Sem sessão

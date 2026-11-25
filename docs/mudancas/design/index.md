@@ -50,6 +50,7 @@ Estes textos nasceram como desenho de contrato, antes desta prateleira existir. 
 | Acerto da parada e fechamento da rota | Aceita | [Caderno](2026-11-23-caderno-acerto-rota.md) |
 | Pagamentos (Testto Pay) | Rascunho | [Pagamentos](2026-11-21-pagamentos-testto-pay.md) |
 | Apuração de impostos (`tax`) e receita do extrato | Em revisão | [Impostos dos imóveis](2026-11-21-apuracao-impostos-tax.md) |
+| Chave de serviço | Vigente | [Chave de serviço](2026-11-25-chave-de-servico.md) |
 | Atributos do cadastro | Vigente | [Atributos do cadastro](2026-10-11-atributos-cadastro.md) |
 | Acesso ao DynamoDB | Vigente | [Acesso ao DynamoDB](2026-10-12-acesso-dynamodb.md) |
 | Fases do acesso ao DynamoDB | Vigente | [Fases do acesso](2026-10-13-fases-acesso-dynamodb.md) |

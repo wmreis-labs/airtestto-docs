@@ -97,6 +97,7 @@ nav:
           - Atributos do cadastro: mudancas/design/2026-10-11-atributos-cadastro.md
           - Acesso ao DynamoDB: mudancas/design/2026-10-12-acesso-dynamodb.md
           - Fases do acesso: mudancas/design/2026-10-13-fases-acesso-dynamodb.md
+          - Chave de serviço: mudancas/design/2026-11-25-chave-de-servico.md
       - PRDs: mudancas/prd/index.md
   - Setup:
       - Visão geral: setup/index.md

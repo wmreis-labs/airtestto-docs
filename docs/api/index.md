@@ -1,24 +1,15 @@
 # APIs e contratos
 
-O contrato de cada domínio fica em `contracts/<domínio>/openapi.yaml`. Ao criar um arquivo novo, inclua a linha nesta tabela.
+A [referência da API](referencia.md) mostra endpoint, request e response. Ela lê o OpenAPI publicado neste site. A fonte do contrato continua em `contracts/<domínio>/openapi.yaml` no repositório airtestto.
 
-| Domínio | Caminho |
+| Domínio | Contrato publicado |
 | --- | --- |
-| Auth | `contracts/auth/openapi.yaml` |
-| API gateway | `contracts/api/openapi.yaml` |
-| Property | `contracts/property/openapi.yaml` |
-| Person | `contracts/person/openapi.yaml` |
-| Product | `contracts/product/openapi.yaml` |
-| Sales | `contracts/sales/openapi.yaml` |
-| Delivery | `contracts/delivery/openapi.yaml` |
-| Contract | `contracts/contract/openapi.yaml` |
-| Calendar | `contracts/calendar/openapi.yaml` |
-| Orchestrator | `contracts/orchestrator/openapi.yaml` |
-| Assistant | `contracts/assistant/openapi.yaml` |
-| Message | `contracts/message/openapi.yaml` |
-| Flipping | `contracts/flipping/openapi.yaml` |
+| Vendas | [sales.yaml](../openapi/sales.yaml) |
+| Financeiro | [financial.yaml](../openapi/financial.yaml) |
+| Flipping | [flipping.yaml](../openapi/flipping.yaml) |
+| Assistant | [assistant.yaml](../openapi/assistant.yaml) |
 
-Contrato que ainda não existe começa com a versão inicial e exemplos mínimos. O guia já escrito do assistente está em [Assistant](assistant.md).
+O guia do assistente está em [Assistant](assistant.md). Domínio sem arquivo nesta tabela ainda não entra na referência.
 
 ## Convenções
 
@@ -41,7 +32,8 @@ Códigos HTTP usados: 400, 401, 403, 404, 409, 422, 429, 500 e 503.
 
 ## Rota nova
 
-1. Atualizar o OpenAPI.
-2. Declarar validação de entrada e saída.
-3. Incluir exemplo de request e response.
-4. Atualizar teste e a página do domínio neste portal.
+1. Atualizar o OpenAPI no airtestto.
+2. Publicar a cópia em `docs/openapi/` e a linha da tabela acima.
+3. Declarar validação de entrada e saída.
+4. Incluir exemplo de request e response.
+5. Atualizar teste e a página do domínio neste portal.

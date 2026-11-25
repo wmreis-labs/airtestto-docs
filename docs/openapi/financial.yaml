@@ -1,0 +1,649 @@
+openapi: "3.0.3"
+info:
+  title: Financial API
+  description: |
+    Núcleo financeiro da plataforma Hostto.
+    Tudo é um lançamento financeiro vinculado a uma unidade econômica e a um evento de origem.
+  version: "1.0.0"
+
+servers:
+  - url: /v1/financial
+
+security:
+  - CognitoJWT: []
+
+tags:
+  - name: Lançamentos
+    description: Operações CRUD de lançamentos financeiros
+  - name: Documentos
+    description: Documentos comprobatórios e fluxo de OCR
+
+paths:
+  /entries:
+    post:
+      tags: [Lançamentos]
+      summary: Criar lançamento financeiro
+      operationId: createFinancialEntry
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateFinancialEntryRequest"
+            example:
+              economicUnitId: "prop-abc123"
+              economicUnitType: "PROPERTY"
+              entryType: "EXPENSE"
+              lifecycleStatus: "PLANNED"
+              categoryGroup: "RENOVATION"
+              category: "LABOR"
+              competenceAt: "2026-05-01T00:00:00-03:00"
+              amount: 3500.00
+              currency: "BRL"
+              sourceType: "WORK_ORDER"
+              sourceId: "wo-xyz789"
+              counterpartyName: "João Silva Reformas"
+              description: "Serviço de pintura completa"
+      responses:
+        "201":
+          description: Lançamento criado com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/FinancialEntryResponse"
+        "400":
+          $ref: "#/components/responses/ValidationError"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "500":
+          $ref: "#/components/responses/InternalError"
+
+    get:
+      tags: [Lançamentos]
+      summary: Listar lançamentos financeiros
+      operationId: listFinancialEntries
+      parameters:
+        - name: economicUnitId
+          in: query
+          schema:
+            type: string
+        - name: economicUnitType
+          in: query
+          schema:
+            $ref: "#/components/schemas/EconomicUnitType"
+        - name: entryType
+          in: query
+          schema:
+            $ref: "#/components/schemas/EntryType"
+        - name: lifecycleStatus
+          in: query
+          schema:
+            $ref: "#/components/schemas/LifecycleStatus"
+        - name: categoryGroup
+          in: query
+          schema:
+            $ref: "#/components/schemas/CategoryGroup"
+        - name: category
+          in: query
+          schema:
+            $ref: "#/components/schemas/EntryCategory"
+        - name: sourceType
+          in: query
+          schema:
+            $ref: "#/components/schemas/SourceType"
+        - name: startDate
+          in: query
+          schema:
+            type: string
+            format: date-time
+        - name: endDate
+          in: query
+          schema:
+            type: string
+            format: date-time
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
+            default: 20
+        - name: nextCursor
+          in: query
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Lista de lançamentos
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/FinancialEntryListResponse"
+        "400":
+          $ref: "#/components/responses/ValidationError"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+
+  /entries/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+
+    get:
+      tags: [Lançamentos]
+      summary: Buscar lançamento por ID
+      operationId: getFinancialEntryById
+      responses:
+        "200":
+          description: Lançamento encontrado
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/FinancialEntryResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+    patch:
+      tags: [Lançamentos]
+      summary: Atualizar lançamento financeiro
+      operationId: updateFinancialEntry
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateFinancialEntryRequest"
+      responses:
+        "200":
+          description: Lançamento atualizado
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/FinancialEntryResponse"
+        "400":
+          $ref: "#/components/responses/ValidationError"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "409":
+          $ref: "#/components/responses/ConflictError"
+
+    delete:
+      tags: [Lançamentos]
+      summary: Remover lançamento financeiro
+      operationId: deleteFinancialEntry
+      responses:
+        "204":
+          description: Lançamento removido
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+  /entries/{id}/documents/{fileId}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: fileId
+        in: path
+        required: true
+        schema:
+          type: string
+
+    post:
+      tags: [Documentos]
+      summary: Iniciar processamento OCR de um documento
+      operationId: triggerDocumentOcr
+      responses:
+        "202":
+          description: Processamento OCR enfileirado
+          content:
+            application/json:
+              example:
+                success: true
+                data:
+                  message: "OCR processing queued"
+        "400":
+          $ref: "#/components/responses/ValidationError"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "409":
+          description: Documento já está sendo processado ou concluído
+
+  /entries/{id}/documents/{fileId}/reprocess:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: fileId
+        in: path
+        required: true
+        schema:
+          type: string
+
+    post:
+      tags: [Documentos]
+      summary: Reprocessar OCR de um documento com falha ou divergência
+      operationId: reprocessDocumentOcr
+      responses:
+        "202":
+          description: Reprocessamento enfileirado
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+  /entries/{id}/documents/{fileId}/dismiss:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: fileId
+        in: path
+        required: true
+        schema:
+          type: string
+
+    post:
+      tags: [Documentos]
+      summary: Dispensar validação OCR de um documento manualmente
+      operationId: dismissDocumentOcr
+      responses:
+        "200":
+          description: Validação dispensada
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+components:
+  securitySchemes:
+    CognitoJWT:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  responses:
+    ValidationError:
+      description: Dados de entrada inválidos
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorResponse"
+          example:
+            success: false
+            error:
+              code: "validation_error"
+              message: "Invalid request payload"
+              details:
+                amount: "must be a positive number"
+
+    Unauthorized:
+      description: Não autenticado
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorResponse"
+          example:
+            success: false
+            error:
+              code: "unauthorized"
+              message: "Missing or invalid token"
+
+    NotFound:
+      description: Recurso não encontrado
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorResponse"
+          example:
+            success: false
+            error:
+              code: "not_found"
+              message: "Financial entry not found"
+
+    ConflictError:
+      description: "Conflito de validação (ex.: OCR em andamento ou divergência)"
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorResponse"
+          example:
+            success: false
+            error:
+              code: "conflict_error"
+              message: "Entry blocked by OCR validation"
+              details:
+                blockingReasons:
+                  - code: "OCR_VALUE_MISMATCH"
+                    message: "OCR extracted amount differs from entry amount"
+                    fileId: "file-abc123"
+                divergentFields:
+                  - fieldName: "amount"
+                    entryValue: 3500
+                    ocrValue: 3200
+                    fileId: "file-abc123"
+
+    InternalError:
+      description: Erro interno do servidor
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorResponse"
+
+  schemas:
+    EntryType:
+      type: string
+      enum: [REVENUE, EXPENSE, TRANSFER]
+
+    LifecycleStatus:
+      type: string
+      enum: [PLANNED, CONFIRMED, RECONCILED]
+
+    EconomicUnitType:
+      type: string
+      enum: [PROPERTY, FLIPPING_DEAL]
+
+    SourceType:
+      type: string
+      enum: [MANUAL, RESERVATION, RENT_CONTRACT, PURCHASE, WORK_ORDER]
+
+    CategoryGroup:
+      type: string
+      enum: [ACQUISITION, STRUCTURING, RENOVATION, OPERATION, REVENUE, DIVESTMENT]
+
+    EntryCategory:
+      type: string
+      enum:
+        - DOWN_PAYMENT
+        - ITBI
+        - DEED_REGISTRY
+        - APPRAISAL
+        - LEGAL_FEES
+        - INSPECTION
+        - DUE_DILIGENCE
+        - ARCHITECTURAL_PROJECT
+        - PERMITS
+        - LICENSES
+        - FEES
+        - LABOR
+        - MATERIAL
+        - FURNITURE_DECOR
+        - HVAC
+        - ELECTRICAL
+        - PLUMBING
+        - PAINTING
+        - FLOORING
+        - CLEANING
+        - MAINTENANCE
+        - CONDO_FEE
+        - PROPERTY_TAX
+        - UTILITIES
+        - PLATFORM_FEE
+        - SALE
+        - DAILY_RATE
+        - MONTHLY_RENT
+        - EXTRA_FEES
+        - BROKERAGE
+        - INCOME_TAX
+        - EXIT_COSTS
+
+    OcrStatus:
+      type: string
+      enum: [PENDING, PROCESSING, DONE, FAILED, TIMEOUT, DISMISSED]
+
+    DocumentType:
+      type: string
+      enum: [RECEIPT, INVOICE, PROOF_OF_PAYMENT, SALE_PROOF, OTHER]
+
+    OcrExtractedFields:
+      type: object
+      properties:
+        amount:
+          type: number
+        currency:
+          type: string
+        occurredAt:
+          type: string
+          format: date-time
+        counterpartyName:
+          type: string
+        description:
+          type: string
+
+    OcrResult:
+      type: object
+      properties:
+        status:
+          $ref: "#/components/schemas/OcrStatus"
+        extractedFields:
+          $ref: "#/components/schemas/OcrExtractedFields"
+        confidence:
+          type: number
+        modelVersion:
+          type: string
+        processedAt:
+          type: string
+          format: date-time
+        retryCount:
+          type: integer
+
+    FinancialDocument:
+      type: object
+      required: [fileId, s3Key, documentType]
+      properties:
+        fileId:
+          type: string
+        s3Key:
+          type: string
+        documentType:
+          $ref: "#/components/schemas/DocumentType"
+        ocr:
+          $ref: "#/components/schemas/OcrResult"
+
+    FinancialEntry:
+      type: object
+      properties:
+        id:
+          type: string
+        tenantId:
+          type: string
+        economicUnitId:
+          type: string
+        economicUnitType:
+          $ref: "#/components/schemas/EconomicUnitType"
+        entryType:
+          $ref: "#/components/schemas/EntryType"
+        lifecycleStatus:
+          $ref: "#/components/schemas/LifecycleStatus"
+        categoryGroup:
+          $ref: "#/components/schemas/CategoryGroup"
+        category:
+          $ref: "#/components/schemas/EntryCategory"
+        subcategory:
+          type: string
+          nullable: true
+        competenceAt:
+          type: string
+          format: date-time
+        settlementAt:
+          type: string
+          format: date-time
+          nullable: true
+        amount:
+          type: number
+        currency:
+          type: string
+          default: BRL
+        sourceType:
+          $ref: "#/components/schemas/SourceType"
+        sourceId:
+          type: string
+          nullable: true
+        externalId:
+          type: string
+          nullable: true
+        counterpartyName:
+          type: string
+          nullable: true
+        description:
+          type: string
+          nullable: true
+        documents:
+          type: array
+          items:
+            $ref: "#/components/schemas/FinancialDocument"
+          nullable: true
+        metadata:
+          type: object
+          additionalProperties: true
+          nullable: true
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+
+    CreateFinancialEntryRequest:
+      type: object
+      required:
+        - economicUnitId
+        - economicUnitType
+        - entryType
+        - categoryGroup
+        - category
+        - competenceAt
+        - amount
+        - sourceType
+      properties:
+        economicUnitId:
+          type: string
+        economicUnitType:
+          $ref: "#/components/schemas/EconomicUnitType"
+        entryType:
+          $ref: "#/components/schemas/EntryType"
+        lifecycleStatus:
+          $ref: "#/components/schemas/LifecycleStatus"
+        categoryGroup:
+          $ref: "#/components/schemas/CategoryGroup"
+        category:
+          $ref: "#/components/schemas/EntryCategory"
+        subcategory:
+          type: string
+        competenceAt:
+          type: string
+          format: date-time
+        settlementAt:
+          type: string
+          format: date-time
+        amount:
+          type: number
+        currency:
+          type: string
+          default: BRL
+        sourceType:
+          $ref: "#/components/schemas/SourceType"
+        sourceId:
+          type: string
+        externalId:
+          type: string
+        counterpartyName:
+          type: string
+        description:
+          type: string
+        documents:
+          type: array
+          items:
+            $ref: "#/components/schemas/FinancialDocument"
+        metadata:
+          type: object
+
+    UpdateFinancialEntryRequest:
+      type: object
+      description: |
+        Todos os campos são opcionais.
+        Campos imutáveis após criação: economicUnitId, economicUnitType, sourceType, sourceId, externalId.
+      properties:
+        entryType:
+          $ref: "#/components/schemas/EntryType"
+        lifecycleStatus:
+          $ref: "#/components/schemas/LifecycleStatus"
+        categoryGroup:
+          $ref: "#/components/schemas/CategoryGroup"
+        category:
+          $ref: "#/components/schemas/EntryCategory"
+        subcategory:
+          type: string
+        competenceAt:
+          type: string
+          format: date-time
+        settlementAt:
+          type: string
+          format: date-time
+        amount:
+          type: number
+        counterpartyName:
+          type: string
+        description:
+          type: string
+        documents:
+          type: array
+          items:
+            $ref: "#/components/schemas/FinancialDocument"
+        metadata:
+          type: object
+
+    FinancialEntryResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+        data:
+          $ref: "#/components/schemas/FinancialEntry"
+
+    FinancialEntryListResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+        data:
+          type: object
+          properties:
+            items:
+              type: array
+              items:
+                $ref: "#/components/schemas/FinancialEntry"
+            nextCursor:
+              type: string
+              nullable: true
+
+    ErrorResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: false
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
+            details:
+              type: object
+              additionalProperties: true
+            correlationId:
+              type: string

@@ -1,0 +1,393 @@
+openapi: 3.0.3
+info:
+  title: Sales API
+  version: 1.0.0
+  description: Contrato inicial do domínio Sales.
+paths:
+  /sales/cart/{cartId}:
+    delete:
+      summary: Limpar todos os itens de um carrinho ativo
+      tags:
+        - sales
+      parameters:
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-correlation-id
+          required: false
+          schema:
+            type: string
+        - in: path
+          name: cartId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Carrinho limpo com sucesso (idempotente)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClearCartResponse'
+        '404':
+          description: Carrinho não encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Carrinho em status que não permite alteração
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /sales/cart/interpret:
+    post:
+      summary: Interpretar texto de pedido e retornar draft de carrinho
+      tags:
+        - sales
+      parameters:
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-correlation-id
+          required: false
+          schema:
+            type: string
+        - in: header
+          name: x-interpret-ai-mode
+          required: false
+          schema:
+            type: string
+            enum: [off, shadow, on]
+        - in: header
+          name: x-interpret-ai-mode
+          required: false
+          schema:
+            type: string
+            enum: [off, shadow, on]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InterpretCartRequest'
+      responses:
+        '200':
+          description: Interpretação concluída (ready ou needs_confirmation)
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/InterpretReadyResponse'
+                  - $ref: '#/components/schemas/InterpretNeedsConfirmationResponse'
+        '400':
+          description: Entrada inválida
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Cliente não encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '409':
+          description: Tenant incompatível
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Texto do pedido não parseável
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '424':
+          description: Dependência de catálogo indisponível
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Erro interno
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /sales/cart/interpret/confirm:
+    post:
+      summary: Confirmar linhas pendentes de interpretação e finalizar draft do carrinho
+      tags:
+        - sales
+      parameters:
+        - in: header
+          name: x-tenant
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-correlation-id
+          required: false
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InterpretConfirmRequest'
+      responses:
+        '200':
+          description: Confirmação processada (ready ou needs_confirmation)
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/InterpretReadyResponse'
+                  - $ref: '#/components/schemas/InterpretNeedsConfirmationResponse'
+        '400':
+          description: Entrada inválida ou seleção inválida
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Snapshot de interpretação não encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '409':
+          description: customerId incompatível com snapshot
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '410':
+          description: Snapshot expirado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '424':
+          description: Dependência de catálogo indisponível
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Erro interno
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    InterpretCartRequest:
+      type: object
+      required:
+        - customerId
+        - orderText
+      properties:
+        customerId:
+          type: string
+          format: uuid
+        orderText:
+          type: string
+          minLength: 3
+          maxLength: 5000
+        options:
+          type: object
+          properties:
+            locale:
+              type: string
+              default: pt-BR
+            currency:
+              type: string
+              default: BRL
+            strictMode:
+              type: boolean
+              default: true
+            maxCandidatesPerLine:
+              type: integer
+              minimum: 1
+              maximum: 20
+              default: 8
+            preferCategory:
+              type: string
+              enum: [ASSADOS, FRITOS, CRUS, MASSAS]
+    InterpretBaseData:
+      type: object
+      required:
+        - status
+        - correlationId
+        - tenant
+        - customerId
+        - interpretedAt
+        - summary
+      properties:
+        status:
+          type: string
+          enum: [ready, needs_confirmation]
+        correlationId:
+          type: string
+        tenant:
+          type: string
+        customerId:
+          type: string
+          format: uuid
+        interpretedAt:
+          type: string
+          format: date-time
+        summary:
+          type: object
+          required: [totalLines, resolvedLines, unresolvedLines]
+          properties:
+            totalLines:
+              type: integer
+            resolvedLines:
+              type: integer
+            unresolvedLines:
+              type: integer
+    InterpretConfirmRequest:
+      type: object
+      required:
+        - customerId
+        - correlationId
+      properties:
+        customerId:
+          type: string
+          format: uuid
+        correlationId:
+          type: string
+        selections:
+          type: array
+          items:
+            type: object
+            required: [lineId, variantId]
+            properties:
+              lineId:
+                type: string
+              variantId:
+                type: string
+    InterpretReadyResponse:
+      type: object
+      required:
+        - success
+        - data
+      properties:
+        success:
+          type: boolean
+          enum: [true]
+        data:
+          allOf:
+            - $ref: '#/components/schemas/InterpretBaseData'
+            - type: object
+              properties:
+                status:
+                  type: string
+                  enum: [ready]
+                draftCartPayload:
+                  type: object
+                warnings:
+                  type: array
+                  items:
+                    type: object
+    InterpretNeedsConfirmationResponse:
+      type: object
+      required:
+        - success
+        - data
+      properties:
+        success:
+          type: boolean
+          enum: [true]
+        data:
+          allOf:
+            - $ref: '#/components/schemas/InterpretBaseData'
+            - type: object
+              properties:
+                status:
+                  type: string
+                  enum: [needs_confirmation]
+                partialDraftCartPayload:
+                  type: object
+                unresolvedItems:
+                  type: array
+                  items:
+                    type: object
+                suggestedSelections:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      lineId:
+                        type: string
+                      variantId:
+                        type: string
+                      confidence:
+                        type: number
+                      reason:
+                        type: string
+                      decisionSource:
+                        type: string
+                        enum: [llm]
+                warnings:
+                  type: array
+                  items:
+                    type: object
+    ErrorResponse:
+      type: object
+      required:
+        - success
+        - error
+      properties:
+        success:
+          type: boolean
+          enum: [false]
+        error:
+          type: object
+          required:
+            - code
+            - message
+            - correlationId
+          properties:
+            code:
+              type: string
+            message:
+              type: string
+            details:
+              type: array
+              items:
+                type: object
+            correlationId:
+              type: string
+    ClearCartResponse:
+      type: object
+      required:
+        - success
+        - data
+      properties:
+        success:
+          type: boolean
+          enum: [true]
+        data:
+          type: object
+          required:
+            - cartId
+            - clearedItems
+          properties:
+            cartId:
+              type: string
+            clearedItems:
+              type: integer
+              minimum: 0

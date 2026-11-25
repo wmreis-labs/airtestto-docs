@@ -1,0 +1,579 @@
+openapi: 3.0.3
+info:
+  title: Flipping API
+  version: 1.0.0
+  description: Contrato oficial do modulo Flipping (Fases 0-5 aplicadas).
+servers:
+  - url: /flipping
+paths:
+  /flipping-project:
+    get:
+      summary: Lista projetos de flipping
+      responses:
+        "200":
+          description: Lista de projetos
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessFlipProjectListResponse"
+    post:
+      summary: Cria projeto de flipping
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/FlipProjectInput"
+            examples:
+              canonical:
+                summary: Payload canonico
+                value:
+                  name: Projeto Cambui
+                  status: SEARCHING
+                  opportunities:
+                    - id: 00000000-0000-0000-0000-000000000001
+                      status: CAPTURED
+                      category: OPPORTUNITY
+                      price: 240000
+                      usableArea: 65
+                      feasibility:
+                        inputs:
+                          purchaseMode: CASH
+                          advertisedPrice: 420000
+                          usableArea: 65
+                          referencePricePerM2: 6500
+                          purchasePrice: 240000
+                          itbiRate: 0.03
+                          deedAndRegistryRate: 0.015
+                          renovationRate: 0.1417
+                          condoMonthly: 450
+                          iptuMonthly: 120
+                          utilitiesMonthly: 180
+                          holdingMonths: 7
+                          reserveFundRate: 0.0167
+                          brokerFeeRate: 0.06
+                          incomeTaxRate: 0.15
+              financed:
+                summary: Payload com financiamento
+                value:
+                  name: Projeto Financiado
+                  opportunities:
+                    - id: AP10781
+                      status: IN_NEGOTIATION
+                      category: OPPORTUNITY
+                      price: 420000
+                      usableArea: 90
+                      feasibility:
+                        inputs:
+                          purchaseMode: FINANCED
+                          advertisedPrice: 420000
+                          usableArea: 90
+                          referencePricePerM2: 6666.67
+                          purchasePrice: 415000
+                          itbiRate: 0.027
+                          deedAndRegistryRate: 0
+                          renovationRate: 0.15
+                          renovationCost: 50000
+                          condoMonthly: 1000
+                          iptuMonthly: 150
+                          utilitiesMonthly: 200
+                          holdingMonths: 6
+                          reserveFundRate: 0.01
+                          brokerFeeRate: 0.06
+                          incomeTaxRate: 0.15
+                          financing:
+                            financedAmount: 300000
+                            termMonths: 420
+                            downPayment: 115000
+                            installments: [2500, 2500, 2500, 2500, 2500, 2500]
+                            outstandingBalanceAtExit: 297000
+                            exitMonth: 6
+              legacy:
+                summary: Payload legado aceito para migracao
+                value:
+                  name: Projeto Legado
+                  opportunities:
+                    - id: 00000000-0000-0000-0000-000000000001
+                      numero: 10
+                      link: https://example.com/imovel/10
+                      areaUtil: 65
+                      valor: 240000
+                      precoPorM2: 3692.31
+                      feasibility:
+                        inputs:
+                          purchasePrice: 240000
+                          monthlyCosts: 750
+                          holdingMonths: 7
+                          brokerFeePercent: 0.06
+                          taxPercent: 0.15
+                          expectedSalePrice: 422500
+                          renovationCost: 34008
+      responses:
+        "201":
+          description: Projeto criado
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessFlipProjectResponse"
+        "400":
+          $ref: "#/components/responses/ValidationError"
+  /flipping-project/{id}:
+    get:
+      summary: Busca projeto por id
+      parameters:
+        - $ref: "#/components/parameters/IdParam"
+      responses:
+        "200":
+          description: Projeto encontrado
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessFlipProjectResponse"
+        "404":
+          description: Projeto nao encontrado
+    put:
+      summary: Atualiza projeto por id
+      parameters:
+        - $ref: "#/components/parameters/IdParam"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/FlipProjectPatch"
+            examples:
+              canonical_update:
+                summary: Atualizacao canonica
+                value:
+                  name: Projeto Cambui atualizado
+                  opportunities:
+                    - id: 00000000-0000-0000-0000-000000000001
+                      status: ANALYZED
+                      category: OPPORTUNITY
+                      feasibility:
+                        inputs:
+                          purchaseMode: CASH
+                          advertisedPrice: 420000
+                          usableArea: 65
+                          referencePricePerM2: 6500
+                          purchasePrice: 240000
+                          itbiRate: 0.03
+                          deedAndRegistryRate: 0.015
+                          renovationRate: 0.1417
+                          condoMonthly: 450
+                          iptuMonthly: 120
+                          utilitiesMonthly: 180
+                          holdingMonths: 7
+                          reserveFundRate: 0.0167
+                          brokerFeeRate: 0.06
+                          incomeTaxRate: 0.15
+                        results:
+                          roi: 999
+      responses:
+        "200":
+          description: Projeto atualizado
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessFlipProjectResponse"
+        "400":
+          $ref: "#/components/responses/ValidationError"
+        "404":
+          description: Projeto nao encontrado
+    delete:
+      summary: Remove projeto por id
+      parameters:
+        - $ref: "#/components/parameters/IdParam"
+      responses:
+        "204":
+          description: Projeto removido
+  /opportunities/parse:
+    post:
+      summary: Faz parse de oportunidade por URL
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [url]
+              properties:
+                url:
+                  type: string
+                  format: uri
+                modelId:
+                  type: string
+      responses:
+        "200":
+          description: Oportunidade parseada
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessOpportunityResponse"
+  /financing/simulations:
+    post:
+      summary: Simula financiamento imobiliario (SAC ou PRICE)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/FinancingSimulationInput"
+      responses:
+        "200":
+          description: Simulacao calculada com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessFinancingSimulationResponse"
+        "400":
+          $ref: "#/components/responses/ValidationError"
+components:
+  parameters:
+    IdParam:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+  responses:
+    ValidationError:
+      description: Erro de validacao
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorEnvelope"
+  schemas:
+    ErrorEnvelope:
+      type: object
+      required: [success, error]
+      properties:
+        success:
+          type: boolean
+          enum: [false]
+        error:
+          type: object
+          required: [code, message]
+          properties:
+            code:
+              type: string
+              example: validation_error
+            message:
+              type: string
+            details:
+              type: object
+              additionalProperties:
+                type: string
+    SuccessFlipProjectResponse:
+      type: object
+      required: [success, data]
+      properties:
+        success:
+          type: boolean
+          enum: [true]
+        data:
+          $ref: "#/components/schemas/FlipProject"
+    SuccessFlipProjectListResponse:
+      type: object
+      required: [success, data]
+      properties:
+        success:
+          type: boolean
+          enum: [true]
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/FlipProject"
+    SuccessOpportunityResponse:
+      type: object
+      required: [success, data]
+      properties:
+        success:
+          type: boolean
+          enum: [true]
+        data:
+          $ref: "#/components/schemas/Opportunity"
+    SuccessFinancingSimulationResponse:
+      type: object
+      required: [success, data]
+      properties:
+        success:
+          type: boolean
+          enum: [true]
+        data:
+          $ref: "#/components/schemas/FinancingSimulationResult"
+    FinancingSimulationInput:
+      type: object
+      required:
+        - propertyValue
+        - downPayment
+        - termMonths
+        - annualInterestRate
+        - amortizationSystem
+        - mipRate
+        - dfiRate
+        - adminFee
+        - referenceRate
+      properties:
+        propertyValue: { type: number, minimum: 0.0000001 }
+        downPayment: { type: number, minimum: 0 }
+        termMonths: { type: integer, minimum: 1, maximum: 420 }
+        annualInterestRate: { type: number, minimum: 0 }
+        amortizationSystem:
+          type: string
+          enum: [SAC, PRICE]
+        mipRate: { type: number, minimum: 0 }
+        dfiRate: { type: number, minimum: 0 }
+        adminFee: { type: number, minimum: 0 }
+        referenceRate: { type: number, minimum: 0 }
+    FinancingSimulationInstallment:
+      type: object
+      required:
+        - installmentNumber
+        - installmentAmount
+        - interestAmount
+        - amortizationAmount
+        - mipAmount
+        - dfiAmount
+        - adminFeeAmount
+        - remainingBalance
+      properties:
+        installmentNumber: { type: integer }
+        installmentAmount: { type: number }
+        interestAmount: { type: number }
+        amortizationAmount: { type: number }
+        mipAmount: { type: number }
+        dfiAmount: { type: number }
+        adminFeeAmount: { type: number }
+        remainingBalance: { type: number }
+    FinancingSimulationSummary:
+      type: object
+      required:
+        - firstInstallment
+        - lastInstallment
+        - averageInstallment
+        - totalInterest
+        - totalInsurance
+        - totalAdminFees
+      properties:
+        firstInstallment: { type: number }
+        lastInstallment: { type: number }
+        averageInstallment: { type: number }
+        totalInterest: { type: number }
+        totalInsurance: { type: number }
+        totalAdminFees: { type: number }
+    FinancingSimulationResult:
+      type: object
+      required:
+        - financedAmount
+        - totalPaid
+        - effectiveTotalCostRate
+        - installments
+        - summary
+      properties:
+        financedAmount: { type: number }
+        totalPaid: { type: number }
+        effectiveTotalCostRate: { type: number }
+        installments:
+          type: array
+          items:
+            $ref: "#/components/schemas/FinancingSimulationInstallment"
+        summary:
+          $ref: "#/components/schemas/FinancingSimulationSummary"
+    FlipProjectInput:
+      type: object
+      required: [name]
+      properties:
+        name:
+          type: string
+        status:
+          $ref: "#/components/schemas/FlipProjectStatus"
+        opportunities:
+          type: array
+          items:
+            $ref: "#/components/schemas/Opportunity"
+        deals:
+          type: array
+          items:
+            $ref: "#/components/schemas/Deal"
+    FlipProjectPatch:
+      type: object
+      properties:
+        name:
+          type: string
+        status:
+          $ref: "#/components/schemas/FlipProjectStatus"
+        opportunities:
+          type: array
+          items:
+            $ref: "#/components/schemas/Opportunity"
+        deals:
+          type: array
+          items:
+            $ref: "#/components/schemas/Deal"
+    FlipProject:
+      allOf:
+        - $ref: "#/components/schemas/FlipProjectInput"
+        - type: object
+          required: [id, tenantId, createdAt, updatedAt]
+          properties:
+            id:
+              type: string
+              format: uuid
+            tenantId:
+              type: string
+            createdAt:
+              type: string
+              format: date-time
+            updatedAt:
+              type: string
+              format: date-time
+    FlipProjectStatus:
+      type: string
+      enum: [SEARCHING, IN_PROGRESS, COMPLETED, CANCELLED]
+    OpportunityStatus:
+      type: string
+      enum: [CAPTURED, SCHEDULED_VIEW, VISITED, ANALYZED, PROPOSAL_SENT, IN_NEGOTIATION, NEGOTIATED, DISCARDED]
+    PurchaseMode:
+      type: string
+      enum: [CASH, FINANCED]
+    OpportunityCategory:
+      type: string
+      enum: [OPPORTUNITY, DEAL]
+      description: |
+        Backend normaliza valores legados para o padrao canonico.
+        Exemplos legados aceitos: OUT_OF_MARKET, COMPARATIVE.
+    Deal:
+      type: object
+      required: [id, purchasePrice]
+      properties:
+        id:
+          type: string
+          format: uuid
+        sellerId:
+          type: string
+        purchasePrice:
+          type: number
+        closingDate:
+          type: string
+          format: date
+        notes:
+          type: string
+    FeasibilityInputs:
+      type: object
+      properties:
+        purchaseMode:
+          $ref: "#/components/schemas/PurchaseMode"
+        advertisedPrice: { type: number }
+        usableArea: { type: number, minimum: 0.0000001 }
+        referencePricePerM2: { type: number }
+        purchasePrice: { type: number, minimum: 0.0000001 }
+        itbiRate: { type: number, minimum: 0, maximum: 1 }
+        deedAndRegistryRate: { type: number, minimum: 0, maximum: 1 }
+        renovationRate: { type: number, minimum: 0, maximum: 1 }
+        renovationCost: { type: number }
+        condoMonthly: { type: number }
+        iptuMonthly: { type: number }
+        utilitiesMonthly: { type: number }
+        holdingMonths: { type: integer, minimum: 1 }
+        reserveFundRate: { type: number, minimum: 0, maximum: 1 }
+        brokerFeeRate: { type: number, minimum: 0, maximum: 1 }
+        incomeTaxRate: { type: number, minimum: 0, maximum: 1 }
+        financing:
+          $ref: "#/components/schemas/FinancingInputs"
+    FinancingInputs:
+      type: object
+      properties:
+        financedAmount: { type: number, minimum: 0.0000001 }
+        termMonths: { type: integer, minimum: 1 }
+        downPayment: { type: number, minimum: 0 }
+        annualInterestRate: { type: number, minimum: 0 }
+        amortizationSystem:
+          type: string
+          enum: [SAC, PRICE]
+        mipRate: { type: number, minimum: 0 }
+        dfiRate: { type: number, minimum: 0 }
+        adminFee: { type: number, minimum: 0 }
+        referenceRate: { type: number, minimum: 0 }
+        interestRateMonthly: { type: number, minimum: 0 }
+        cetMonthly: { type: number, minimum: 0 }
+        appraisalFee: { type: number, minimum: 0 }
+        installments:
+          type: array
+          items:
+            type: number
+            minimum: 0
+        outstandingBalanceAtExit: { type: number, minimum: 0 }
+        exitMonth: { type: integer, minimum: 1 }
+    FeasibilityResults:
+      type: object
+      properties:
+        announcedPricePerM2: { type: number }
+        salePrice: { type: number }
+        discountVsReference: { type: number }
+        itbiValue: { type: number }
+        deedAndRegistryValue: { type: number }
+        renovationCost: { type: number }
+        monthlyExpenses: { type: number }
+        reserveFundValue: { type: number }
+        investmentTotal: { type: number }
+        brokerFeeValue: { type: number }
+        grossProfit: { type: number }
+        incomeTaxValue: { type: number }
+        netProfit: { type: number }
+        roi: { type: number }
+        financing:
+          $ref: "#/components/schemas/FinancingResults"
+    FinancingResults:
+      type: object
+      properties:
+        calculationSource:
+          type: string
+          enum: [SIMULATION, LEGACY]
+        installmentsPaidTotal: { type: number }
+        financingCostDuringHold: { type: number }
+        debtSettlementAtExit: { type: number }
+        equityInvested: { type: number }
+        netCashAfterDebt: { type: number }
+        roiOnEquity: { type: number }
+        simulationSummary:
+          $ref: "#/components/schemas/FinancingSimulationSummaryWithCet"
+    FinancingSimulationSummaryWithCet:
+      type: object
+      properties:
+        firstInstallment: { type: number }
+        lastInstallment: { type: number }
+        averageInstallment: { type: number }
+        totalPaid: { type: number }
+        effectiveTotalCostRate: { type: number }
+    FeasibilityAnalysis:
+      type: object
+      properties:
+        inputs:
+          $ref: "#/components/schemas/FeasibilityInputs"
+        results:
+          $ref: "#/components/schemas/FeasibilityResults"
+    Opportunity:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Identificador livre de negocio da oportunidade (nao precisa ser UUID).
+        status:
+          $ref: "#/components/schemas/OpportunityStatus"
+        category:
+          $ref: "#/components/schemas/OpportunityCategory"
+        url:
+          type: string
+          format: uri
+        description:
+          type: string
+        usableArea:
+          type: number
+        price:
+          type: number
+        pricePerM2:
+          type: number
+        feasibility:
+          $ref: "#/components/schemas/FeasibilityAnalysis"

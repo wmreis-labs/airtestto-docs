@@ -4,6 +4,29 @@ function scalarEstaEscuro() {
   return document.body.getAttribute("data-md-color-scheme") === "slate";
 }
 
+function carregarEstilo() {
+  var href =
+    "https://cdn.jsdelivr.net/npm/@scalar/api-reference@" +
+    scalarVersion +
+    "/dist/style.css";
+  if (document.querySelector("link[data-scalar-style]")) {
+    return Promise.resolve();
+  }
+  return new Promise(function (resolve, reject) {
+    var link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = href;
+    link.dataset.scalarStyle = "1";
+    link.onload = function () {
+      resolve();
+    };
+    link.onerror = function () {
+      reject(new Error("css"));
+    };
+    document.head.appendChild(link);
+  });
+}
+
 function montarReferencia() {
   var el = document.getElementById("scalar-referencia");
   if (!el || el.dataset.mounted === "1") {
@@ -13,6 +36,7 @@ function montarReferencia() {
 
   var indexUrl = new URL("../../openapi/index.json", document.baseURI).href;
   Promise.all([
+    carregarEstilo(),
     fetch(indexUrl).then(function (response) {
       if (!response.ok) {
         throw new Error(String(response.status));
@@ -26,8 +50,8 @@ function montarReferencia() {
     ),
   ])
     .then(function (result) {
-      var index = result[0];
-      var mod = result[1];
+      var index = result[1];
+      var mod = result[2];
       return mod.createApiReference("#scalar-referencia", {
         theme: "default",
         darkMode: scalarEstaEscuro(),
